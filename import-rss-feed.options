@@ -4,7 +4,7 @@ import
 ./content/rss
 
 -output_collections
-landing,rss
+data,rss
 
 -output_permissions
 kpmg-dashboard-role,read,kpmg-dashboard-role,update
@@ -12,12 +12,9 @@ kpmg-dashboard-role,read,kpmg-dashboard-role,update
 -output_uri_replace
 ".*/content,''"
 
--input_file_type
-aggregates
+-transform_module
+/transform/split-rss.xqy
 
--aggregate_record_element
-item
-
--uri_id 
-guid
+-transform_namespace
+"http://marklogic.com/demo"
 

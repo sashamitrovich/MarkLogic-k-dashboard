@@ -9,12 +9,16 @@ declare function demo:transform(
   let $org-uri := map:get($content, "uri")
   let $org-doc := map:get($content, "value")
   return
-    for $item in $org-doc/*:channel/*:item
+    for $item in $org-doc//*:item
 
     (: duplicate original map, to return multiple ones:)
     let $new-content := map:map(document{$content}/*)
+    
+    let $last-part := fn:tokenize($item/*:guid, "/")[last()]
+    let $guid := fn:substring-before($last-part,".")
+
     let $new-uri :=
-      map:put($new-content, "uri", concat(, $item/*:guid, ".xml"))
+      map:put($new-content, "uri", concat( $guid, ".xml"))
     let $new-value :=
       map:put($new-content, "value",
         document {
