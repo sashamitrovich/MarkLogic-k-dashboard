@@ -114,7 +114,8 @@
   <extract-document-data selected="all"></extract-document-data>
   -->
   <extract-document-data selected="include">
-    <extract-path>/item/title/text()</extract-path>
+    <extract-path>/item/type</extract-path>
+    <extract-path>/item/title</extract-path>
     <extract-path>/item/link</extract-path>
     <extract-path>/item/category</extract-path>
     <extract-path>/item/enclosure/@url</extract-path>

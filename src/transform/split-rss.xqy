@@ -24,7 +24,8 @@ declare function demo:transform(
         document {
           element item {
             $item/@*,
-            $item/*
+            $item/*,
+            <type>rss</type>
           }
         }
       )

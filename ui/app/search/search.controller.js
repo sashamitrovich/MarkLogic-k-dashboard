@@ -29,20 +29,60 @@
       superCtrl.updateSearchResults.apply(ctrl, arguments);
 
       angular.forEach(response.results, function (result, index) {
-        var map={};
-        
+        var map = {};
 
-        result.extracted.content.forEach(function(element) {
-          console.log(element);
+
+        result.extracted.content.forEach(function (element) {
+          var myObj = ctrl.getObject(element)
+          map[ctrl.getFirstKey(myObj)] = ctrl.getFirstValue(myObj);
+
+
           //map[element.keys[0]]=element[element.keys[0]];
         }, this);
 
-        result.extracted.map=map;
-        //console.log(result);
+        result.extracted.elements = map;
+        console.log(map);
+
+        result.isRss = function () {
+          if (result.extracted.elements.type == 'rss') {
+            return true;
+          }
+          else {
+            return false;
+          }
+        }
       })
+
 
       return ctrl;
     };
+
+    ctrl.getObject = function (element) {
+      var key = Object.keys(element)[0];
+      var value = element[key];
+      var newObj = {};
+
+      if (ctrl.isObject(value)) {
+        newObj = ctrl.getObject(value);
+      }
+      else {
+        newObj = element;
+      }
+      return newObj;
+
+    }
+
+    ctrl.isObject = function (obj) {
+      return obj === Object(obj);
+    }
+
+    ctrl.getFirstKey = function (myObj) {
+      return Object.keys(myObj)[0];
+    }
+
+    ctrl.getFirstValue = function (myObj) {
+      return myObj[ctrl.getFirstKey(myObj)];
+    }
 
     $scope.$watch(userService.currentUser, function (newValue) {
       ctrl.currentUser = newValue;
