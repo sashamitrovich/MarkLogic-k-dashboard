@@ -1,0 +1,8 @@
+{
+  "name": "kpmg-dashboard",
+  "version": "0.0.0",
+  "description": "Sample app generated with slush-marklogic-node",
+  "private": true,
+  "dependencies": {
+  }
+}
