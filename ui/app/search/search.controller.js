@@ -43,17 +43,13 @@
         result.extracted.elements = map;
         console.log(map);
 
-        result.isRss = function () {
-          if (result.extracted.elements.type == 'rss') {
-            return true;
-          }
-          else {
-            return false;
-          }
+        result.showMatch = true;
+        var matchText = ((result.matches[0])['match-text'])[0];
+        if (matchText.indexOf(result.extracted.elements.title) > -1) {
+          result.showMatch = false;
         }
+
       })
-
-
       return ctrl;
     };
 

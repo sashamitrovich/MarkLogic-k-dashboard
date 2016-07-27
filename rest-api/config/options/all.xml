@@ -118,6 +118,7 @@
     <extract-path>/item/title</extract-path>
     <extract-path>/item/link</extract-path>
     <extract-path>/item/category</extract-path>
+    <extract-path>/item/description</extract-path>
     <extract-path>/item/enclosure/@url</extract-path>
   </extract-document-data>
 </options>
