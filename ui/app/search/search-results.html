@@ -20,7 +20,7 @@
   </span>
 
   <!-- else -->
-  <span ng-show="result.extracted.elements.type=='int'">
+  <span ng-show="result.extracted.elements.type!='rss'">
     <h4>
       <a ui-sref="root.view({uri: result.uri})">{{ result.label || result.uri }}</a>
     </h4>

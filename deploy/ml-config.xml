@@ -190,8 +190,39 @@
         </fragment-parent>
       </fragment-parents>
 -->
-<!--
+
       <fields>
+
+          <field>
+          <field-name>Date</field-name>
+          <field-path>
+            <path>Date</path>
+            <weight>1.0</weight>
+          </field-path>
+          <field-path>
+            <path>pubDate</path>
+            <weight>1.0</weight>
+          </field-path>
+          <word-lexicons/>
+          <included-elements/>
+          <excluded-elements/>
+          <tokenizer-overrides/>
+          <stemmed-searches>off</stemmed-searches>
+          <fast-case-sensitive-searches>false</fast-case-sensitive-searches>
+          <fast-diacritic-sensitive-searches>false</fast-diacritic-sensitive-searches>
+          <fast-phrase-searches>false</fast-phrase-searches>
+          <one-character-searches>false</one-character-searches>
+          <three-character-searches>false</three-character-searches>
+          <three-character-word-positions>false</three-character-word-positions>
+          <trailing-wildcard-searches>false</trailing-wildcard-searches>
+          <trailing-wildcard-word-positions>false</trailing-wildcard-word-positions>
+          <two-character-searches>false</two-character-searches>
+          <value-positions>false</value-positions>
+          <value-searches>false</value-searches>
+          <word-searches>false</word-searches>
+        </field>
+
+<!--
         <field>
           <field-name></field-name>
           <field-path>
@@ -236,8 +267,10 @@
           </included-elements>
           <excluded-elements/>
         </field>
+        -->
+        
       </fields>
--->
+
       <range-element-indexes>
         <range-element-index>
           <scalar-type>string</scalar-type>
@@ -277,6 +310,13 @@
 -->
       </range-element-attribute-indexes>
       <range-field-indexes>
+
+      <range-field-index>
+          <scalar-type>date</scalar-type>
+          <field-name>Date</field-name>
+          <collation/>
+          <range-value-positions>false</range-value-positions>
+        </range-field-index>
 <!--
         <range-field-index>
           <scalar-type>date</scalar-type>
