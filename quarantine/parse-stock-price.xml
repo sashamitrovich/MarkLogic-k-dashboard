@@ -1,0 +1,8 @@
+<!-- Copyright 2002-2010 MarkLogic Corporation.  All Rights Reserved. -->
+<?xml-stylesheet href="/cpf/pipelines.css" type="text/css"?>
+<pipeline 
+    xmlns="http://marklogic.com/cpf/pipelines" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"xsi:schemaLocation="http://marklogic.com/cpf/pipelines pipelines.xsd">
+    <pipeline-name>HTML Conversion</pipeline-name>
+    <pipeline-description>Additional conversion rules for HTML.   This pipeline should be used in conjunction with the basic   conversion pipeline and the status change handling pipeline.  </pipeline-description>
+</pipeline>
