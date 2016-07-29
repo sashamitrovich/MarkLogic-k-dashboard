@@ -31,24 +31,41 @@
       angular.forEach(response.results, function (result, index) {
         var map = {};
 
-
+        // build a nice hashmap for the exctracted elements instead of the clunky array/hashmap combination
         result.extracted.content.forEach(function (element) {
           var myObj = ctrl.getObject(element)
           map[ctrl.getFirstKey(myObj)] = ctrl.getFirstValue(myObj);
-
-
-          //map[element.keys[0]]=element[element.keys[0]];
         }, this);
 
         result.extracted.elements = map;
-        console.log(map);
+        //console.log(map);
 
-        result.showMatch = true;
-        var matchText = ((result.matches[0])['match-text'])[0];
-        if (matchText.indexOf(result.extracted.elements.title) > -1) {
-          result.showMatch = false;
+        // for stocks, add a boolean for the value change, 
+        // used to controls the styling (red for negative, green for positive)
+        if (result.extracted.elements.type == 'stock') {
+          var change = parseFloat(result.extracted.elements.Change);
+          if (change < 0) {
+            result.isNegativeChange = true
+          }
+          else {
+            result.isNegativeChange = false;
+          }
         }
 
+        // should show match only if the matched text is not in the title of the rss news
+
+        // if (result.extracted.elements.type == 'rss') {
+        //   result.showMatch = true;
+        //   var matchText = ((result.matches[0])['match-text'])[0];
+        //   console.log(result.extracted.elements);
+        //   console.log(matchText);
+        //   console.log(result.matches);
+        //   if (matchText.indexOf(result.extracted.elements.title) > -1) {
+        //     result.showMatch = false;
+        //   }
+        // }
+
+        //console.log(result);
       })
       return ctrl;
     };

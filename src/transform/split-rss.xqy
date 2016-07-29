@@ -13,10 +13,10 @@ declare function demo:transform(
 
     (: duplicate original map, to return multiple ones:)
     let $new-content := map:map(document{$content}/*)
-    
+
     let $last-part := fn:tokenize($item/*:guid, "/")[last()]
     let $guid := fn:substring-before($last-part,".")
-
+    let $picture:="[Fn], [D01] [MNn] [Y] [H01]:[m01]:[s01] [Z]"
     let $new-uri :=
       map:put($new-content, "uri", concat( $guid, ".xml"))
     let $new-value :=
@@ -24,7 +24,10 @@ declare function demo:transform(
         document {
           element item {
             $item/@*,
-            $item/*,
+            $item/* except $item/pubDate,
+            element pubDate {
+              xdmp:parse-dateTime($picture,$item/pubDate)
+            },
             <type>rss</type>
           }
         }
@@ -32,3 +35,4 @@ declare function demo:transform(
     return
       $new-content
 };
+

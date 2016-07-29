@@ -16,8 +16,20 @@ declare function demo:transform(
     <Symbol>
       {fn:substring-before(fn:substring-after($doc/Symbol,"/"),"_")}
     </Symbol>
-  let $new-value :=
-      map:put($new-content, "value", mem:node-replace($doc/Symbol, $newSymbol))
+  let $newName:=
+    <Name>
+      {fn:normalize-space(fn:substring-before($doc/Name,"("))}
+    </Name>
+  let $newDoc:=document {
+    element stock {
+      $newName,
+      $newSymbol
+      }
+  }
+  (: let $new-value :=
+      map:put($new-content, "value", mem:node-replace($doc/Symbol, $newSymbol)) :)
+       let $new-value :=
+      map:put($new-content, "value", $newDoc/node())
   return $new-content
     
 };

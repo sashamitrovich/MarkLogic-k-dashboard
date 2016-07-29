@@ -83,7 +83,7 @@
   </constraint>
   <!-- Example facet based on the sample-data -->
   <constraint name="Date">
-    <range type="xs:date" facet="false">
+    <range type="xs:dateTime" facet="false">
       <facet-option>limit=5</facet-option>
       <facet-option>frequency-order</facet-option>
       <facet-option>descending</facet-option>
@@ -121,5 +121,11 @@
     <extract-path>/item/category</extract-path>
     <extract-path>/item/description</extract-path>
     <extract-path>/item/enclosure/@url</extract-path>
+    <extract-path>/stock/Symbol</extract-path>
+    <extract-path>/stock/type</extract-path>
+    <extract-path>/stock/Name</extract-path>
+    <extract-path>/stock/price/Date</extract-path>
+    <extract-path>/stock/price/Close</extract-path>
+    <extract-path>/stock/price/Change</extract-path>
   </extract-document-data>
 </options>

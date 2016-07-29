@@ -11,7 +11,7 @@ declare function util:parse-price-csv-from-uri(
 
 ) as node()*
 {
- 
+
   let $doc:=doc($uri)
   return util:parse-price-csv($doc)
 };
@@ -29,8 +29,11 @@ let $lines:=fn:tokenize($doc,"\n")
     <stock-price>
     {
       let $columns:=fn:tokenize($line,",")
+      let $picture:="[Y0001]-[M01]-[D01]"
       for $columnheader at $pos in $header
-      return element {fn:replace($columnheader," ","")} {$columns[$pos]}
+      return if(fn:replace($columnheader," ","")="Date")
+        then element {fn:replace($columnheader," ","")} {xdmp:parse-dateTime($picture,$columns[$pos]) }
+        else element {fn:replace($columnheader," ","")} {$columns[$pos]}
     }
-    </stock-price>   
+    </stock-price>
 };
