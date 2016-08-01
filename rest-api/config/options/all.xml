@@ -124,8 +124,8 @@
     <extract-path>/stock/Symbol</extract-path>
     <extract-path>/stock/type</extract-path>
     <extract-path>/stock/Name</extract-path>
-    <extract-path>/stock/price/Date</extract-path>
-    <extract-path>/stock/price/Close</extract-path>
-    <extract-path>/stock/price/Change</extract-path>
+    <extract-path>/stock/price-latest/Date</extract-path>
+    <extract-path>/stock/price-latest/Close</extract-path>
+    <extract-path>/stock/price-latest/Change</extract-path>
   </extract-document-data>
 </options>

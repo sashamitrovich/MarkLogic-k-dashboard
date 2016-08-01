@@ -14,7 +14,6 @@ end
 
 def load_stock_price()
   r = execute_query(%Q{
-    xquery version "1.0-ml";
     import module namespace util = "http://marklogic.com/utilities" at "/lib/util.xqy";
 
     let $docs:=fn:collection("code")
@@ -23,19 +22,19 @@ def load_stock_price()
       let $request:=fn:concat("https://www.quandl.com/api/v3/datasets/FSE/",$doc//Symbol, "_X.csv?api_key=yigbEs6PAybUcxg6Lz_A&amp;start_date=2016-07-25")
       let $quote:= xdmp:http-get($request)[2]
       let $prices:=util:parse-price-csv($quote)
-      for $price in $prices
-        let $newDoc:= document { 
-          element stock {
+      let $newDoc:=document {
+        element stock {
             $doc/@*,
             $doc/stock/*,
-            element type {"stock"},
-            element price {
-            $price/*
-            }
-          }
-        }
-        let $newUri:=fn:concat($newDoc/stock/Symbol,"-",$newDoc/stock/price/Date)
-        return xdmp:document-insert($newUri, $newDoc,(),("data","stock-price"))
+            element type {"stock"},        
+            for $price at $pos in $prices
+              return
+              if ($pos = 1) then element price-latest { $price/* }
+              else element price { $price/* }                               
+        }      
+      }
+      let $newUri:=fn:concat($newDoc/stock/Symbol)
+      return xdmp:document-insert($newUri, $newDoc,(),("data","stock-price"))
     },
     { :app_name => @properties['ml.app-name'] }
   )
