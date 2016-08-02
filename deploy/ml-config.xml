@@ -27,7 +27,16 @@
             <task-path>/finanzen-rss.xqy</task-path>
             <task-root>/tasks</task-root>
             <task-type>minutely</task-type>
-            <task-period>1</task-period>
+            <task-period>15</task-period>
+            <task-database name="${content-db}"/>
+            <task-modules name="${app-modules-db}"/>
+            <task-user name="${app-name}-user"/>
+          </scheduled-task>
+          <scheduled-task>
+            <task-path>/handelsblatt.xqy</task-path>
+            <task-root>/tasks</task-root>
+            <task-type>minutely</task-type>
+            <task-period>15</task-period>
             <task-database name="${content-db}"/>
             <task-modules name="${app-modules-db}"/>
             <task-user name="${app-name}-user"/>

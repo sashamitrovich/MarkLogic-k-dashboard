@@ -37,7 +37,7 @@
   </grammar>
   <!-- Default sort order. You can also associate states with sort orders to allow switching sort orders -->
   <sort-order direction="descending">
-    <score/>
+    <field name="Date"/>
   </sort-order>
   <!-- Not used, but the default snippeting behavior if no state (see compact/detailed below) was specified -->
   <transform-results apply="snippet">

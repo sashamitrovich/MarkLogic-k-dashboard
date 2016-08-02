@@ -51,12 +51,7 @@ declare function oa:timestamp() as xs:unsignedLong {
 };
 
 declare function oa:sign($key as xs:string, $data as xs:string) as xs:string {
-  let $uri := concat("http://localhost:8190/cgi-bin/hmac-sha1?",
-                     "key=", encode-for-uri($key),
-                     "&amp;data=",encode-for-uri($data))
-  let $resp := xdmp:http-get($uri)
-  return
-    string($resp/digest/hashb64)
+  xdmp:hmac-sha1($key,$data,"base64") 
 };
 
 declare function oa:signature-method(

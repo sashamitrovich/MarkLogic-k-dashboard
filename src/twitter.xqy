@@ -20,15 +20,15 @@ let $service-document :=
        </oa:signature-methods>
        <oa:oauth-version>1.0</oa:oauth-version>
        <oa:authentication>
-         <oa:consumer-key>YOUR APP'S CONSUMER KEY</oa:consumer-key>
-         <oa:consumer-key-secret>YOUR APP'S CONSUMER SECRET</oa:consumer-key-secret>
+         <oa:consumer-key>Z8zFrPjCg2vJDNphMX1jOzkks</oa:consumer-key>
+         <oa:consumer-key-secret>F6gdjXDEc1s25rudfq03ZddUY2y9vAaa6w4unZFLFLxF40DIXB</oa:consumer-key-secret>
        </oa:authentication>
       </oa:service-provider>
-  let $access-token := "YOUR USER'S APP ACCESS TOKEN"
-  let $access-token-secret := "YOUR USER'S APP ACCESS SECRET"
+  let $access-token := "741260955200409601-Lc4aExO4i27x4fwOidEKOgPy4g6bLJc"
+  let $access-token-secret := "nqT647LIR8Guk3hOyEkdZkQhgBcf2hSNE1vqhoMJkIWvF"
   let $options
     := <oa:options>
-       <screen_name>YOURSCREENNAME</screen_name>
+       <screen_name>SashaMitrovich</screen_name>
        <count>25</count>
        <page>1</page>
      </oa:options>
