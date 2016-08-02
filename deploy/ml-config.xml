@@ -8,7 +8,7 @@
   <groups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://marklogic.com/xdmp/group" xsi:schemaLocation="http://marklogic.com/xdmp/group group.xsd">
     <group>
       <group-name>${group}</group-name>
-      <!--
+
         Only enable the task server section if you need to.
       <task-server>
         <threads>16</threads>
@@ -23,6 +23,16 @@
         <debug-allow>true</debug-allow>
         <profile-allow>true</profile-allow>
         <scheduled-tasks>
+          <scheduled-task>
+            <task-path>/finanzen-rss.xqy</task-path>
+            <task-root>/tasks</task-root>
+            <task-type>minutely</task-type>
+            <task-period>1</task-period>
+            <task-database name="${content-db}"/>
+            <task-modules name="${app-modules-db}"/>
+            <task-user name="${app-name}-user"/>
+          </scheduled-task>
+          <!--
           <scheduled-task>
             <task-path>/some/daily-task.xqy</task-path>
             <task-root>/</task-root>
@@ -88,6 +98,7 @@
             <task-modules name="${app-modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
+          -->
         </scheduled-tasks>
       </task-server>
       -->
@@ -517,6 +528,12 @@
       </collections>
       <privileges>
         <privilege>
+          <privilege-name>rest-reader</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>rest-writer</privilege-name>
+        </privilege>
+        <privilege>
           <privilege-name>xdmp:value</privilege-name>
         </privilege>
         <privilege>
@@ -527,6 +544,14 @@
         </privilege>
         <privilege>
           <privilege-name>xdmp:with-namespaces</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:http-get</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>nachricht-uri</privilege-name>
+          <action>/nachricht/</action>
+          <kind>uri</kind>
         </privilege>
       </privileges>
     </role>
@@ -574,6 +599,11 @@
       <kind>uri</kind>
     </privilege>
 -->
+    <privilege>
+      <privilege-name>nachricht-uri</privilege-name>
+      <action>/nachricht/</action>
+      <kind>uri</kind>
+    </privilege>
   </privileges>
   <mimetypes xmlns="http://marklogic.com/xdmp/mimetypes">
 <!--
