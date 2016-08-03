@@ -1,8 +1,10 @@
 <div ng-repeat="result in results">
   <span ng-show="result.extracted.elements.type=='rss'">
-    <span class="label label-danger" style="float:left">rss</span>
+    <!--
+    <span class="label label-danger" style="float:left">rss</span> -->
+
   <h4>
-    <a href="{{result.extracted.elements.link}}" target="_blank">{{ result.extracted.elements.title }}</a>
+    <i class="fa fa-fw fa-rss"></i><a href="{{result.extracted.elements.link}}" target="_blank">{{ result.extracted.elements.title }}</a>
   </h4>
   <div class="matches">
     <div class="match" ng-repeat="match in result.matches">
@@ -16,29 +18,33 @@
       <span>{{ result.extracted.elements.description }}</span>
     </div>
   </div>
+  <div class="stock-date">Date: {{result.extracted.elements.pubDate}}</div>
   <hr>
   </span>
 
-  <!-- else -->
+  <!-- else show stock -->
   <span ng-show="result.extracted.elements.type=='stock'">     
     <span>{{result.extracted.elements.Name}}</span>
-    <span class='stock-symbol'>(DAX:{{result.extracted.elements.Symbol}})</span>
-
-  <!-- 
-        <a ui-sref="root.view({uri: result.uri})">{{ result.label || result.uri }}</a>
-        -->
-    <div>
-      <span class="stock-close">{{result.extracted.elements.Close}}</span>
-      <span ng-class="{'stock-change-negative':result.isNegativeChange,'stock-change-positive':!result.isNegativeChange}">({{result.extracted.elements.Change}})</span>
-    </div>
-    <div class="stock-date">Date: {{result.extracted.elements.Date}}</div>
-  <!--
-    <div class="matches">
-     <div class="match" ng-repeat="match in result.matches">
-       <em ng-repeat="text in match['match-text'] track by $index">
-          <span ng-class="{ highlight: !!text.highlight }">{{ text.highlight || text }}</span>
-    -->
-
+  <span class='stock-symbol'>(DAX:{{result.extracted.elements.Symbol}})</span>
+  <div>
+    <span class="stock-close">{{result.extracted.elements.Close}}</span>
+    <span ng-class="{'stock-change-negative':result.isNegativeChange,'stock-change-positive':!result.isNegativeChange}">({{result.extracted.elements.Change}})</span>
+  </div>
+  <div class="stock-date">Date: {{result.extracted.elements.Date}}</div>
   <hr>
   </span>
+
+  <!-- else show tweet -->
+  <span ng-show="result.extracted.elements.type=='tweet'">
+    <div>
+      <div>
+        <a href="{{result.extracted.elements.link}}" target="_blank"> <i class="fa fa-fw fa-twitter" style="color:#00aced"/></a>
+        <span style="font-weight:bold">{{result.extracted.elements.source}}</span>
+      </div>
+    </div>
+    <span ng-bind-html="result.extracted.elements.title | linky:'_blank'"></span>
+  <div class="stock-date">Date: {{result.extracted.elements.date_time}}</div>
+  <hr>
+  </span>
+
 </div>

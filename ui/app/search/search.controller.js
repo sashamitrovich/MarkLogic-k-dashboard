@@ -5,13 +5,13 @@
   angular.module('app.search')
     .controller('SearchCtrl', SearchCtrl);
 
-  SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory'];
+  SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory', '$sce'];
 
   // inherit from MLSearchController
   var superCtrl = MLSearchController.prototype;
   SearchCtrl.prototype = Object.create(superCtrl);
 
-  function SearchCtrl($scope, $location, userService, searchFactory) {
+  function SearchCtrl($scope, $location, userService, searchFactory, $sce) {
     var ctrl = this;
 
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());
@@ -97,6 +97,10 @@
       return myObj[ctrl.getFirstKey(myObj)];
     }
 
+    $scope.renderHtml = function (html_code) {
+      return $sce.trustAsHtml(html_code);
+    };
+  
     $scope.$watch(userService.currentUser, function (newValue) {
       ctrl.currentUser = newValue;
     });

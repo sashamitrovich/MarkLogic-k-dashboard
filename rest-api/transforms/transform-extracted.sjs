@@ -10,13 +10,17 @@ function toJson(context, params, content) {
   var response = content.toObject();
 
   if (response.results) {
-    response.results.map(function(result) {
-      if (result.extracted && result.extracted.content) {
-        result.extracted.content.map(function(content, index) {
-          if (content.match(/^</) && !content.match(/^<!/)) {
-            result.extracted.content[index] = json.transformToJson(xdmp.unquote(content), config);
-          }
-        });
+    response.results.map(function (result) {
+      //just do this for xml docs
+      if (result.uri.match("json") == null) {
+        
+        if (result.extracted && result.extracted.content) {
+          result.extracted.content.map(function (content, index) {
+            if (content.match(/^</) && !content.match(/^<!/)) {
+              result.extracted.content[index] = json.transformToJson(xdmp.unquote(content), config);
+            }
+          });
+        }
       }
     });
   }

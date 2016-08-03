@@ -121,11 +121,17 @@
     <extract-path>/item/category</extract-path>
     <extract-path>/item/description</extract-path>
     <extract-path>/item/enclosure/@url</extract-path>
+    <extract-path>/item/pubDate</extract-path>
     <extract-path>/stock/Symbol</extract-path>
     <extract-path>/stock/type</extract-path>
     <extract-path>/stock/Name</extract-path>
     <extract-path>/stock/price-latest/Date</extract-path>
     <extract-path>/stock/price-latest/Close</extract-path>
     <extract-path>/stock/price-latest/Change</extract-path>
+    <extract-path>/envelope/type</extract-path>
+    <extract-path>/envelope/date_time</extract-path>
+    <extract-path>/envelope/link</extract-path>
+    <extract-path>/envelope/title</extract-path>
+    <extract-path>/envelope/source</extract-path>
   </extract-document-data>
 </options>
