@@ -141,7 +141,7 @@ declare function oa:signed-request(
   $options as element(oa:options)?,
   $token as xs:string?,
   $secret as xs:string?)
-as element(oa:response)
+as document-node()
 {
   let $realm      := string($service/@realm)
   let $noncei     := xdmp:hash64(concat(current-dateTime(),string(xdmp:random())))
@@ -233,18 +233,17 @@ as element(oa:response)
    (:
    let $trace := xdmp:log(concat("requri: ", $requri))
    let $trace := xdmp:log(concat("sigbse: ", $sigbase))
-   let $trace := xdmp:log($options)
-   let $trace := xdmp:log($tokenreq[2])
+   let $trace := xdmp:log($options) 
+   let $trace := xdmp:log($tokenreq[2]) 
    :)
 
+
   return
-    <oa:response>
-      { if (string($tokenreq[1]/xh:code) != "200")
+       if (string($tokenreq[1]/xh:code) != "200")
         then
           (<oa:error>{$tokenreq[1]}</oa:error>,
            <oa:error-body>{$tokenreq[2]}</oa:error-body>)
         else
           $tokenreq[2]
-      }
-    </oa:response>
+      
 };
