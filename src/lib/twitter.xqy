@@ -6,7 +6,9 @@ import module namespace oa="http://marklogic.com/ns/oauth" at "/lib/oauth.xqy";
 
 declare function twitter:api(
   $request-type as xs:string,
-  $request-url as xs:string
+  $request-url as xs:string,
+  $screen-name as xs:string,
+  $number-of-tweets as xs:integer
 ) as document-node() {
 
   let $service :=
@@ -39,10 +41,10 @@ declare function twitter:api(
 
   let $access-token := "741260955200409601-Lc4aExO4i27x4fwOidEKOgPy4g6bLJc"
   let $access-token-secret := "nqT647LIR8Guk3hOyEkdZkQhgBcf2hSNE1vqhoMJkIWvF"
-  let $options:= 
+  let $options:=
     <oa:options>
-       <screen_name>Bankenverband</screen_name>
-       <count>3</count>
+       <screen_name>{ $screen-name }</screen_name>
+       <count>{ $number-of-tweets }</count>
        <page>1</page>
     </oa:options>
   let $tweets := oa:signed-request($service,
