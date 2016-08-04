@@ -12,6 +12,18 @@ def test()
   @logger.info(@properties["ml.content-db"])
 end
 
+def load_hb()
+  r = execute_query(%Q{
+    import module namespace hb = "http://marklogic.com/rss/handelsblatt" at "/lib/handelsblatt.xqy";
+    hb:fetch()
+    },
+    { :app_name => @properties['ml.app-name'] }
+  )
+  r.body = parse_json r.body
+  logger.info r.body
+
+end
+
 def load_stock_price()
   r = execute_query(%Q{
     import module namespace util = "http://marklogic.com/utilities" at "/lib/util.xqy";

@@ -18,7 +18,10 @@
       <span>{{ result.extracted.elements.description }}</span>
     </div>
   </div>
-  <div class="stock-date">Date: {{result.extracted.elements.pubDate}}</div>
+   <div>
+    <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span>
+    via<span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+  </div>
   <hr>
   </span>
 
@@ -36,14 +39,15 @@
 
   <!-- else show tweet -->
   <span ng-show="result.extracted.elements.type=='tweet'">
-    <div>
-      <div>
-        <a href="{{result.extracted.elements.link}}" target="_blank"> <i class="fa fa-fw fa-twitter" style="color:#00aced"/></a>
-        <span style="font-weight:bold">{{result.extracted.elements.source}}</span>
-      </div>
-    </div>
+      <span>
+        <a href="{{result.extracted.elements.link}}" target="_blank"> <i class="fa fa-fw fa-twitter" style="color:#00aced"/></a>        
+      </span>
+   
     <span ng-bind-html="result.extracted.elements.title | linky:'_blank'"></span>
-  <div class="stock-date">Date: {{result.extracted.elements.date_time}}</div>
+  <div>
+    <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span>
+    via<span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+  </div>
   <hr>
   </span>
 

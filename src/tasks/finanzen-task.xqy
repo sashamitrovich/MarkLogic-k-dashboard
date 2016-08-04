@@ -16,11 +16,15 @@ for $item in $response[2]//item
 (:    let $guid := fn:substring-before($last-part,".") :)
     let $newUri:=fn:concat(fn:substring-after($item/guid/text(),".net"),".xml")
     let $newDoc:=document {
-      element item {
-        $item/@*,
-        $item/*,
-        element type { "rss" },
-        element pubDate {$pubDate}
+      element item {  
+        element source {
+          $item/@*,
+          $item/*
+        },
+        element envelope {
+          element type { "rss" },
+          element date_time {$pubDate}
+        }
       }
     }
     return xdmp:document-insert($newUri,$newDoc,$permissions,("data","rss","finanzen.net"))

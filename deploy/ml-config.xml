@@ -33,7 +33,7 @@
             <task-user name="${app-name}-user"/>
           </scheduled-task>
           <scheduled-task>
-            <task-path>/handelsblatt.xqy</task-path>
+            <task-path>/handelsblatt-task.xqy</task-path>
             <task-root>/tasks</task-root>
             <task-type>minutely</task-type>
             <task-period>15</task-period>
@@ -217,10 +217,6 @@
           <field-name>Date</field-name>
           <field-path>
             <path>Date</path>
-            <weight>1.0</weight>
-          </field-path>
-          <field-path>
-            <path>pubDate</path>
             <weight>1.0</weight>
           </field-path>
           <field-path>

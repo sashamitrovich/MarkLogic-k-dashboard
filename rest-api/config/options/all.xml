@@ -115,13 +115,14 @@
   <extract-document-data selected="all"></extract-document-data>
   -->
   <extract-document-data selected="include">
-    <extract-path>/item/type</extract-path>
-    <extract-path>/item/title</extract-path>
-    <extract-path>/item/link</extract-path>
-    <extract-path>/item/category</extract-path>
-    <extract-path>/item/description</extract-path>
-    <extract-path>/item/enclosure/@url</extract-path>
-    <extract-path>/item/pubDate</extract-path>
+    <extract-path>/item/envelope/type</extract-path>
+    <extract-path>/item/envelope/source</extract-path>
+    <extract-path>/item/source/title</extract-path>
+    <extract-path>/item/source/link</extract-path>
+    <extract-path>/item/source/category</extract-path>
+    <extract-path>/item/source/description</extract-path>
+    <extract-path>/item/source/enclosure/@url</extract-path>
+    <extract-path>/item/envelope/date_time</extract-path>
     <extract-path>/stock/Symbol</extract-path>
     <extract-path>/stock/type</extract-path>
     <extract-path>/stock/Name</extract-path>
