@@ -82,6 +82,15 @@
     -->
   </constraint>
 
+   <constraint name="Source">
+    <range type="xs:string" facet="true">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <field name="Source"/>
+    </range>
+  </constraint>
+
    <constraint name="Date">
     <range type="xs:dateTime" facet="true">
       <facet-option>limit=5</facet-option>
@@ -155,6 +164,7 @@
     <extract-path>/stock/Symbol</extract-path>
     <extract-path>/stock/type</extract-path>
     <extract-path>/stock/Name</extract-path>
+    <extract-path>/stock/source</extract-path>
     <extract-path>/stock/price-latest/Date</extract-path>
     <extract-path>/stock/price-latest/Close</extract-path>
     <extract-path>/stock/price-latest/Change</extract-path>

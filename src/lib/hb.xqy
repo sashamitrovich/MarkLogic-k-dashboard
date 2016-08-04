@@ -1,6 +1,6 @@
 xquery version "1.0-ml";
+module namespace hb="http://marklogic.com/rss/hb";
 
-module namespace hb="http://marklogic.com/rss/handelsblatt";
 
 declare function hb:fetch() {
    let $request:="http://www.handelsblatt.com/contentexport/feed/wirtschaft"
@@ -9,7 +9,6 @@ let $options:=
     <encoding>utf-8</encoding>
   </options>
 let $response:= xdmp:http-get($request, $options)
-let $pubDate:= current-dateTime()
 let $picture:="[Fn], [D01] [MNn] [Y] [H01]:[m01]:[s01] [Z]"
 let $source_name:="Handelsblatt"
 let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
@@ -32,6 +31,6 @@ for $item in $response[2]//item
         }
       }
     }
-    return xdmp:document-insert($newUri,$newDoc,$permissions,("data","rss",$source_name)) 
+    return xdmp:document-insert($newUri,$newDoc,$permissions,("data","rss")) 
 
 };

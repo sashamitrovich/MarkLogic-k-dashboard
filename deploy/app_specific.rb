@@ -12,9 +12,22 @@ def test()
   @logger.info(@properties["ml.content-db"])
 end
 
+def load_tweets()
+  r = execute_query(%Q{
+    import module namespace tweets = "http://marklogic.com/tweets" at "/lib/tweets.xqy";
+    
+    (tweets:get-status-tweets("Bankenverband",200),
+        tweets:get-status-tweets("ECB",200))
+    },
+    { :app_name => @properties['ml.app-name'] }
+  )
+  r.body = parse_json r.body
+  logger.info r.body
+end
+
 def load_hb()
   r = execute_query(%Q{
-    import module namespace hb = "http://marklogic.com/rss/handelsblatt" at "/lib/handelsblatt.xqy";
+    import module namespace hb = "http://marklogic.com/rss/hb" at "/lib/hb.xqy";
     hb:fetch()
     },
     { :app_name => @properties['ml.app-name'] }
@@ -22,6 +35,18 @@ def load_hb()
   r.body = parse_json r.body
   logger.info r.body
 
+end
+
+def load_finanzen()
+  r = execute_query(%Q{
+    import module namespace finanzen = "http://marklogic.com/rss/finanzen.net" 
+      at "/lib/finanzen.xqy";
+    finanzen:fetch()
+    },
+    { :app_name => @properties['ml.app-name'] }
+  )
+  r.body = parse_json r.body
+  logger.info r.body
 end
 
 def load_stock_price()
@@ -38,7 +63,8 @@ def load_stock_price()
         element stock {
             $doc/@*,
             $doc/stock/*,
-            element type {"stock"},        
+            element type {"stock"},       
+            element source {"Quandl"}, 
             for $price at $pos in $prices
               return
               if ($pos = 1) then element price-latest { $price/* }
