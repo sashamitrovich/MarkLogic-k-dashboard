@@ -81,9 +81,29 @@
     <collection facet="true" prefix="data/" />
     -->
   </constraint>
+
+   <constraint name="Date">
+    <range type="xs:dateTime" facet="true">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <field name="Date"/>
+       <computed-bucket name="today" ge="P0D" lt="P1D" anchor="start-of-day">Today</computed-bucket>
+      <computed-bucket name="yesterday" ge="-P1D" lt="P0D" anchor="start-of-day">yesterday</computed-bucket>
+      <computed-bucket name="7-days" ge="-P7D" lt="P0D" anchor="start-of-day">Last 7 Days</computed-bucket>
+      <computed-bucket name="30-days" ge="-P30D" lt="P0D" anchor="start-of-day">Last 30 days</computed-bucket>
+      <computed-bucket name="year" ge="-P1Y" lt="P1D" anchor="now">Last Year</computed-bucket>
+      <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket>
+      <computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket>
+      <computed-bucket anchor="now" name="20 years ago" ge="-P20Y" lt="-P15Y">20 years ago</computed-bucket>
+      <computed-bucket anchor="now" name="15 years ago" ge="-P15Y" lt="-P10Y">15 years ago</computed-bucket>
+      <computed-bucket anchor="now" name="10 years ago" ge="-P10Y" lt="-P5Y">10 years ago</computed-bucket>
+      <computed-bucket anchor="now" name="5 years ago" ge="-P5Y">5 years ago</computed-bucket-->
+    </range>
+  </constraint>
   <constraint name="Hashtag">
      <range type="xs:string" facet="true">
-      <facet-option>limit=5</facet-option>
+      <facet-option>limit=20</facet-option>
       <facet-option>frequency-order</facet-option>
       <facet-option>descending</facet-option>
       <json-property>tags</json-property>
@@ -94,15 +114,7 @@
     -->
   </constraint>
   <!-- Example facet based on the sample-data -->
-  <constraint name="Date">
-    <range type="xs:dateTime" facet="false">
-      <facet-option>limit=5</facet-option>
-      <facet-option>frequency-order</facet-option>
-      <facet-option>descending</facet-option>
-      <field name="Date"/>
-      <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket><computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket><computed-bucket anchor="now" name="20 years ago" ge="-P20Y" lt="-P15Y">20 years ago</computed-bucket><computed-bucket anchor="now" name="15 years ago" ge="-P15Y" lt="-P10Y">15 years ago</computed-bucket><computed-bucket anchor="now" name="10 years ago" ge="-P10Y" lt="-P5Y">10 years ago</computed-bucket><computed-bucket anchor="now" name="5 years ago" ge="-P5Y">5 years ago</computed-bucket-->
-    </range>
-  </constraint>
+ 
   <!-- Example geospatial facet based on the sample-data, used by map theme -->
   <constraint name="Location">
     <geo-elem-pair>

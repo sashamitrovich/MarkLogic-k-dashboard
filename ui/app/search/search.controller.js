@@ -28,6 +28,9 @@
     ctrl.updateSearchResults = function updateSearchResults(response) {
       superCtrl.updateSearchResults.apply(ctrl, arguments);
 
+      // update d3 cloud
+      ctrl.updateCloud(response);
+
       angular.forEach(response.results, function (result, index) {
         var map = {};
 
@@ -70,6 +73,51 @@
       return ctrl;
     };
 
+    ctrl.words = [];
+
+    ctrl.updateCloud = function (data) {
+      if (data && data.facets && data.facets.Hashtag) {
+        ctrl.words = [];
+        var activeFacets = [];
+
+        // find all selected facet values..
+        angular.forEach(ctrl.mlSearch.getActiveFacets(), function (facet, key) {
+          angular.forEach(facet.values, function (value, index) {
+            activeFacets.push((value.value + '').toLowerCase());
+          });
+        });
+
+        angular.forEach(data.facets.Hashtag.facetValues, function (value, index) {
+          var q = (ctrl.qtext || '').toLowerCase();
+          var val = value.name.toLowerCase();
+
+          // suppress search terms, and selected facet values from the D3 cloud..
+          if (q.indexOf(val) < 0 && activeFacets.indexOf(val) < 0) {
+            ctrl.words.push({ name: value.name, score: value.count });
+          }
+        });
+      }
+      
+    };
+
+    ctrl.noRotate = function (word) {
+      return 0;
+    };
+
+    ctrl.cloudEvents = {
+      'dblclick': function (tag) {
+        // stop propagation
+        d3.event.stopPropagation();
+
+        // undo default behavior of browsers to select at dblclick
+        var body = document.getElementsByTagName('body')[0];
+        window.getSelection().collapse(body, 0);
+
+        // custom behavior, for instance search on dblclick
+        ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + tag.text.toLowerCase());
+      }
+    };
+
     ctrl.getObject = function (element) {
       var key = Object.keys(element)[0];
       var value = element[key];
@@ -100,7 +148,7 @@
     $scope.renderHtml = function (html_code) {
       return $sce.trustAsHtml(html_code);
     };
-  
+
     $scope.$watch(userService.currentUser, function (newValue) {
       ctrl.currentUser = newValue;
     });

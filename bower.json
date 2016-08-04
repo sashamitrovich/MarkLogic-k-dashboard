@@ -15,7 +15,7 @@
     "angular-x2js": "https://github.com/janmichaelyu/angular-x2js.git",
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.6.0",
-    "highlightjs":"~8.7.0",
+    "highlightjs": "~8.7.0",
     "lodash": "~3.10.1",
     "ml-search-ng": "~0.2.0",
     "ml-utils": "withjam/ml-utils",
@@ -23,11 +23,16 @@
     "vkbeautify-wrapper": "*",
     "highcharts": "^4.2",
     "angular-google-maps": "2.3.2",
-    "tinymce-dist": "4.3.12"
+    "tinymce-dist": "4.3.12",
+    "d3": "~3.5.16",
+    "d3-cloud-ng": "^0.9.5"
   },
   "overrides": {
     "angular-highlightjs": {
-      "dependencies": {"angular" : ">1.0.8", "highlightjs":"~8.7.0"}
+      "dependencies": {
+        "angular": ">1.0.8",
+        "highlightjs": "~8.7.0"
+      }
     }
   },
   "devDependencies": {
