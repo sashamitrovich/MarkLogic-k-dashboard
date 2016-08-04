@@ -81,6 +81,18 @@
     <collection facet="true" prefix="data/" />
     -->
   </constraint>
+  <constraint name="Hashtag">
+     <range type="xs:string" facet="true">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <json-property>tags</json-property>
+      <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket><computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket><computed-bucket anchor="now" name="20 years ago" ge="-P20Y" lt="-P15Y">20 years ago</computed-bucket><computed-bucket anchor="now" name="15 years ago" ge="-P15Y" lt="-P10Y">15 years ago</computed-bucket><computed-bucket anchor="now" name="10 years ago" ge="-P10Y" lt="-P5Y">10 years ago</computed-bucket><computed-bucket anchor="now" name="5 years ago" ge="-P5Y">5 years ago</computed-bucket-->
+    </range>
+    <!-- optionally enable a prefix to see a specific subset of facets
+    <collection facet="true" prefix="data/" />
+    -->
+  </constraint>
   <!-- Example facet based on the sample-data -->
   <constraint name="Date">
     <range type="xs:dateTime" facet="false">
@@ -104,7 +116,12 @@
   </constraint>
   <!-- example facet constraint below -->
   <!--
-  <constraint name="myconstraint"><range type="xs:string" facet="true"><facet-option>limit=5</facet-option><facet-option>frequency-order</facet-option><facet-option>descending</facet-option><element ns="" name="my-el"/></range></constraint>
+  <constraint name="myconstraint">
+    <range type="xs:string" facet="true">
+    <facet-option>limit=5</facet-option>
+    <facet-option>frequency-order</facet-option>
+    <facet-option>descending</facet-option>
+    <element ns="" name="my-el"/></range></constraint>
   -->
   <!-- example suggestion-source below -->
   <!--
