@@ -17,10 +17,10 @@
       <span ng-bind-html="result.extracted.elements.description | linky:'_blank'"></span>
     </div>
   </div>
-  <div>  
-  <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span> via
-  <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
-</div>
+  <div style="float:right">  
+    <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span> via
+    <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+  </div>
 <hr>
 </span>
 
@@ -43,7 +43,7 @@
       </span>
 
 <span ng-bind-html="result.extracted.elements.title | linky:'_blank'"></span>
-<div>
+<div style="float:right">
   <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span> via
   <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
 </div>

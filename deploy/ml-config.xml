@@ -207,7 +207,7 @@
           <range-field-index>
             <scalar-type>string</scalar-type>
             <field-name>Source</field-name>
-            <collation/>
+            <collation>http://marklogic.com/collation/</collation>
             <range-value-positions>false</range-value-positions>
           </range-field-index>
           <!--
