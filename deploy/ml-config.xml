@@ -229,6 +229,14 @@
           <invalid-values>reject</invalid-values>
         </range-path-index>
 
+        <range-path-index>
+          <scalar-type>float</scalar-type>
+          <collation/>
+          <path-expression>/stock/week-change-percent</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
         </range-path-indexes>
         <geospatial-element-indexes>
           <!--

@@ -51,11 +51,13 @@ end
 
 def load_stock_price()
   r = execute_query(%Q{
- import module namespace util = "http://marklogic.com/utilities" at "/lib/util.xqy";
+    import module namespace util = "http://marklogic.com/utilities" at "/lib/util.xqy";
+    import module namespace mem = "http://xqdev.com/in-mem-update" at "/lib/in-mem-update.xqy";
+
     declare namespace x= "xdmp:http";
 
     let $docs:=fn:collection("code")
-    for $doc in $docs[1 to 20]
+    for $doc in $docs
       let $request:=fn:concat("https://www.quandl.com/api/v3/datasets/FSE/",$doc//Symbol, "_X.csv?api_key=yigbEs6PAybUcxg6Lz_A&amp;start_date=2016-07-25")
       let $response:=xdmp:http-get($request)
       return if ($response//x:code=200) then      
@@ -79,6 +81,11 @@ def load_stock_price()
             }
         }
         let $newUri:=fn:concat($newDoc//Symbol)
+        let $diff:= round-half-to-even(($newDoc//Close)[1]-($newDoc//Close)[8],2)
+        let $week-change-percent:=round-half-to-even(($diff * 100) div ($newDoc//Close)[1], 2)
+        let $week-change-percent-element:=element week-change-percent {$week-change-percent}
+        let $week-change:=element week-change { $diff }
+        let $newDoc:=mem:node-insert-after($newDoc/stock/source,$week-change-percent-element)
         return xdmp:document-insert($newUri, $newDoc,(),("data","stock-price"))
       else
         xdmp:log(concat("skipping ", $doc//Symbol))
