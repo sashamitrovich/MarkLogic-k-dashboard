@@ -33,7 +33,7 @@ let $lines:=fn:tokenize($doc,"\n")
       for $columnheader at $pos in $header
       return if(fn:replace($columnheader," ","")="Date")
         then element {fn:replace($columnheader," ","")} {xdmp:parse-dateTime($picture,$columns[$pos]) }
-        else element {fn:replace($columnheader," ","")} {$columns[$pos]}
+        else element {fn:replace($columnheader," ","")} {if($columns[$pos]="") then 0 else $columns[$pos]}
     }
     </stock-price>
 };

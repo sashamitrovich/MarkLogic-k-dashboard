@@ -220,9 +220,15 @@
 -->
         </path-namespaces>
         <range-path-indexes>
-          <!--
-        <range-path-index><scalar-type>string</scalar-type><collation>http://marklogic.com/collation/codepoint</collation><path-expression>/sample:root/sample:child</path-expression><range-value-positions>false</range-value-positions><invalid-values>reject</invalid-values></range-path-index>
--->
+          
+        <range-path-index>
+          <scalar-type>float</scalar-type>
+          <collation/>
+          <path-expression>/stock/price-latest/Percent</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
         </range-path-indexes>
         <geospatial-element-indexes>
           <!--
