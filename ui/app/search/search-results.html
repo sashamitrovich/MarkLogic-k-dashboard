@@ -18,7 +18,7 @@
   </div>
 </div>
 <div style="float:right">
-  <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span> via
+  <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
   <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
 </div>
 <hr>
@@ -32,7 +32,7 @@
     <span class="stock-close">{{result.extracted.elements.Close}}</span>
     <span ng-class="{'stock-change-negative':result.isNegativeChange,'stock-change-positive':!result.isNegativeChange}">({{result.extracted.elements.Change}})</span>
   </div>
-  <div class="stock-date">Date: {{result.extracted.elements.Date}}</div>
+  <div class="stock-date">Date: {{result.extracted.elements.Date | date:'mediumDate'}}</div>
 <hr>
 </span>
 
@@ -44,7 +44,7 @@
 
 <span ng-bind-html="result.extracted.elements.title | linky:'_blank'"></span>
 <div style="float:right">
-  <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span> via
+  <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
   <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
 </div>
 <hr>
