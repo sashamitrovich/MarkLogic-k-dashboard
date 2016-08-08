@@ -5,13 +5,13 @@
   angular.module('app.search')
     .controller('SearchCtrl', SearchCtrl);
 
-  SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory', '$sce'];
+  SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory', '$sce', 'MLRest'];
 
   // inherit from MLSearchController
   var superCtrl = MLSearchController.prototype;
   SearchCtrl.prototype = Object.create(superCtrl);
 
-  function SearchCtrl($scope, $location, userService, searchFactory, $sce) {
+  function SearchCtrl($scope, $location, userService, searchFactory, $sce, mlRest) {
     var ctrl = this;
 
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());
@@ -30,6 +30,9 @@
 
       // update d3 cloud
       ctrl.updateCloud(response);
+
+      // get winner/looser stock
+      ctrl.updateStats();
 
       angular.forEach(response.results, function (result, index) {
         var map = {};
@@ -117,6 +120,16 @@
         ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + tag.text.toLowerCase());
       }
     };
+
+    ctrl.updateStats = function () {
+       mlRest.extension('swl',
+          {
+            method: 'GET',
+          })
+          .then(function(response) {
+            ctrl.stats = response.data;
+          });
+    }
 
     ctrl.getObject = function (element) {
       var key = Object.keys(element)[0];

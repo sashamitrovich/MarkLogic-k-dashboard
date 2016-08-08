@@ -24,25 +24,36 @@ function swl:get(
   $params  as map:map
 ) as document-node()*
 {
- let $day-winner:=stock:get-day-winner()
+  let $day-winner:=stock:get-day-winner()
   let $day-looser:=stock:get-day-looser()
   let $week-winner:=stock:get-week-winner()
   let $week-looser:=stock:get-week-looser()
-  let $doc:= document {
-    element stats {
-      element day-winner {
-        $day-winner/stock/* except //price
-      },
-      element day-looser {
-        $day-looser/stock/* except //price
-      },
-       element week-winner {
-        $week-winner/stock/* except //price
-      },
-      element week-looser {
-        $week-looser/stock/* except //price
-      }
+
+  let $doc:= object-node {
+    "day-winner": object-node {
+      "name": $day-winner/stock/Name/text(),
+      "symbol": $day-winner/stock/Symbol/text(),
+      "week-change": $day-winner/stock/week-change-percent/text(),
+      "day-change": $day-winner/stock/price-latest/Percent/text()
+    },
+    "day-looser": object-node {
+      "name": $day-looser/stock/Name/text(),
+      "symbol": $day-looser/stock/Symbol/text(),
+      "week-change": $day-looser/stock/week-change-percent/text(),
+      "day-change": $day-looser/stock/price-latest/Percent/text()
+    },
+    "week-winner": object-node {
+      "name": $week-winner/stock/Name/text(),
+      "symbol": $week-winner/stock/Symbol/text(),
+      "week-change": $week-winner/stock/week-change-percent/text(),
+      "day-change": $week-winner/stock/price-latest/Percent/text()
+    },
+    "week-looser": object-node {
+      "name": $week-looser/stock/Name/text(),
+      "symbol": $week-looser/stock/Symbol/text(),
+      "week-change": $week-looser/stock/week-change-percent/text(),
+      "day-change": $week-looser/stock/price-latest/Percent/text()
     }
   }
-  return $doc
+  return (map:put($context,"output-types","application/json"),document {  $doc})
 };
