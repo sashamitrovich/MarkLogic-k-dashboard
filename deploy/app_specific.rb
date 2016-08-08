@@ -77,7 +77,7 @@ def load_stock_price()
                   let $change:= if($empty) then 0 else $price/Change/text()
                   let $close:=$price/Close/text()
                   let $open:=($close - $change)
-                  let $percent:=($change * 100) div $open
+                  let $percent:=round-half-to-even(($change * 100) div $open,2)
                   return
                   if ($pos = 1) then element price-latest { $price/*, element Percent { $percent } }
                   else element price { $price/*, element Percent { $percent } }   
