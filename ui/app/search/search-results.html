@@ -8,31 +8,31 @@
     <div class="match" ng-repeat="match in result.matches">
       <em ng-repeat="text in match['match-text'] track by $index">
           <span ng-class="{ highlight: !!text.highlight }"><span ng-bind-html="text.highlight || text | linky:'_blank'"></span></span>
-      </em>
-    </div>
-  </div>
-  <div class="matches" ng-show="!result.showMatch">
-    <div class="match">
+  </em>
+</div>
+</div>
+<div class="matches" ng-show="!result.showMatch">
+  <div class="match">
     <!--<span>{{ result.extracted.elements.description }}</span>-->
-      <span ng-bind-html="result.extracted.elements.description | linky:'_blank'"></span>
-    </div>
+    <span ng-bind-html="result.extracted.elements.description | linky:'_blank'"></span>
   </div>
-  <div style="float:right">  
-    <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span> via
-    <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
-  </div>
+</div>
+<div style="float:right">
+  <span class="stock-date">Date: {{result.extracted.elements.date_time}}</span> via
+  <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+</div>
 <hr>
 </span>
 
 <!-- else show stock -->
 <span ng-show="result.extracted.elements.type=='stock'">     
-    <span>{{result.extracted.elements.Name}}</span>
-<span class='stock-symbol'>(DAX:{{result.extracted.elements.Symbol}})</span>
-<div>
-  <span class="stock-close">{{result.extracted.elements.Close}}</span>
-  <span ng-class="{'stock-change-negative':result.isNegativeChange,'stock-change-positive':!result.isNegativeChange}">({{result.extracted.elements.Change}})</span>
-</div>
-<div class="stock-date">Date: {{result.extracted.elements.Date}}</div>
+  <span>{{result.extracted.elements.Name}}</span>
+  <span class='stock-symbol'>(DAX:{{result.extracted.elements.Symbol}})</span>
+  <div>
+    <span class="stock-close">{{result.extracted.elements.Close}}</span>
+    <span ng-class="{'stock-change-negative':result.isNegativeChange,'stock-change-positive':!result.isNegativeChange}">({{result.extracted.elements.Change}})</span>
+  </div>
+  <div class="stock-date">Date: {{result.extracted.elements.Date}}</div>
 <hr>
 </span>
 

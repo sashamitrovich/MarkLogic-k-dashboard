@@ -6,12 +6,12 @@
 </div>
 
 <div class="search row" ng-if="ctrl.currentUser">
-  <div class="col-md-3 right-col">
+  <div class="col-md-2 right-col">
     <ml-facets facets="ctrl.response.facets" toggle="ctrl.toggleFacet(facet, value)" active-facets="ctrl.mlSearch.activeFacets"
       negate="ctrl.toggleNegatedFacet(facet,value)"></ml-facets>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-7">
     <h4 ng-if="ctrl.response.total === 0">No results to show</h4>
 
     <div ng-if="ctrl.response.total > 0" class="results">
@@ -26,6 +26,73 @@
     </div>
   </div>
   <div class="col-md-3">
-    <d3-cloud words="ctrl.words" padding="0" rotate="ctrl.noRotate(word)" events="ctrl.cloudEvents"></d3-cloud>
+
+    <div class="row" style="margin-top: 2em">
+      <div class="col-md-6">
+        <div class="box box-solid box-success">
+          <div class=" box-header with-border ">
+            Winner (Day)
+          </div>
+          <div class="box-body" style="text-align:center">
+            <div>{{ctrl.stats.dayWinner.name}}</div>
+            <div class='stock-symbol'>(DAX:{{ctrl.stats.dayWinner.symbol}})</div>
+            <div>
+              <span class="stock-change-positive" style="font-size:2em; font-weight:bold">{{ctrl.stats.dayWinner.dayChange}}</span>
+              <span style="font-size:1.4em">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box box-solid  box-danger ">
+          <div class=" box-header with-border ">
+            Looser (Day)
+          </div>
+          <div class="box-body" style="text-align:center">
+            <div>{{ctrl.stats.dayLooser.name}}</div>
+            <div class='stock-symbol'>(DAX:{{ctrl.stats.dayLooser.symbol}})</div>
+            <div>
+              <span class="stock-change-negative" style="font-size:2em; font-weight:bold">{{ctrl.stats.dayLooser.dayChange}}</span>
+              <span style="font-size:1.4em">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-solid box-success">
+          <div class=" box-header with-border ">
+            Winner (Week)
+          </div>
+          <div class="box-body" style="text-align:center">
+            <div>{{ctrl.stats.weekWinner.name}}</div>
+            <div class='stock-symbol'>(DAX:{{ctrl.stats.weekWinner.symbol}})</div>
+            <div>
+              <span class="stock-change-positive" style="font-size:2em; font-weight:bold">{{ctrl.stats.weekWinner.weekChange}}</span>
+              <span style="font-size:1.4em">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box box-solid  box-danger ">
+          <div class=" box-header with-border ">
+            Looser (Day)
+          </div>
+          <div class="box-body" style="text-align:center">
+            <div>{{ctrl.stats.weekLooser.name}}</div>
+            <div class='stock-symbol'>(DAX:{{ctrl.stats.weekLooser.symbol}})</div>
+            <div>
+              <span class="stock-change-negative" style="font-size:2em; font-weight:bold">{{ctrl.stats.weekLooser.weekChange}}</span>
+              <span style="font-size:1.4em">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <d3-cloud words="ctrl.words" padding="0" rotate="ctrl.noRotate(word)" events="ctrl.cloudEvents"></d3-cloud>
+    </div>
   </div>
 </div>
