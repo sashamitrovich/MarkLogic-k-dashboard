@@ -56,6 +56,8 @@ def load_stock_price()
 
     declare namespace x= "xdmp:http";
 
+    let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
+        xdmp:permission("kpmg-dashboard-role", "update"))
     let $docs:= fn:collection("code")
     for $doc in $docs
       let $request:=fn:concat("https://www.quandl.com/api/v3/datasets/FSE/",$doc//Symbol, "_X.csv?api_key=yigbEs6PAybUcxg6Lz_A&amp;start_date=2016-07-25")
@@ -87,7 +89,7 @@ def load_stock_price()
           let $week-change-percent-element:=element week-change-percent {$week-change-percent}
           let $week-change:=element week-change { $diff }
           let $newDoc:=mem:node-insert-after($newDoc/stock/source,$week-change-percent-element)
-          return xdmp:document-insert($newUri, $newDoc,(),("data","stock-price"))
+          return xdmp:document-insert($newUri, $newDoc,$permissions,("data","stock-price"))
         else 
           xdmp:log(concat("skipping ", $doc//Symbol))
       else

@@ -7,9 +7,9 @@ declare function tweets:get-status-tweets(
   $num-of-tweets as xs:integer
 )
 {
-(: let $screen-name:="Bankenverband" :)
-(: let $num-of-tweets:=1000 :)
 
+let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
+        xdmp:permission("kpmg-dashboard-role", "update"))
 let $response:=twitter:api("GET","https://api.twitter.com/1.1/statuses/user_timeline.json",$screen-name, $num-of-tweets)
 let $picture:="[Fn] [MNn] [D01] [H01]:[m01]:[s01] [Z] [Y]"
 let $tweets:=$response/array-node()/object-node()
@@ -29,5 +29,5 @@ for $tweet in $tweets
   }
   let $doc:=object-node { "source" :$tweet , "envelope":$meta-node }
     return (:  ($uri,$doc) :)
-   xdmp:document-insert($uri,$doc,(),("twitter","data"))
+   xdmp:document-insert($uri,$doc,$permissions,("twitter","data"))
 };
