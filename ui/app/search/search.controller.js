@@ -5,13 +5,13 @@
   angular.module('app.search')
     .controller('SearchCtrl', SearchCtrl);
 
-  SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory', '$sce', 'MLRest'];
+  SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory', '$sce', 'MLRest', '$uibModal'];
 
   // inherit from MLSearchController
   var superCtrl = MLSearchController.prototype;
   SearchCtrl.prototype = Object.create(superCtrl);
 
-  function SearchCtrl($scope, $location, userService, searchFactory, $sce, mlRest) {
+  function SearchCtrl($scope, $location, userService, searchFactory, $sce, mlRest, modal, uibModal) {
     var ctrl = this;
 
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());
@@ -100,7 +100,7 @@
           }
         });
       }
-      
+
     };
 
     ctrl.noRotate = function (word) {
@@ -122,13 +122,71 @@
     };
 
     ctrl.updateStats = function () {
-       mlRest.extension('swl',
-          {
-            method: 'GET',
-          })
-          .then(function(response) {
-            ctrl.stats = response.data;
-          });
+      mlRest.extension('swl',
+        {
+          method: 'GET',
+        })
+        .then(function (response) {
+          ctrl.stats = response.data;
+        });
+    }
+
+    ctrl.open = function () {
+      mlSearchQueries.search().then(function (response) {
+        var model = {
+          response: response,
+          page: 1,
+          search: function () {
+            mlSearchQueries
+              .setPage(model.page)
+              .search().then(function (response) {
+                model.response = response;
+              });
+          },
+          deleteQuery: function (uri) {
+            mlRest
+              .deleteDocument(uri)
+              .then(function () {
+                model.page = 1;
+
+                mlSearchQueries
+                  .setPage(model.page)
+                  .search().then(function (response) {
+                    model.response = response;
+                  });
+              });
+          }
+        };
+        $uibModal.show('app/search/modal-open-queries.html', 'Open Saved Queries', model).then(function (model) {
+          if (model.selectedUrl) {
+            $location.url(model.selectedUrl);
+          }
+        });
+      });
+    }
+
+    ctrl.save = function () {
+      console.log('saving query');
+     
+      $uibModal
+        .show('app/search/modal-save-query.html', 'Save Query', {
+          query: {
+            name: ctrl.currentUser.name + ' - ' + new Date().toISOString().substr(0, 16).replace('T', ''),
+            url: $location.url()
+          }
+        })
+        .then(function (query) {
+          mlRest
+            .createDocument(
+            query,
+            {
+              extension: 'json',
+              directory: '/queries/',
+              collection: ['queries']
+            }
+            ).then(ctrl.open);
+        });
+   
     }
 
     ctrl.getObject = function (element) {
