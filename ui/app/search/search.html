@@ -8,7 +8,7 @@
 <div class="search row" ng-if="ctrl.currentUser">
   <div class="col-md-2 right-col">
     <ml-facets facets="ctrl.response.facets" toggle="ctrl.toggleFacet(facet, value)" active-facets="ctrl.mlSearch.activeFacets"
-      negate="ctrl.toggleNegatedFacet(facet,value)"></ml-facets>
+      negate="ctrl.toggleNegatedFacet(facet,value)" template="app/search/ml-facets.html"></ml-facets>
   </div>
 
   <div class="col-md-7">
