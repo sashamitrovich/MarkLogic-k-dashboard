@@ -147,7 +147,11 @@
   -->
   <!-- example suggestion-source below -->
   <!--
-  <suggestion-source ref="myconstraint"><suggestion-option>frequency-order</suggestion-option><suggestion-option>descending</suggestion-option><suggestion-option>limit=10</suggestion-option></suggestion-source>
+  <suggestion-source ref="myconstraint">
+    <suggestion-option>frequency-order</suggestion-option>
+    <suggestion-option>descending</suggestion-option>
+    <suggestion-option>limit=10</suggestion-option>
+  </suggestion-source>
   -->
   <!-- This will extract the latitude and longitude from the search. -->
   <!--
