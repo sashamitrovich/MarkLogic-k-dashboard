@@ -11,7 +11,7 @@
   var superCtrl = MLSearchController.prototype;
   SearchCtrl.prototype = Object.create(superCtrl);
 
-  function SearchCtrl($scope, $location, userService, searchFactory, $sce, mlRest, modal, uibModal) {
+  function SearchCtrl($scope, $location, userService, searchFactory, $sce, mlRest, $uibModal) {
     var ctrl = this;
 
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());
@@ -167,26 +167,26 @@
 
     ctrl.save = function () {
       console.log('saving query');
-     
-      $uibModal
-        .show('app/search/modal-save-query.html', 'Save Query', {
+
+      var modalInstance = $uibModal.open({
+        //animation: $scope.animationsEnabled,
+        templateUrl: 'app/search/modal-save-query.html',
+        controller: 'SaveModalInstanceCtrl',
+        //size: size,
+        resolve: {
           query: {
             name: ctrl.currentUser.name + ' - ' + new Date().toISOString().substr(0, 16).replace('T', ''),
-            url: $location.url()
+            url: $location.url(),
+            title: 'Save Query'
           }
-        })
-        .then(function (query) {
-          mlRest
-            .createDocument(
-            query,
-            {
-              extension: 'json',
-              directory: '/queries/',
-              collection: ['queries']
-            }
-            ).then(ctrl.open);
-        });
-   
+        }
+      });
+
+      modalInstance.result.then(function () {
+        console.log("in result function");
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
     }
 
     ctrl.getObject = function (element) {
@@ -225,3 +225,26 @@
     });
   }
 } ());
+
+angular.module('app.search').controller('SaveModalInstanceCtrl', ['$scope', '$uibModalInstance', 'query','MLRest', function ($scope, $uibModalInstance, query, mlRest) {
+
+  $scope.query = query;
+
+  $scope.ok = function (query) {
+    console.log('query:'+query);
+    mlRest
+      .createDocument(
+      query,
+      {
+        extension: 'json',
+        directory: '/queries/',
+        collection: ['queries']
+      }
+      ).then(function(){console.log('saved query')});
+    $uibModalInstance.close($scope.query);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}]);

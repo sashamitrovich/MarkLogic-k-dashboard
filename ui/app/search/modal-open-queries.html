@@ -1,0 +1,26 @@
+<form class="form edit-memo" role="form" ng-init="ctrl = model; ctrl.ok = ok">
+  <div class="modal-header">
+      <h3 class="modal-title">{{title}}</h3>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <div class="alert alert-danger loginerror" ng-repeat="alert in alerts" ng-cloak>{{alert}}</div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-10 col-md-offset-1">
+        <h4 ng-if="ctrl.response.total === 0">No results to show</h4>
+
+        <div ng-if="ctrl.response.total > 0" class="results">
+          <div class="pagination-ctrls">
+            <pagination class="pagination pagination-sm" ng-model="ctrl.page" ng-change="ctrl.search()" max-size="10" boundary-links="true" total-items="ctrl.response.total" items-per-page="ctrl.response['page-length']">
+            </pagination>
+          </div>
+          <ml-results template="app/search/ml-results-queries.html" results="ctrl.response.results" label="ctrl.resultLabel(result)"></ml-results>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary pull-right" ng-click="cancel()">Close</button>
+  </div>
+</form>
