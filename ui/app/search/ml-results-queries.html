@@ -1,0 +1,8 @@
+<div class="results" ng-init="ctrl = $parent.$parent.ctrl" ng-repeat="result in results">
+  <h5>
+    <a ng-click="ctrl.ok(result.content.url)">
+      <span>{{ result.content.name }}</span>
+    </a>
+    <a class="pull-right" ng-click="ctrl.deleteQuery(result.uri)"><span class="fa fa-times-circle"></span></a>
+  </h5>
+</div>

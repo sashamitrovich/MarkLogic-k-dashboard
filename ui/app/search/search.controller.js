@@ -14,6 +14,7 @@
   function SearchCtrl($scope, $location, userService, searchFactory, $sce, mlRest, $uibModal) {
     var ctrl = this;
 
+    var mlSearchQueries = searchFactory.newContext({ queryOptions: 'queries', pageLength: 5 });
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());
 
     ctrl.init();
@@ -132,8 +133,11 @@
     }
 
     ctrl.open = function () {
+      //console.log("loading queries");
+
       mlSearchQueries.search().then(function (response) {
         var model = {
+          title: "Load a query",
           response: response,
           page: 1,
           search: function () {
@@ -157,16 +161,29 @@
               });
           }
         };
-        $uibModal.show('app/search/modal-open-queries.html', 'Open Saved Queries', model).then(function (model) {
-          if (model.selectedUrl) {
-            $location.url(model.selectedUrl);
+
+        var modalInstance = $uibModal.open({
+          //animation: $scope.animationsEnabled,
+          templateUrl: 'app/search/modal-open-queries.html',
+          controller: 'OpenModalInstanceCtrl',
+          //size: size,
+          resolve: {
+            model: function () {
+              return model;
+            }
           }
+        });
+
+        modalInstance.result.then(function () {
+          //console.log("in result function");
+        }, function () {
+          //console.log('Modal dismissed at: ' + new Date());
         });
       });
     }
 
     ctrl.save = function () {
-      console.log('saving query');
+      //console.log('saving query');
 
       var modalInstance = $uibModal.open({
         //animation: $scope.animationsEnabled,
@@ -183,9 +200,9 @@
       });
 
       modalInstance.result.then(function () {
-        console.log("in result function");
+        //console.log("in result function");
       }, function () {
-        console.log('Modal dismissed at: ' + new Date());
+        //console.log('Modal dismissed at: ' + new Date());
       });
     }
 
@@ -226,12 +243,11 @@
   }
 } ());
 
-angular.module('app.search').controller('SaveModalInstanceCtrl', ['$scope', '$uibModalInstance', 'query','MLRest', function ($scope, $uibModalInstance, query, mlRest) {
+angular.module('app.search').controller('SaveModalInstanceCtrl', ['$scope', '$uibModalInstance', 'query', 'MLRest', function ($scope, $uibModalInstance, query, mlRest) {
 
   $scope.query = query;
 
   $scope.ok = function (query) {
-    console.log('query:'+query);
     mlRest
       .createDocument(
       query,
@@ -240,7 +256,25 @@ angular.module('app.search').controller('SaveModalInstanceCtrl', ['$scope', '$ui
         directory: '/queries/',
         collection: ['queries']
       }
-      ).then(function(){console.log('saved query')});
+      ).then(function () {
+        //console.log('saved query') 
+      });
+    $uibModalInstance.close($scope.query);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}]);
+
+angular.module('app.search').controller('OpenModalInstanceCtrl', ['$scope', '$uibModalInstance', 'model', '$location', function ($scope, $uibModalInstance, model, $location) {
+
+  $scope.model = model;
+
+  $scope.ok = function (url) {
+    if (url) {
+      $location.url(url);
+    }
     $uibModalInstance.close($scope.query);
   };
 
