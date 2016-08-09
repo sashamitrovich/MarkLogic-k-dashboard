@@ -53,6 +53,16 @@
             <task-modules name="${app-modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
+           <scheduled-task>
+            <task-path>/tasks/stock-prices-task.xqy</task-path>
+            <task-root>/</task-root>
+            <task-type>daily</task-type>
+            <task-period>1</task-period>
+            <task-start-time>13:00:00-05:00</task-start-time>
+            <task-database name="${content-db}"/>
+            <task-modules name="${app-modules-db}"/>
+            <task-user name="${app-name}-user"/>
+          </scheduled-task>
           <!--
           <scheduled-task>
             <task-path>/some/daily-task.xqy</task-path>
@@ -63,7 +73,7 @@
             <task-database name="${content-db}"/>
             <task-modules name="${app-modules-db}"/>
             <task-user name="${app-name}-user"/>
-            </scheduled-task>
+          </scheduled-task>
           
           <scheduled-task>
             <task-path>/some/hourly-task.xqy</task-path>
@@ -436,6 +446,9 @@
             <privilege-name>twitter-uri</privilege-name>
             <action>/twitter/</action>
             <kind>uri</kind>
+          </privilege>
+          <privilege>
+            <privilege-name>any-collection</privilege-name>
           </privilege>
         </privileges>
       </role>

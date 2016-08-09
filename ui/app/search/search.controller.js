@@ -166,7 +166,7 @@
           //animation: $scope.animationsEnabled,
           templateUrl: 'app/search/modal-open-queries.html',
           controller: 'OpenModalInstanceCtrl',
-          //size: size,
+          size: 'sm',
           resolve: {
             model: function () {
               return model;
