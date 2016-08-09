@@ -1,25 +1,28 @@
 <form ng-init="ctrl = $parent.ctrl" ng-submit="search({ qtext: qtext })" class="ml-input ml-search form-inline" role="search">
     <div class="input-group">
         <input ng-model="qtext" type="text" class="form-control" placeholder="Search..." autocomplete="off" uib-typeahead="suggestion for suggestion in suggest({ val: $viewValue })"
-            typeahead-suggest-on-select="true" typeahead-loading="loadingSuggestions"></input>
-        <div ng-show="qtext" ng-click="clear()" class="search-input-icon search-input-clear input-group-addon"
-            style="width:1%">
+            typeahead-suggest-on-select="true" typeahead-loading="loadingSuggestions">
+            
+        </input>
+         
+        <div ng-show="loadingSuggestions" class="input-group-addon search-submit search-input-icon search-loading">            
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
+        <div ng-show="qtext" ng-click="clear()" class="search-input-icon search-input-clear input-group-addon" style="width:1%">
             <span><i class="fa fa-times-circle"></i></span>
         </div>
+        
     
-        <span ng-show="loadingSuggestions" class="search-input-icon search-loading">
-            <i class="fa fa-refresh fa-spin"></i>
-        </span>
         <div ng-click="search({ qtext: qtext })" class="input-group-addon search-submit">
             <i class="fa fa-search"></i>
         </div>
-         <div class="input-group-addon search-submit">
-              <a ng-click="ctrl.open()">
+        <div class="input-group-addon search-submit">
+            <a ng-click="ctrl.open()">
                 <span class="fa fa-folder-open"></span>
             </a>
         </div>
         <div class="input-group-addon search-submit">
-              <a ng-click="ctrl.save()">
+            <a ng-click="ctrl.save()">
                 <span class="glyphicon glyphicon-floppy-disk"></span>
             </a>
         </div>
