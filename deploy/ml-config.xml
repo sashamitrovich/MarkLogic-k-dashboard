@@ -43,6 +43,16 @@
             <task-modules name="${app-modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
+          <scheduled-task>
+            <task-path>/tasks/twitter-task.xqy</task-path>
+            <task-root>/</task-root>
+            <task-type>hourly</task-type>
+            <task-period>2</task-period>
+            <task-minute>30</task-minute>
+            <task-database name="${content-db}"/>
+            <task-modules name="${app-modules-db}"/>
+            <task-user name="${app-name}-user"/>
+          </scheduled-task>
           <!--
           <scheduled-task>
             <task-path>/some/daily-task.xqy</task-path>
@@ -66,7 +76,16 @@
             <task-user name="${app-name}-user"/>
           </scheduled-task>
             
-          <scheduled-task><task-path>/some/minutely-task.xqy</task-path><task-root>/</task-root><task-type>minutely</task-type><task-period>3</task-period><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/monthly-task.xqy</task-path><task-root>/</task-root><task-type>monthly</task-type><task-period>1</task-period><task-month-day>15</task-month-day><task-start-time>13:00:00-05:00</task-start-time><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/once-task.xqy</task-path><task-root>/</task-root><task-type>once</task-type><task-period>1</task-period><task-start>2019-01-01T13:00:00-05:00</task-start><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/weekly-task.xqy</task-path><task-root>/</task-root><task-type>weekly</task-type><task-period>1</task-period><task-days><task-day>monday</task-day><task-day>wednesday</task-day><task-day>friday</task-day></task-days><task-start-time>13:00:00-05:00</task-start-time><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task>
+          <scheduled-task>
+            <task-path>/some/minutely-task.xqy</task-path>
+            <task-root>/</task-root>
+            <task-type>minutely</task-type>
+            <task-period>3</task-period>
+            <task-database name="${content-db}"/><task-modules name="${app-modules-db}"/>
+            <task-user name="${app-name}-user"/>
+          </scheduled-task>
+            
+            <scheduled-task><task-path>/some/monthly-task.xqy</task-path><task-root>/</task-root><task-type>monthly</task-type><task-period>1</task-period><task-month-day>15</task-month-day><task-start-time>13:00:00-05:00</task-start-time><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/once-task.xqy</task-path><task-root>/</task-root><task-type>once</task-type><task-period>1</task-period><task-start>2019-01-01T13:00:00-05:00</task-start><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/weekly-task.xqy</task-path><task-root>/</task-root><task-type>weekly</task-type><task-period>1</task-period><task-days><task-day>monday</task-day><task-day>wednesday</task-day><task-day>friday</task-day></task-days><task-start-time>13:00:00-05:00</task-start-time><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task>
           -->
         </scheduled-tasks></task-server>      -->
         <http-servers>
@@ -413,6 +432,11 @@
             <action>/nachricht/</action>
             <kind>uri</kind>
           </privilege>
+          <privilege>
+            <privilege-name>twitter-uri</privilege-name>
+            <action>/twitter/</action>
+            <kind>uri</kind>
+          </privilege>
         </privileges>
       </role>
     </roles>
@@ -451,6 +475,11 @@
       <privilege>
         <privilege-name>nachricht-uri</privilege-name>
         <action>/nachricht/</action>
+        <kind>uri</kind>
+        </privilege>
+      <privilege>
+        <privilege-name>twitter-uri</privilege-name>
+        <action>/twitter/</action>
         <kind>uri</kind>
       </privilege>
     </privileges>
