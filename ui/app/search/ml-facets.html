@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="facet facet-group" style="margin-bottom:1em" ng-if="filter(facet.facetValues, {selected: '!'+true}, false).length" ng-repeat="(index, facet) in facets | object2Array">
-    <div class="facet-header" style="font-weight:bold">{{ facet.__key }}</div>
+    <div class="facet-header">{{ facet.__key }}</div>
     <div ng-repeat="value in facet.facetValues | filter:{selected: '!'+true}:false">
       <i class="fa fa-plus-circle facet-add-pos" ng-click="toggle({facet: facet.__key, value: value.name})"></i>
       <span ng-if="!!value.name" title="{{ value.name }}">{{ value.name | truncate:truncateLength }}</span>
