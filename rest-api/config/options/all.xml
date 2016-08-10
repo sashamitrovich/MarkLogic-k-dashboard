@@ -76,10 +76,10 @@
   <annotation>Delta options here</annotation>
   <!-- Facet based on document collections, simple yet elegant -->
   <constraint name="Document Type">
-    <collection facet="true" />
-    <!-- optionally enable a prefix to see a specific subset of facets
+    <!-- <collection facet="true" /> -->
+    <!-- optionally enable a prefix to see a specific subset of facets-->
     <collection facet="true" prefix="data/" />
-    -->
+    
   </constraint>
 
    <constraint name="Source">

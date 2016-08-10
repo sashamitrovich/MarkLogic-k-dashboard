@@ -29,5 +29,5 @@ for $tweet in $tweets
   }
   let $doc:=object-node { "source" :$tweet , "envelope":$meta-node }
     return (:  ($uri,$doc) :)
-   xdmp:document-insert($uri,$doc,$permissions,("twitter","data"))
+   xdmp:document-insert($uri,$doc,$permissions,("data/twitter","data"))
 };

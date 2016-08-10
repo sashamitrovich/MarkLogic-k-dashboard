@@ -9,28 +9,28 @@ declare namespace x= "xdmp:http";
 declare function stock:get-day-winner () {
     let $path:="/stock/price-latest/Percent"
     let $max:=xs:float(cts:max(cts:path-reference($path)))
-    let $docs:=cts:search(fn:collection("stock-price"),cts:path-range-query($path, "=", xs:untypedAtomic($max) ))
+    let $docs:=cts:search(fn:collection("data/stock-price"),cts:path-range-query($path, "=", xs:untypedAtomic($max) ))
     return $docs[1]
 };
 
 declare function stock:get-week-winner () {
     let $path:="/stock/week-change-percent"
     let $max:=xs:float(cts:max(cts:path-reference($path)))
-    let $docs:=cts:search(fn:collection("stock-price"),cts:path-range-query($path, "=", xs:untypedAtomic($max) ))
+    let $docs:=cts:search(fn:collection("data/stock-price"),cts:path-range-query($path, "=", xs:untypedAtomic($max) ))
     return $docs[1]
 };
 
 declare function stock:get-day-looser () {
     let $path:="/stock/price-latest/Percent"
     let $min:=xs:float(cts:min(cts:path-reference($path)))
-    let $docs:=cts:search(fn:collection("stock-price"),cts:path-range-query($path, "=", xs:untypedAtomic($min) ))
+    let $docs:=cts:search(fn:collection("data/stock-price"),cts:path-range-query($path, "=", xs:untypedAtomic($min) ))
     return $docs[1]
 };
 
 declare function stock:get-week-looser () {
     let $path:="/stock/week-change-percent"
     let $min:=xs:float(cts:min(cts:path-reference($path)))
-    let $docs:=cts:search(fn:collection("stock-price"),cts:path-range-query($path, "=", xs:untypedAtomic($min) ))
+    let $docs:=cts:search(fn:collection("data/stock-price"),cts:path-range-query($path, "=", xs:untypedAtomic($min) ))
     return $docs[1]
 };
 
@@ -69,7 +69,7 @@ declare function stock:fetch-prices () {
           let $week-change-percent-element:=element week-change-percent {$week-change-percent}
           let $week-change:=element week-change { $diff }
           let $newDoc:=mem:node-insert-after($newDoc/stock/source,$week-change-percent-element)
-          return xdmp:document-insert($newUri, $newDoc,$permissions,("data","stock-price"))
+          return xdmp:document-insert($newUri, $newDoc,$permissions,("data","data/stock-price"))
         else
           xdmp:log(concat("skipping ", $doc//Symbol))
       else

@@ -31,6 +31,6 @@ for $item in $response[2]//item
         }
       }
     }
-    return xdmp:document-insert($newUri,$newDoc,$permissions,("data","rss")) 
+    return xdmp:document-insert($newUri,$newDoc,$permissions,("data","data/rss")) 
 
 };
