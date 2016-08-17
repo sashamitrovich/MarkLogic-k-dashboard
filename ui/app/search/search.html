@@ -46,7 +46,7 @@
       <div class="col-md-6">
         <div class="box box-solid  box-danger ">
           <div class=" box-header with-border card-heading">
-            Looser (Day)
+            Loser (Day)
           </div>
           <div class="box-body" style="text-align:center">
             <div>{{ctrl.stats.dayLooser.name}}</div>
@@ -78,7 +78,7 @@
       <div class="col-md-6">
         <div class="box box-solid  box-danger ">
           <div class=" box-header with-border card-heading">
-            Looser (Week)
+            Loser (Week)
           </div>
           <div class="box-body" style="text-align:center">
             <div>{{ctrl.stats.weekLooser.name}}</div>
@@ -92,7 +92,7 @@
       </div>
     </div>
     <div class="col-md-12">
-      <d3-cloud words="ctrl.words" padding="0" rotate="ctrl.noRotate(word)" events="ctrl.cloudEvents"></d3-cloud>
+      <d3-cloud words="ctrl.words" padding="0" slope-base="10" slope-factor="70" rotate="ctrl.noRotate(word)" events="ctrl.cloudEvents"></d3-cloud>
     </div>
   </div>
 </div>
