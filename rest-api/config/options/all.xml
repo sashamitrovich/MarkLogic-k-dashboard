@@ -84,7 +84,7 @@
 
    <constraint name="Source">
     <range type="xs:string" facet="true">
-      <facet-option>limit=5</facet-option>
+      <facet-option>limit=10</facet-option>
       <facet-option>frequency-order</facet-option>
       <facet-option>descending</facet-option>
       <field name="Source"/>
