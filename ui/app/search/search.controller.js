@@ -63,7 +63,7 @@
         title: {
           'text': 'Period'
         },*/
-        //categories: ['one', 'two', 'three', 'geert', 'sasha']
+        categories: ['one', 'two', 'three', 'four', 'five']
       },
       // constraint name for x axis
       'xAxisCategoriesMLConstraint': 'Source',
