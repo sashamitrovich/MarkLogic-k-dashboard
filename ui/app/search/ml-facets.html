@@ -9,19 +9,19 @@
     </div>
   </div>
   <div class="facet facet-group" style="margin-bottom:1em" ng-if="filter(facet.facetValues, {selected: '!'+true}, false).length" ng-repeat="(index, facet) in facets | object2Array">
+    <span ng-hide="facet.__key == 'Weeks' || facet.__key == 'Hashtag'">
     <div class="facet-header">{{ facet.__key }}</div>
     <div ng-repeat="value in facet.facetValues | filter:{selected: '!'+true}:false">
       <i class="fa fa-plus-circle facet-add-pos" ng-click="toggle({facet: facet.__key, value: value.name})"></i>
       <span ng-if="!!value.name" title="{{ value.name }}">{{ value.name | truncate:truncateLength }}</span>
       <em ng-if="!value.name">blank</em>
-      <!--
-      <span>({{ value.count }})</span>
-      -->
+
       <span data-toggle="tooltip" style="float:right" class="badge bg-grey badge-custom">{{ value.count }}</span>
       <i class="fa fa-ban facet-add-neg" ng-if="shouldNegate" ng-click="negate({facet: facet.__key, value: value.name})" title="{{ value.name }}"></i>
     </div>
     <div ng-if="shouldShowMore &amp;&amp; !facet.displayingAll && facet.facetValues.length > 4">
       <a href ng-click="showMore({facet: facet, facetName: facet.__key})">...</a>
     </div>
+    </span>
   </div>
 </div>

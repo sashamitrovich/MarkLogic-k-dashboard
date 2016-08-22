@@ -26,14 +26,83 @@
       ctrl.search();
     };
 
+    // highcharts config
+    ctrl.highchartConfig = {
+      'options': {
+        'chart': {
+          'type': 'column'
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0,
+            groupPadding: 0.01,
+            borderWidth: 1
+          }
+        },
+        exporting: {
+          enabled: false
+        },
+        'legend': {
+          'enabled': false
+        },
+        'tooltip': {
+          'style': {
+            'padding': 10,
+            'fontWeight': 'bold'
+          }
+        }
+      },
+      series: [{
+        data: [10, 15, 12, 8, 7]
+      }],
+      'title': {
+        'text': 'Weekly Trend'
+      },
+      xAxis: {
+        /*
+        title: {
+          'text': 'Period'
+        },*/
+        //categories: ['one', 'two', 'three', 'geert', 'sasha']
+      },
+      // constraint name for x axis
+      'xAxisCategoriesMLConstraint': 'Source',
+      //'xAxisMLConstraint': 'Period',
+      // optional constraint name for categorizing x axis values
+      //'dataPointNameMLConstraint': 'Category',
+      'yAxis': {
+        'title': {
+          'text': 'Frequency'
+        }
+      },
+      // constraint name for y axis ($frequency is special value for value/tuple frequency)
+      'yAxisMLConstraint': '$frequency',
+      'zAxis': {
+        'title': {
+          'text': null
+        }
+      },
+      'size': {
+        'height': 250,
+        'width': 250
+      },
+      // limit of returned results
+      'resultLimit': 15
+    };
+
     ctrl.updateSearchResults = function updateSearchResults(response) {
       superCtrl.updateSearchResults.apply(ctrl, arguments);
+
+      // update trends chart
+      ctrl.updateTrendsChart(response);
 
       // update d3 cloud
       ctrl.updateCloud(response);
 
       // get winner/looser stock
       ctrl.updateStats();
+
+
 
       angular.forEach(response.results, function (result, index) {
         var map = {};
@@ -78,6 +147,21 @@
     };
 
     ctrl.words = [];
+
+    ctrl.updateTrendsChart = function (data) {
+      if (data && !(data instanceof Array) && data.facets && data.facets.Weeks) {
+        var categories = [];
+        var dataSeries = [];
+
+        angular.forEach(data.facets.Weeks.facetValues, function (value, index) {
+          categories.push(value.name);
+          dataSeries.push(value.count);
+        });
+
+        ctrl.highchartConfig.series[0].data = dataSeries;
+        ctrl.highchartConfig.xAxis.categories = categories;
+      }
+    };
 
     ctrl.updateCloud = function (data) {
       if (data && data.facets && data.facets.Hashtag) {

@@ -21,11 +21,13 @@
     "ml-utils": "withjam/ml-utils",
     "ng-json-explorer": "8c2a0f9104",
     "vkbeautify-wrapper": "*",
-    "highcharts": "^4.2",
+    "highcharts": "^4.2.6",
     "angular-google-maps": "2.3.2",
     "tinymce-dist": "4.3.12",
     "d3": "~3.5.16",
-    "d3-cloud-ng": "^0.9.5"
+    "d3-cloud-ng": "^0.9.5",
+    "ml-highcharts-ng": "^0.0.10",
+    "highcharts-ng": "^0.0.12"
   },
   "overrides": {
     "angular-highlightjs": {

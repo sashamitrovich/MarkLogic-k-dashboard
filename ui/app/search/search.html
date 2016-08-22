@@ -1,7 +1,8 @@
 <div class="row" ng-if="!ctrl.currentUser">Please log in to see content</div>
 <div class="row" ng-if="ctrl.currentUser">
   <div class="col-md-12">
-    <ml-input qtext="ctrl.qtext" search="ctrl.search(qtext)" suggest="ctrl.suggest(val)" template="/app/search/ml-input-fa.html" class="search"></ml-input>
+    <ml-input qtext="ctrl.qtext" search="ctrl.search(qtext)" suggest="ctrl.suggest(val)" template="/app/search/ml-input-fa.html"
+      class="search"></ml-input>
   </div>
 </div>
 
@@ -9,6 +10,9 @@
   <div class="col-md-2 right-col">
     <ml-facets facets="ctrl.response.facets" toggle="ctrl.toggleFacet(facet, value)" active-facets="ctrl.mlSearch.activeFacets"
       negate="ctrl.toggleNegatedFacet(facet,value)" template="app/search/ml-facets.html"></ml-facets>
+
+    <highchart config="ctrl.highchartConfig"></highchart>
+
   </div>
 
   <div class="col-md-7">
@@ -31,7 +35,7 @@
       <div class="col-md-6">
         <div class="box box-solid box-success">
           <div class=" box-header with-border card-heading">
-              Winner (Day)
+            Winner (Day)
           </div>
           <div class="box-body" style="text-align:center">
             <div>{{ctrl.stats.dayWinner.name}}</div>
@@ -94,5 +98,6 @@
     <div class="col-md-12">
       <d3-cloud words="ctrl.words" padding="0" slope-base="10" slope-factor="70" rotate="ctrl.noRotate(word)" events="ctrl.cloudEvents"></d3-cloud>
     </div>
+
   </div>
 </div>
