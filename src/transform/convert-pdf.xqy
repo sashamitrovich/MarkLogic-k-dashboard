@@ -15,10 +15,12 @@ declare function demo:transform(
   let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
         xdmp:permission("kpmg-dashboard-role", "update"))
 
+
+
   return (
 
     $content
     ,map:new((map:entry("uri",substring-before($uri,".pdf") || ".xhtml"),map:entry("value",$filter)))
   )
-  
+
 };
