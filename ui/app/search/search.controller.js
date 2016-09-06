@@ -127,7 +127,7 @@
         }
 
         result.getNiceTitle = function() {
-          console.log("getting nicer title");
+          //console.log("getting nicer title");
           //happens only for pdf files
           if (result.extracted.elements.type == 'pdf') {
             var uri = result.label;

@@ -18,7 +18,8 @@
     'ui.router',
     'ui.tinymce',
     'ngToast',
-    'highcharts-ng'
+    'highcharts-ng',
+    'view.file'
   ]);
 
 }());

@@ -1,5 +1,6 @@
 <div class="row detail">
   <div class="col-sm-8">
+    <span ng-if="ctrl.type!='pdf'">
     <uib-tabset type="pills">
       <uib-tab active="true">
         <uib-tab-heading>{{ctrl.type | uppercase}}</uib-tab-heading>
@@ -23,6 +24,11 @@
         </div>
       </uib-tab>
     </uib-tabset>
+    </span>
+    <span ng-if="ctrl.type=='pdf'">
+      <view-file> uri="ctrl.viewuri" content-type="'application/pdf'"></view-file>
+       <!-- download-uri="ctrl.viewuri" --
+    </span>
   </div>
   <div class="col-sm-4">
     <!-- show (links to) similar documents -->
