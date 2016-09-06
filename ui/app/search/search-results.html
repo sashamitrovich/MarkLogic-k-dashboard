@@ -25,7 +25,7 @@
 </span>
 
 <!-- else show stock -->
-<span ng-show="result.extracted.elements.type=='stock'">     
+<span ng-show="result.extracted.elements.type=='stock'">
   <span>{{result.extracted.elements.Name}}</span>
   <span class='stock-symbol'>(DAX:{{result.extracted.elements.Symbol}})</span>
   <div>
@@ -39,7 +39,7 @@
 <!-- else show tweet -->
 <span ng-show="result.extracted.elements.type=='tweet'">
       <span>
-        <a href="{{result.extracted.elements.link}}" target="_blank"> <i class="fa fa-fw fa-twitter" style="color:#00aced"/></a>        
+        <a href="{{result.extracted.elements.link}}" target="_blank"> <i class="fa fa-fw fa-twitter" style="color:#00aced"/></a>
       </span>
 
 <span ng-bind-html="result.extracted.elements.title | linky:'_blank'"></span>
@@ -50,9 +50,9 @@
 <hr>
 </span>
 
-<span ng-show="result.extracted.elements.type!='rss' && result.extracted.elements.type!='tweet' && result.extracted.elements.type!='stock'">
+<span ng-show="result.extracted.elements.type=='pdf'">
   <h4>
-    <a ui-sref="root.view({uri: result.uri})">{{ result.label || result.uri }}</a>
+    <a ui-sref="root.view({uri: result.uri})">{{result.getNiceTitle()}}</a>
   </h4>
   <div class="matches">
     <div class="match" ng-repeat="match in result.matches">

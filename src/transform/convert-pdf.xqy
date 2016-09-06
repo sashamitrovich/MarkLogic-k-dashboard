@@ -15,12 +15,19 @@ declare function demo:transform(
   let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
         xdmp:permission("kpmg-dashboard-role", "update"))
 
-
+  let $newDoc := document {
+    element item {
+      element source {$filter/node()},
+        element envelope {
+          element source {"internal"},
+          element type {"pdf"}
+        }
+     }
+    }
 
   return (
-
     $content
-    ,map:new((map:entry("uri",substring-before($uri,".pdf") || ".xhtml"),map:entry("value",$filter)))
+    ,xdmp:document-insert(fn:substring-before($uri,".pdf") || ".xml",$newDoc,$permissions,("data","data/pdf"))
   )
 
 };

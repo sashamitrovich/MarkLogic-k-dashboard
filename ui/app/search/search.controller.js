@@ -102,8 +102,6 @@
       // get winner/looser stock
       ctrl.updateStats();
 
-
-
       angular.forEach(response.results, function (result, index) {
         var map = {};
 
@@ -127,6 +125,16 @@
             result.isNegativeChange = false;
           }
         }
+
+        result.getNiceTitle = function() {
+          console.log("getting nicer title");
+          //happens only for pdf files
+          if (result.extracted.elements.type == 'pdf') {
+            var uri = result.label;
+            return uri.replace(/_/g, " ").replace(".xml","");
+          }
+        };
+
 
         // should show match only if the matched text is not in the title of the rss news
 
