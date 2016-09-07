@@ -1,6 +1,7 @@
 
 xquery version "1.0-ml";
 module namespace demo = "http://marklogic.com/demo";
+declare namespace html = "http://www.w3.org/1999/xhtml";
 
 declare function demo:transform(
   $content as map:map,
@@ -15,12 +16,32 @@ declare function demo:transform(
   let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
         xdmp:permission("kpmg-dashboard-role", "update"))
 
+  let $text:= $filter//html:body/html:p
+
+  let $doc:=fn:doc("/stop-words/domain/stop-words-custom.txt")
+  let $stop-words-custom:=fn:tokenize($doc,"\n")
+  let $map-stop-words-custom := map:new((
+    for $w in $stop-words-custom
+    return map:entry($w, 1)
+  ))
+
+  let $terms:=
+    cts:distinctive-terms(text{$text/lower-case(.)},<options xmlns="cts:distinctive-terms" xmlns:db="http://marklogic.com/xdmp/database">
+      <max-terms>100</max-terms>
+      <db:stemmed-searches>decompounding</db:stemmed-searches>
+      <db:trailing-wildcard-searches>false</db:trailing-wildcard-searches>
+    </options>)/cts:term[cts:word-query/cts:option='unwildcarded']/string-join(.//cts:text, " ")
+
   let $newDoc := document {
     element item {
       element source {$filter/node()},
         element envelope {
           element source {"internal"},
-          element type {"pdf"}
+          element type {"pdf"},
+          element tags {
+            for $term in $terms
+            return if(fn:not(map:contains($map-stop-words-custom,$term))) then element term {$term} else ()
+          }
         }
      }
     }

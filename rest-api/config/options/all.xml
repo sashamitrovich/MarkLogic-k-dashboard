@@ -1,10 +1,10 @@
-<options 
+<options
   xmlns="http://marklogic.com/appservices/search">
   <search-option>unfiltered</search-option>
   <page-length>10</page-length>
   <!-- Limit all searches to this additional query -->
   <additional-query>
-    <cts:collection-query 
+    <cts:collection-query
       xmlns:cts="http://marklogic.com/cts">
       <cts:uri>data</cts:uri>
     </cts:collection-query>
@@ -19,7 +19,7 @@
   <grammar>
     <quotation>"</quotation>
     <implicit>
-      <cts:and-query strength="20" 
+      <cts:and-query strength="20"
         xmlns:cts="http://marklogic.com/cts"/>
     </implicit>
     <starter strength="30" apply="grouping" delimiter=")">(</starter>
@@ -79,7 +79,7 @@
     <!-- <collection facet="true" /> -->
     <!-- optionally enable a prefix to see a specific subset of facets-->
     <collection facet="true" prefix="data/" />
-    
+
   </constraint>
 
    <constraint name="Source">
@@ -132,8 +132,8 @@
       <facet-option>limit=20</facet-option>
       <facet-option>frequency-order</facet-option>
       <facet-option>descending</facet-option>
-      <json-property>tags</json-property>
-      <collation>http://marklogic.com/collation/de/S1</collation>
+       <field name="tags"/>
+      <collation>http://marklogic.com/collation/</collation>
       <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket><computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket><computed-bucket anchor="now" name="20 years ago" ge="-P20Y" lt="-P15Y">20 years ago</computed-bucket><computed-bucket anchor="now" name="15 years ago" ge="-P15Y" lt="-P10Y">15 years ago</computed-bucket><computed-bucket anchor="now" name="10 years ago" ge="-P10Y" lt="-P5Y">10 years ago</computed-bucket><computed-bucket anchor="now" name="5 years ago" ge="-P5Y">5 years ago</computed-bucket-->
     </range>
     <!-- optionally enable a prefix to see a specific subset of facets
@@ -141,7 +141,7 @@
     -->
   </constraint>
   <!-- Example facet based on the sample-data -->
- 
+
   <!-- Example geospatial facet based on the sample-data, used by map theme -->
   <constraint name="Location">
     <geo-elem-pair>
@@ -181,7 +181,7 @@
     <extract-path>/item/source/category</extract-path>
     <extract-path>/item/source/description</extract-path>
     <extract-path>/item/source/enclosure/@url</extract-path>
-    
+
     <extract-path>/stock/Symbol</extract-path>
     <extract-path>/stock/type</extract-path>
     <extract-path>/stock/Name</extract-path>
@@ -189,10 +189,10 @@
     <extract-path>/stock/price-latest/Date</extract-path>
     <extract-path>/stock/price-latest/Close</extract-path>
     <extract-path>/stock/price-latest/Change</extract-path>
-    
+
     <extract-path>/envelope/link</extract-path>
     <extract-path>/envelope/title</extract-path>
-   
+
     <extract-path>//envelope/type</extract-path>
     <extract-path>//envelope/source</extract-path>
      <extract-path>//envelope/date_time</extract-path>

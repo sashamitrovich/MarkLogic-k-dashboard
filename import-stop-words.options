@@ -1,0 +1,14 @@
+import
+
+-input_file_path
+./content/stop-words/
+
+-output_collections
+txt
+
+-output_permissions
+kpmg-dashboard-role,read,kpmg-dashboard-role,update
+
+-output_uri_replace
+".*/content,''"
+
