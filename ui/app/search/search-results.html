@@ -52,7 +52,7 @@
 
 <span ng-show="result.extracted.elements.type=='pdf'">
   <h4>
-    <a ui-sref="root.view({uri: result.uri})">{{result.getNiceTitle()}}</a>
+    <i class="fa fa-file-pdf-o" style="margin-right:10px; color:red"></i><a ui-sref="root.view({uri: result.uri})">{{result.getNiceTitle()}}</a>
   </h4>
   <div class="matches">
     <div class="match" ng-repeat="match in result.matches">
