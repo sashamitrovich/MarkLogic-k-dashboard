@@ -1,4 +1,4 @@
-<div ng-repeat="result in results">
+<div ng-init="ctrl=$parent.$parent.ctrl" ng-repeat="result in results">
   <span ng-show="result.extracted.elements.type=='rss'">
 
   <h4>
@@ -52,7 +52,7 @@
 
 <span ng-show="result.extracted.elements.type=='pdf'">
   <h4>
-    <i class="fa fa-file-pdf-o" style="margin-right:10px; color:red"></i><a ui-sref="root.view({uri: result.uri})">{{result.getNiceTitle()}}</a>
+    <i class="fa fa-file-pdf-o" style="margin-right:10px; color:red"></i><a ui-sref="root.view({uri: result.uri, q: ctrl.qtext})">{{result.getNiceTitle()}}</a>
   </h4>
   <div class="matches">
     <div class="match" ng-repeat="match in result.matches">

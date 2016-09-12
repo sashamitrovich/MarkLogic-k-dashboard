@@ -85,10 +85,13 @@
         }
       })
       .state('root.view', {
-        url: '/detail{uri:path}',
+        url: '/detail{uri:path}?q',
         params: {
           uri: {
             value: null
+          },
+          q: {
+            array: true
           }
         },
         templateUrl: 'app/detail/detail.html',

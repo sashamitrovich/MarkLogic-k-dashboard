@@ -9,6 +9,8 @@
     var ctrl = this;
 
     var uri = $stateParams.uri;
+    var qtext=$stateParams.q;
+    var urixml=uri;
 
     var contentType = doc.headers('content-type');
 
@@ -22,7 +24,7 @@
     } else if (uri.indexOf("/internal/")>-1) {
       ctrl.type = 'pdf';
       uri = uri.replace("xml","pdf");
-      console.log(uri);
+      //console.log(uri);
     } else if (contentType.lastIndexOf('application/xml', 0) === 0) {
       ctrl.xml = vkbeautify.xml(doc.data);
       /*jshint camelcase: false */
@@ -45,7 +47,8 @@
     angular.extend(ctrl, {
       doc : doc.data,
       uri : uri,
-      viewuri : '/v1/documents?uri='+encodeURIComponent(uri)
+      viewuri : '/v1/documents?uri='+encodeURIComponent(uri),
+      viewurihtml: '/v1/documents?uri='+encodeURIComponent(urixml) +'&transform=get-html&trans:q='+qtext /*'&format=xml&transform=indent&trans:property=html'*/
     });
   }
 }());

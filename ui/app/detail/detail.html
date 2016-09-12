@@ -26,8 +26,26 @@
     </uib-tabset>
     </span>
     <span ng-if="ctrl.type=='pdf'">
-      <view-file uri="ctrl.viewuri" content-type="'application/pdf'" style="height:650px;"></view-file>
-       <!-- download-uri="ctrl.viewuri" -->
+      <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a aria-expanded="true" href="#tab_1" data-toggle="tab">PDF</a></li>
+              <li class=""><a aria-expanded="false" href="#tab_2" data-toggle="tab">HTML</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+                <view-file uri="ctrl.viewuri" content-type="'application/pdf'" style="height:650px;"></view-file>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                <view-file uri="ctrl.viewurihtml" content-type="'text/html'" style="height:650px;"></view-file>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+        <!-- /.tab-content -->
+          </div>
+
+
+      <!-- download-uri="ctrl.viewuri" -->
     </span>
   </div>
   <div class="col-sm-4">
