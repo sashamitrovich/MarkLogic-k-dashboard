@@ -66,5 +66,14 @@ To add or change twitter accounts you want to follow, edit the file src/tasks/tw
 
 # MarkLogic capabilities demonstrated in this application
 - Loading data as-is from external data sources (RSS, Twitter, Quandl)
+- Peaceful coexistence of JSON and XML data in the same database, used in the same application
 - [Envelope pattern](https://developer.marklogic.com/learn/data-modeling)
 - Using db [tasks](https://docs.marklogic.com/guide/admin/getting_started#id_49240) to schedule re-ocurring jobs (such as pulling in data updates here)
+- Using [mlcp](https://docs.marklogic.com/guide/mlcp/import) to load and parse PDF documents
+- MarkLogic Search capabilities including free-text and structured search, facets and dynamic date bucketing
+- Combining multiple JSON properties and XML elements into single Fields and defining [Field range index](https://docs.marklogic.com/guide/admin/range_index#id_14554)
+- Customizing the Search API to perform a on-the-fly transform of the search response
+- [Highlighting](https://docs.marklogic.com/cts:highlight) of matched keywords
+- Building word clouds based on [distinctive terms](https://docs.marklogic.com/guide/search-dev/similar) function
+- MarkLogic mathematical functions (to calculate winner/loser stock of the day/week)
+- Some UI goodies provided by the Slush generator: Tag Cloud, AngularJS Highcharts, document viewer (PDF and HTML)
