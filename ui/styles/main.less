@@ -93,9 +93,16 @@ body {
 .source {
     max-height: 850px !important;
     display: inline !important;
+    padding: 0 !important;
 }
 
 div[include-safe] {
-    overflow:scroll;
-    height: 600px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 589px;
+}
+
+.view-file .viewer-wrapper .viewer {
+    width: 99%;
+    max-height: 600px;
 }
