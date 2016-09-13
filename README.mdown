@@ -76,5 +76,7 @@ To add or change twitter accounts you want to follow, edit the file src/tasks/tw
 - [Highlighting](https://docs.marklogic.com/cts:highlight) of matched keywords
 - Building word clouds based on [distinctive terms](https://docs.marklogic.com/guide/search-dev/similar) function
 - MarkLogic mathematical functions (to calculate winner/loser stock of the day/week)
+- Using both XQuery and Server-side JavaScript to write server-side code
+- Exposing server-side functions as REST API to be consumed by the front end
 - Some UI goodies provided by the Slush generator: Tag Cloud, AngularJS Highcharts, document viewer (PDF and HTML)
 - Last but not least: incredibly short time it takes to build such an application with MarkLogic and Slush: total effort was 12 person/days
