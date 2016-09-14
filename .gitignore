@@ -9,3 +9,4 @@ coverage
 *.sublime-workspace
 .tmp/
 deploy/local.properties
+*.iml
