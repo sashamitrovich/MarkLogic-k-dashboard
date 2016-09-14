@@ -1,4 +1,4 @@
-![alt tag](dashboard_teaser.jpeg)
+
 
 # Sample Dasboard Application running on MarkLogic built using MarkLogic-Node (Slush) generator
 
