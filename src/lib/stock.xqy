@@ -44,10 +44,10 @@ declare function stock:fetch-prices () {
     </options>
     for $doc in $docs
       let $request:=fn:concat("https://www.quandl.com/api/v3/datasets/FSE/",$doc//Symbol, "_X.csv?api_key=yigbEs6PAybUcxg6Lz_A&amp;start_date=2016-07-25")
-      let $response:=xdmp:http-get($request)
+      let $response:=xdmp:http-get($request, $options)
       return if ($response//x:code=200) then
         let $quote:= $response[2]
-        let $prices:=util:parse-price-csv($quote, $options)
+        let $prices:=util:parse-price-csv($quote)
         return if(fn:count($prices)>1) then
           let $newDoc:=document {
             element stock {
