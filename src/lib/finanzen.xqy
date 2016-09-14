@@ -6,7 +6,7 @@ declare function finanzen:fetch() {
 let $request:="http://www.finanzen.net/index/DAX/RSS"
 let $options:=
   <options xmlns="xdmp:document-get">
-    <encoding>auto</encoding>
+    <encoding>iso-8859-1</encoding>
   </options>
 let $response:= xdmp:http-get($request,$options)
 let $pubDate:= current-dateTime()
