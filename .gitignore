@@ -8,3 +8,4 @@ coverage
 *.sublime-project
 *.sublime-workspace
 .tmp/
+deploy/local.properties
