@@ -37,7 +37,18 @@
             pointPadding: 0,
             groupPadding: 0.01,
             borderWidth: 1
-          }
+          },
+          series: {
+                cursor: 'pointer',
+                point: {
+                    events: {
+                        click: function () {
+                            //console.log('Category: ' + this.category + ', value: ' + this.y);
+                            ctrl.toggleFacet("Weeks",this.category);
+                        }
+                    }
+                }
+            }
         },
         exporting: {
           enabled: false
@@ -66,7 +77,7 @@
         categories: ['one', 'two', 'three', 'four', 'five']
       },
       // constraint name for x axis
-      'xAxisCategoriesMLConstraint': 'Source',
+      'xAxisCategoriesMLConstraint': 'Weeks',
       //'xAxisMLConstraint': 'Period',
       // optional constraint name for categorizing x axis values
       //'dataPointNameMLConstraint': 'Category',
@@ -164,6 +175,8 @@
         angular.forEach(data.facets.Weeks.facetValues, function (value, index) {
           categories.push(value.name);
           dataSeries.push(value.count);
+          console.log('value.name:'+value.name);
+          console.log('value.count:'+value.count);
         });
 
         ctrl.highchartConfig.series[0].data = dataSeries;

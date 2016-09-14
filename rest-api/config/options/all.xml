@@ -100,11 +100,11 @@
       -->
       <facet-option>descending</facet-option>
       <field name="Date"/>
-      <computed-bucket name="current-week" ge="-P7D" anchor="now">Current week</computed-bucket>
-      <computed-bucket name="1-week-ago" ge="-P14D" lt="-P7D" anchor="now">Last week</computed-bucket>
-      <computed-bucket name="2-weeks-ago" ge="-P21D" lt="-P14D" anchor="now">2 weeks ago</computed-bucket>
-      <computed-bucket name="3-weeks-ago" ge="-P28D" lt="-P21D" anchor="now">3 weeks ago</computed-bucket>
-      <computed-bucket name="4-weeks-ago" ge="-P35D" lt="-P28D" anchor="now">3 weeks ago</computed-bucket>
+      <computed-bucket name="current-week" ge="-P7D" anchor="start-of-day">Current week</computed-bucket>
+      <computed-bucket name="1-week-ago" ge="-P14D" lt="-P7D" anchor="start-of-day">Last week</computed-bucket>
+      <computed-bucket name="2-weeks-ago" ge="-P21D" lt="-P14D" anchor="start-of-day">2 weeks ago</computed-bucket>
+      <computed-bucket name="3-weeks-ago" ge="-P28D" lt="-P21D" anchor="start-of-day">3 weeks ago</computed-bucket>
+      <computed-bucket name="4-weeks-ago" ge="-P35D" lt="-P28D" anchor="start-of-day">3 weeks ago</computed-bucket>
     </range>
   </constraint>
 
