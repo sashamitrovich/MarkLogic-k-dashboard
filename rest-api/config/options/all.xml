@@ -116,8 +116,8 @@
       <field name="Date"/>
        <computed-bucket name="today" ge="P0D" lt="P1D" anchor="start-of-day">Today</computed-bucket>
       <computed-bucket name="yesterday" ge="-P1D" lt="P0D" anchor="start-of-day">yesterday</computed-bucket>
-      <computed-bucket name="7-days" ge="-P7D" lt="P0D" anchor="start-of-day">Last 7 Days</computed-bucket>
-      <computed-bucket name="30-days" ge="-P30D" lt="P0D" anchor="start-of-day">Last 30 days</computed-bucket>
+      <computed-bucket name="7-days" ge="-P6D" lt="P1D" anchor="start-of-day">Last 7 Days</computed-bucket>
+      <computed-bucket name="30-days" ge="-P30D" lt="P1D" anchor="start-of-day">Last 30 days</computed-bucket>
       <computed-bucket name="year" ge="-P1Y" lt="P1D" anchor="start-of-day">Last Year</computed-bucket>
       <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket>
       <computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket>
