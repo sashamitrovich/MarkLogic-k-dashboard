@@ -1,4 +1,5 @@
 
+![teaser image](https://cloud.githubusercontent.com/assets/15609655/18515925/5095d284-7a97-11e6-9276-75e9230dccbe.jpg)
 
 # Sample Dasboard Application running on MarkLogic built using MarkLogic-Node (Slush) generator
 
