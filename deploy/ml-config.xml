@@ -187,11 +187,11 @@
           <field>
             <field-name>Date</field-name>
             <field-path>
-              <path>Date</path>
+              <path>date_time</path>
               <weight>1.0</weight>
             </field-path>
             <field-path>
-              <path>date_time</path>
+              <path>/stock/price-latest/Date</path>
               <weight>1.0</weight>
             </field-path>
             <word-lexicons/>
