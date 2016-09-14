@@ -91,6 +91,11 @@
     </range>
   </constraint>
 
+  <constraint name="Date">
+    <range type="xs:dateTime" facet="false">
+      <field name="Date"/>
+    </range>
+  </constraint>
 
   <constraint name="Weeks">
     <range type="xs:dateTime" facet="true">

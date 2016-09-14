@@ -39,12 +39,15 @@ declare function stock:fetch-prices () {
     let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
         xdmp:permission("kpmg-dashboard-role", "update"))
     let $docs:= fn:collection("code")
+    let $options:=<options xmlns="xdmp:http">
+       <verify-cert>false</verify-cert>
+    </options>
     for $doc in $docs
       let $request:=fn:concat("https://www.quandl.com/api/v3/datasets/FSE/",$doc//Symbol, "_X.csv?api_key=yigbEs6PAybUcxg6Lz_A&amp;start_date=2016-07-25")
       let $response:=xdmp:http-get($request)
       return if ($response//x:code=200) then
         let $quote:= $response[2]
-        let $prices:=util:parse-price-csv($quote)
+        let $prices:=util:parse-price-csv($quote, $options)
         return if(fn:count($prices)>1) then
           let $newDoc:=document {
             element stock {
