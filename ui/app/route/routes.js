@@ -48,6 +48,7 @@
           }
         }
       })
+      /*
       .state('root.landing', {
         url: '/',
         templateUrl: 'app/landing/landing.html',
@@ -56,9 +57,9 @@
           area: 'dashboard',
           navClass: 'fa-home'
         }
-      })
+      })*/
       .state('root.search', {
-        url: '/search',
+        url: '/',
         templateUrl: 'app/search/search.html',
         controller: 'SearchCtrl',
         controllerAs: 'ctrl',
