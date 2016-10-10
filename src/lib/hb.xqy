@@ -6,7 +6,7 @@ declare function hb:fetch() {
    let $request:="http://www.handelsblatt.com/contentexport/feed/wirtschaft"
 let $options:=
   <options xmlns="xdmp:document-get">
-    <encoding>auto</encoding>
+    <encoding>utf-8</encoding>
   </options>
 let $response:= xdmp:http-get($request, $options)
 let $picture:="[Fn], [D01] [MNn] [Y] [H01]:[m01]:[s01] [Z]"
