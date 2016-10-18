@@ -60,6 +60,10 @@
         <span ng-class="{ highlight: !!text.highlight }">{{ text.highlight || text }}</span>
       </em>
     </div>
+    <div style="float:right">
+      <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
+      <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+    </div>
   </div>
   <hr>
 </span>
