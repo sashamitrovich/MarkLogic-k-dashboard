@@ -1,0 +1,13 @@
+import
+
+-input_file_path
+./content/config
+
+-output_collections
+config
+
+-output_permissions
+kpmg-dashboard-role,read,kpmg-dashboard-role,update
+
+-output_uri_replace
+".*/content,''"

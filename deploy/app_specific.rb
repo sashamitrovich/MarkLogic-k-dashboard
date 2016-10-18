@@ -15,13 +15,12 @@ end
 def load_tweets()
   r = execute_query(%Q{
     import module namespace tweets = "http://marklogic.com/tweets" at "/lib/tweets.xqy";
-    
-    (
-        tweets:get-status-tweets("Bankenverband",200),
-        tweets:get-status-tweets("ECB",200),
-        tweets:get-status-tweets("IIF",200),
-        tweets:get-status-tweets("bundesbank",200)
-    )
+
+  let $num-of-tweets:=200
+  let $doc:=doc("/config/twitter-accounts.json")
+  for $name in $doc/name
+    return tweets:get-status-tweets($name ,$num-of-tweets)
+
     },
     { :app_name => @properties['ml.app-name'] }
   )
@@ -43,7 +42,7 @@ end
 
 def load_finanzen()
   r = execute_query(%Q{
-    import module namespace finanzen = "http://marklogic.com/rss/finanzen.net" 
+    import module namespace finanzen = "http://marklogic.com/rss/finanzen.net"
       at "/lib/finanzen.xqy";
     finanzen:fetch()
     },
@@ -120,13 +119,13 @@ end
 #  def self.example
 #    <<-DOC.strip_heredoc
 #      Usage: ml {env} example [args] [options]
-#      
+#
 #      Runs a special example task against given environment.
-#      
+#
 #      Arguments:
 #        this    Do this
 #        that    Do that
-#        
+#
 #      Options:
 #        --whatever=value
 #    DOC
