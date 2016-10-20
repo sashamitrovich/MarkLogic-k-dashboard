@@ -85,6 +85,12 @@
           }
         }
       })
+      .state('root.config', {
+        url: '/config',
+        templateUrl: 'app/config/config.html',
+        controller: 'ConfigCtrl',
+        controllerAs: 'ctrl'
+      })
       .state('root.view', {
         url: '/detail{uri:path}?q',
         params: {
