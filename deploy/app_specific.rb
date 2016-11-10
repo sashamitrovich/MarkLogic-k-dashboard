@@ -64,6 +64,97 @@ def load_stock_price()
   r.body = parse_json r.body
   logger.info r.body
 end
+
+
+  # Show-casing some useful overrides, as well as adjusting some module doc permissions
+  alias_method :original_deploy_modules, :deploy_modules
+  alias_method :original_deploy_rest, :deploy_rest
+  alias_method :original_deploy, :deploy
+  alias_method :original_clean, :clean
+
+  # Integrate deploy_packages into the Roxy deploy command
+  def deploy
+    what = ARGV.shift
+
+    case what
+      when 'packages'
+        deploy_packages
+      else
+        ARGV.unshift what
+        original_deploy
+    end
+  end
+
+  def deploy_modules
+    # Uncomment deploy_packages if you would like to use MLPM to deploy MLPM packages, and
+    # include MLPM deploy in deploy modules to make sure MLPM depencencies are loaded first.
+
+    # Note: you can also move mlpm.json into src/ext/ and deploy plain modules (not REST extensions) that way.
+
+    #deploy_packages
+    original_deploy_modules
+  end
+  
+  def deploy_packages
+    password_prompt
+    system %Q!mlpm deploy -u #{ @ml_username } \
+                          -p #{ @ml_password } \
+                          -H #{ @properties['ml.server'] } \
+                          -P #{ @properties['ml.app-port'] }!
+    change_permissions(@properties["ml.modules-db"])
+  end
+  
+  def deploy_rest
+    original_deploy_rest
+    change_permissions(@properties["ml.modules-db"])
+end
+
+# Permissions need to be changed for executable code that was not deployed via Roxy directly,
+  # to make sure users with app-role can read and execute it. Typically applies to artifacts
+  # installed via REST api, which only applies permissions for rest roles. Effectively also includes
+  # MLPM, which uses REST api for deployment. It often also applies to artifacts installed with
+  # custom code (via app_specific for instance), like alerts.
+  def change_permissions(where)
+    logger.info "Changing permissions in #{where} for:"
+    r = execute_query(
+      %Q{
+        xquery version "1.0-ml";
+        let $new-permissions := (
+          xdmp:permission("#{@properties["ml.app-name"]}-role", "read"),
+          xdmp:permission("#{@properties["ml.app-name"]}-role", "update"),
+          xdmp:permission("#{@properties["ml.app-name"]}-role", "execute")
+        )
+        let $uris :=
+          if (fn:contains(xdmp:database-name(xdmp:database()), "content")) then
+            (: This is to make sure all alert files are accessible :)
+            cts:uri-match("*alert*")
+          else
+            (: This is to make sure all triggers, schemas, modules and REST extensions are accessible :)
+            cts:uris()
+        let $fixes := 
+          for $uri in $uris
+          let $existing-permissions := xdmp:document-get-permissions($uri)
+        
+          (: Only apply new permissions if really necessary (gives better logging too):)
+          where not(ends-with($uri, "/"))
+            and count($existing-permissions[fn:string(.) = $new-permissions/fn:string(.)]) ne 3
+        
+          return (
+            "  " || $uri,
+            xdmp:document-set-permissions($uri, $new-permissions)
+          )
+        return
+          if ($fixes) then
+            $fixes
+          else
+            "  no changes needed.."
+      },
+      { :db_name => where }
+    )
+    r.body = parse_json r.body
+    logger.info r.body
+    logger.info ""
+end
   #
   # You can easily "override" existing methods with your own implementations.
   # In ruby this is called monkey patching

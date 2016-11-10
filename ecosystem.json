@@ -1,0 +1,31 @@
+{
+  "apps": [{
+    "name": "kpmg-dashboard",
+    "script": "./node-server/node-app.js",
+	"watch": true,
+	"restart_delay": 4000,
+    "env": {
+      "NODE_ENV": "default",
+      "PORT": 8112,
+      "ML_HOST": "localhost",
+      "ML_PORT": 8110
+    }
+  }],
+  "deploy": {
+    "van-prod4": {
+      "key": "C:/cygwin64/home/nbakshi/.ssh/id_rsa",
+      "user": "nbakshi",
+      // Multi host is possible, just by passing IPs/hostname as an array
+      "host": ["van-prod4.demo.marklogic.com"],
+      // Branch
+      "ref": "origin/master",
+      // Git repository to clone
+      "repo": "https://github.com/sashamitrovich/dashboard.git",
+      // Path of the application on target servers
+      "path": "/space/projects/kpmg-dashboard/",
+      // Commands to be executed on the server after the repo has been cloned
+      "post-deploy": "npm install && bower install && gulp build",
+      // Environment variables that must be injected in all applications on this env
+    }
+  }
+}
