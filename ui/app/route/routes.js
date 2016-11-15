@@ -69,6 +69,7 @@
           navClass: 'fa-search'
         }
       })
+      /*
       .state('root.create', {
         url: '/create',
         templateUrl: 'app/create/create.html',
@@ -85,6 +86,7 @@
           }
         }
       })
+      */
       .state('root.config', {
         url: '/config',
         templateUrl: 'app/config/config.html',

@@ -431,7 +431,8 @@
       <role>
         <role-name>${app-role}</role-name>
         <description>A role for users of the ${app-name} application</description>
-        <role-names></role-names>
+          <role-names>
+          </role-names>
         <permissions>
           <permission>
             <capability>execute</capability>
@@ -485,6 +486,9 @@
           </privilege>
           <privilege>
             <privilege-name>any-collection</privilege-name>
+          </privilege>
+           <privilege>
+            <privilege-name>any-uri</privilege-name>
           </privilege>
         </privileges>
       </role>
