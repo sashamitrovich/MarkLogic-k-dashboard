@@ -1,26 +1,56 @@
-<div ng-app="myShoppingList" ng-controller="ConfigCtrl" class="row" >
-  <div class="col-md-4">
-    <div class="box box-default">
-      <header class="box-header with-border">
-        <h3>List of Twitter Screen Names</h3>
-      </header>
-      <ul class="list-group list-group-unbordered">
-        <li class="list-group-item" ng-repeat="x in ctrl.products" style="padding-left: 16px;">
-          {{x}}
-          <i ng-click="ctrl.removeItem($index)" class="fa fa-fw fa-trash" style="cursor: pointer;"></i>
-        </li>
-      </ul>
+<div class="row detail">
+  <div class="col-sm-8">
+    <div class="row" >
 
-      <div class="w3-container w3-light-grey w3-padding-16">
-        <div class="w3-row w3-margin-top">
-          <input placeholder="Add Twitter screen name here" ng-model="ctrl.addMe" size="45">
-          <button ng-click="ctrl.addItem()" class="btn btn-primary">Add</button>
+      <!--
+      <div class="col-md-4">
+        <div class="box box-default">
+          <header class="box-header with-border">
+            <h3>List of Twitter Screen Names</h3>
+          </header>
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item" ng-repeat="x in ctrl.products" style="padding-left: 16px;">
+              {{x}}
+              <i ng-click="ctrl.removeItem($index)" class="fa fa-fw fa-trash" style="cursor: pointer;"></i>
+            </li>
+          </ul>
+
+          <div class="w3-container w3-light-grey w3-padding-16">
+            <div class="w3-row w3-margin-top">
+              <input placeholder="Add Twitter screen name here" ng-model="ctrl.addMe" size="45">
+              <button ng-click="ctrl.addItem()" class="btn btn-primary">Add</button>
+            </div>
+            <p class="w3-padding-left w3-text-red">{{ctrl.errortext}}</p>
+          </div>
         </div>
-        <p class="w3-padding-left w3-text-red">{{ctrl.errortext}}</p>
       </div>
-    </div>
-  </div>
+      -->
 
-  <div class="col-md-8">
-    <div class="box box-default"></div>test</div>
+
+      <uib-tabset active="active">
+        <uib-tab index="0" heading="RSS Sources">
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item" ng-repeat="x in ctrl.sources.rss" style="padding-left: 16px;">
+              {{x}}
+              <i ng-click="ctrl.removeRssItem($index)" class="fa fa-fw fa-trash" style="cursor: pointer;"></i>
+            </li>
+          </ul>
+          <input placeholder="Add RSS link here" ng-model="ctrl.addMe" size="45">
+          <button ng-click="ctrl.addRssItem()" class="btn btn-primary">Add</button>
+        </uib-tab>
+
+          <uib-tab index="1" heading="Twitter Sources">
+
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item" ng-repeat="x in ctrl.sources.twitter" style="padding-left: 16px;">
+              {{x}}
+              <i ng-click="ctrl.removeTwitterItem($index)" class="fa fa-fw fa-trash" style="cursor: pointer;"></i>
+            </li>
+          </ul>
+          <input placeholder="Add Twitter screen name here" ng-model="ctrl.addMe" size="45">
+          <button ng-click="ctrl.addTwitterItem()" class="btn btn-primary">Add</button>
+        </uib-tab>
+      </uib-tabset>
+
+  </div>
 </div>

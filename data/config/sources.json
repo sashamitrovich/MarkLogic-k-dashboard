@@ -1,0 +1,4 @@
+{
+  "rss": ["example1.rss", "example2.rss"],
+  "twitter": ["example1.twitter", "example2.twitter", "example3.twitter"]
+}

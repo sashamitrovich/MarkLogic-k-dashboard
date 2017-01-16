@@ -4,10 +4,13 @@
   angular.module('app.config')
     .controller('ConfigCtrl', ConfigCtrl);
 
-  ConfigCtrl.$inject = ['$scope', 'MLRest', '$state', 'userService', 'ngToast'];
+  ConfigCtrl.$inject = ['doc','$scope', 'MLRest', '$state'];
 
-  function ConfigCtrl($scope, mlRest, $state, userService, toast) {
+  function ConfigCtrl(doc, $scope, mlRest, $state) {
     var ctrl = this;
+
+    console.log("doc=", doc.data);
+
 
     angular.extend(ctrl, {
       products: ['Milk', 'Bread','Cheese']
@@ -15,32 +18,52 @@
       editorOptions: {
         plugins : 'advlist autolink link image lists charmap print preview'
       },
-      addItem: addItem,
-      removeItem: removeItem,
+      addRssItem: addRssItem,
+      removeRssItem: removeRssItem,
+      addTwitterItem: addTwitterItem,
+      removeTwitterItem: removeTwitterItem,
       submit: submit,
       addTag: addTag,
-      removeTag: removeTag
+      removeTag: removeTag,
+      sources: doc.data // {rss: ["1","2"], twitter:["t1","t2","t3"]}
     });
 
-    function addItem() {
-      console.log('in the list:'+ ctrl.products.indexOf(ctrl.addMe));
+    function addRssItem() {
+      console.log('in the list:'+ ctrl.sources.rss.indexOf(ctrl.addMe));
       ctrl.errortext = "";
       if (!ctrl.addMe) {return;}
       console.log('not empty!')
-      if (ctrl.products.indexOf(ctrl.addMe) == -1) {
-        ctrl.products.push(ctrl.addMe);
+      if (ctrl.sources.rss.indexOf(ctrl.addMe) == -1) {
+        ctrl.sources.rss.push(ctrl.addMe);
       } else {
         ctrl.errortext = "Can't add twice!";
       }
     }
 
-    function removeItem(x) {
+    function removeRssItem(x) {
       ctrl.errortext = "";
-      ctrl.products.splice(x, 1);
+      ctrl.sources.rss.splice(x, 1);
+    }
+
+    function addTwitterItem() {
+      console.log('in the list:'+ ctrl.sources.twitter.indexOf(ctrl.addMe));
+      ctrl.errortext = "";
+      if (!ctrl.addMe) {return;}
+      console.log('not empty!')
+      if (ctrl.sources.twitter.indexOf(ctrl.addMe) == -1) {
+        ctrl.sources.twitter.push(ctrl.addMe);
+      } else {
+        ctrl.errortext = "Can't add twice!";
+      }
+    }
+
+    function removeTwitterItem(x) {
+      ctrl.errortext = "";
+      ctrl.sources.twitter.splice(x, 1);
     }
 
     function submit() {
-      mlRest.createDocument(ctrl.person, {
+      mlRest.createDocument(ctrl.products, {
         format: 'json',
         directory: '/content/',
         extension: '.json',
@@ -65,8 +88,10 @@
       ctrl.person.tags.splice(index, 1);
     }
 
+    /*
     $scope.$watch(userService.currentUser, function(newValue) {
       ctrl.currentUser = newValue;
     });
+    */
   }
 }());

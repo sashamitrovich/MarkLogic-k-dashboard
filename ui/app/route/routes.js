@@ -91,7 +91,15 @@
         url: '/config',
         templateUrl: 'app/config/config.html',
         controller: 'ConfigCtrl',
-        controllerAs: 'ctrl'
+        controllerAs: 'ctrl',
+        resolve: {
+          doc: function(MLRest) {
+            var uri="/config/sources.json";
+            return MLRest.getDocument(uri, { format: 'json' }).then(function(response) {
+              return response;
+            });
+          }
+        }
       })
       .state('root.view', {
         url: '/detail{uri:path}?q',
