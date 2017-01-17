@@ -1,4 +1,7 @@
 {
-  "rss": ["example1.rss", "example2.rss"],
-  "twitter": ["example1.twitter", "example2.twitter", "example3.twitter"]
+  "rss": [
+    {"link":"http://www.finanzen.net/index/DAX/RSS","encoding":"iso-8859-1"},
+    {"link":"http://www.handelsblatt.com/contentexport/feed/wirtschaft","encoding":"utf-8"}
+  ],
+  "twitter": ["Bankenverband", "ECB", "IIF", "bundesbank"]
 }

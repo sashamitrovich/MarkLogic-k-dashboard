@@ -18,7 +18,7 @@ def load_tweets()
 
   let $num-of-tweets:=200
   let $doc:=doc("/config/twitter-accounts.json")
-  for $name in $doc/name
+  for $name in $doc/twitter
     return tweets:get-status-tweets($name ,$num-of-tweets)
 
     },
@@ -94,7 +94,7 @@ end
     #deploy_packages
     original_deploy_modules
   end
-  
+
   def deploy_packages
     password_prompt
     system %Q!mlpm deploy -u #{ @ml_username } \
@@ -103,7 +103,7 @@ end
                           -P #{ @properties['ml.app-port'] }!
     change_permissions(@properties["ml.modules-db"])
   end
-  
+
   def deploy_rest
     original_deploy_rest
     change_permissions(@properties["ml.modules-db"])
@@ -131,14 +131,14 @@ end
           else
             (: This is to make sure all triggers, schemas, modules and REST extensions are accessible :)
             cts:uris()
-        let $fixes := 
+        let $fixes :=
           for $uri in $uris
           let $existing-permissions := xdmp:document-get-permissions($uri)
-        
+
           (: Only apply new permissions if really necessary (gives better logging too):)
           where not(ends-with($uri, "/"))
             and count($existing-permissions[fn:string(.) = $new-permissions/fn:string(.)]) ne 3
-        
+
           return (
             "  " || $uri,
             xdmp:document-set-permissions($uri, $new-permissions)

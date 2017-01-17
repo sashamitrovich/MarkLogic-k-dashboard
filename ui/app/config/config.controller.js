@@ -29,14 +29,28 @@
     });
 
     function addRssItem() {
-      console.log('in the list:'+ ctrl.sources.rss.indexOf(ctrl.addMe));
-      ctrl.errortext = "";
-      if (!ctrl.addMe) {return;}
-      console.log('not empty!')
-      if (ctrl.sources.rss.indexOf(ctrl.addMe) == -1) {
-        ctrl.sources.rss.push(ctrl.addMe);
+      if (!ctrl.addMeRss) {ctrl.errortextRss = "Can't add an empty element!"; return;}
+      console.log('entry not empty!')
+
+      var rss={};
+      rss.link=ctrl.addMeRss;
+      if (ctrl.addMeEncoding) {
+        rss.encoding=ctrl.addMeEncoding;
+      }
+      else
+      {
+        rss.encoding="utf-8";
+      }
+
+      ctrl.errortextRss = "";
+      var pos=ctrl.sources.rss.map(function(e) { return e.link; }).indexOf(rss.link)
+      //console.log("pos=", pos);
+
+      if (pos == -1) {
+        ctrl.sources.rss.push(rss);
+        console.log(ctrl.sources)
       } else {
-        ctrl.errortext = "Can't add twice!";
+        ctrl.errortextRss = "Can't add twice!";
       }
     }
 
@@ -48,12 +62,12 @@
     function addTwitterItem() {
       console.log('in the list:'+ ctrl.sources.twitter.indexOf(ctrl.addMe));
       ctrl.errortext = "";
-      if (!ctrl.addMe) {return;}
+      if (!ctrl.addMeTwitter) {ctrl.errortextTwitter= "Can't add an empty element!";return;}
       console.log('not empty!')
-      if (ctrl.sources.twitter.indexOf(ctrl.addMe) == -1) {
-        ctrl.sources.twitter.push(ctrl.addMe);
+      if (ctrl.sources.twitter.indexOf(ctrl.addMeTwitter) == -1) {
+        ctrl.sources.twitter.push(ctrl.addMeTwitter);
       } else {
-        ctrl.errortext = "Can't add twice!";
+        ctrl.errortextTwitter = "Can't add twice!";
       }
     }
 
