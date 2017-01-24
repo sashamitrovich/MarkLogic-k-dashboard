@@ -16,7 +16,7 @@ let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
 let $response:=twitter:api("GET","https://api.twitter.com/1.1/statuses/user_timeline.json",$screen-name, $num-of-tweets)
 let $picture:="[Fn] [MNn] [D01] [H01]:[m01]:[s01] [Z] [Y]"
 let $tweets:=$response/array-node()/object-node()
-
+let $log:=xdmp:log(fn:concat("ingesting tweets from ",$screen-name))
 for $tweet in $tweets
   let $uri:=fn:concat("/twitter/",$screen-name,"/",$tweet/id_str,".json")
   let $title:=$tweet/text
