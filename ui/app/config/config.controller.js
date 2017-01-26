@@ -22,11 +22,26 @@
       removeRssItem: removeRssItem,
       addTwitterItem: addTwitterItem,
       removeTwitterItem: removeTwitterItem,
+      updateSources: updateSources,
       submit: submit,
       addTag: addTag,
       removeTag: removeTag,
       sources: doc.data // {rss: ["1","2"], twitter:["t1","t2","t3"]}
     });
+
+    function updateSources() {
+      mlRest.updateDocument(ctrl.sources, {
+        format: 'json',
+        uri: '/config/sources.json'
+        // TODO: add read/update permissions here like this:
+        // 'perm:sample-role': 'read',
+        // 'perm:sample-role': 'update'
+      }).then(function(response) {
+        //toast.success('Record updated.');
+        //$state.go('root.view', { uri: response.replace(/(.*\?uri=)/, '') });
+        $state.go($state.current, {}, {reload: true});
+      });
+    }
 
     function addRssItem() {
       if (!ctrl.addMeRss) {ctrl.errortextRss = "Can't add an empty element!"; return;}
@@ -48,6 +63,7 @@
 
       if (pos == -1) {
         ctrl.sources.rss.push(rss);
+
         console.log(ctrl.sources)
       } else {
         ctrl.errortextRss = "Can't add twice!";

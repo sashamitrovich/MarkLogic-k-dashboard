@@ -24,6 +24,17 @@
         <profile-allow>true</profile-allow>
         <scheduled-tasks>
           <scheduled-task>
+            <task-path>/tasks/rss-task.xqy</task-path>
+            <task-root>/</task-root>
+            <task-type>hourly</task-type>
+            <task-period>1</task-period>
+            <task-minute>52</task-minute>
+            <task-database name="${content-db}"/>
+            <task-modules name="${app-modules-db}"/>
+            <task-user name="${app-name}-user"/>
+          </scheduled-task>
+          <!--
+          <scheduled-task>
             <task-path>/tasks/finanzen-task.xqy</task-path>
             <task-root>/</task-root>
              <task-type>hourly</task-type>
@@ -43,6 +54,7 @@
             <task-modules name="${app-modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
+          -->
           <scheduled-task>
             <task-path>/tasks/twitter-task.xqy</task-path>
             <task-root>/</task-root>

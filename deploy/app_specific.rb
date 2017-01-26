@@ -28,6 +28,23 @@ def load_tweets()
   logger.info r.body
 end
 
+def load_rss()
+  r = execute_query(%Q{
+    xquery version "1.0-ml";
+    import module namespace rss = "http://marklogic.com/rss" at "/lib/rss.xqy";
+
+    let $sources:=doc("/config/sources.json")
+    for $rss-source in $sources/rss
+      return ($rss-source, rss:fetch($rss-source/link, $rss-source/encoding))
+
+    },
+                    { :app_name => @properties['ml.app-name'] }
+  )
+  r.body = parse_json r.body
+  logger.info r.body
+end
+
+
 def load_hb()
   r = execute_query(%Q{
     import module namespace hb = "http://marklogic.com/rss/hb" at "/lib/hb.xqy";

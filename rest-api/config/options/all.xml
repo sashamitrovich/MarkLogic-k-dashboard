@@ -181,11 +181,11 @@
   -->
   <extract-document-data selected="include">
 
-    <extract-path>/item/source/title</extract-path>
-    <extract-path>/item/source/link</extract-path>
-    <extract-path>/item/source/category</extract-path>
-    <extract-path>/item/source/description</extract-path>
-    <extract-path>/item/source/enclosure/@url</extract-path>
+    <extract-path>/item/original/title</extract-path>
+    <extract-path>/item/original/link</extract-path>
+    <extract-path>/item/original/category</extract-path>
+    <extract-path>/item/original/description</extract-path>
+    <extract-path>/item/original/enclosure/@url</extract-path>
 
     <extract-path>/stock/Symbol</extract-path>
     <extract-path>/stock/type</extract-path>
