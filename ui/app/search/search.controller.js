@@ -2,8 +2,14 @@
 (function () {
   'use strict';
 
-  angular.module('app.search')
+  var search = angular.module('app.search')
     .controller('SearchCtrl', SearchCtrl);
+ 
+  search.filter('removeHTMLTags', function() {
+    return function(text) {
+      return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    };
+  });
 
   SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory', '$sce', 'MLRest', '$uibModal'];
 

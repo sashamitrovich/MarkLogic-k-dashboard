@@ -14,7 +14,7 @@
 <div class="matches" ng-show="!result.showMatch">
   <div class="match">
     <!--<span>{{ result.extracted.elements.description }}</span>-->
-    <span ng-bind-html="result.extracted.elements.description | linky:'_blank'"></span>
+    <span ng-bind-html="result.extracted.elements.description | removeHTMLTags"></span>
   </div>
 </div>
 <div style="float:right">
