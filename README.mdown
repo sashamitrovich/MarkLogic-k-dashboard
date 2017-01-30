@@ -97,4 +97,8 @@ For new Twitter sources, add a new Twitter screen name.
 
 Click on "Save" button when done to update the configuration file ("/config/sources.json" in the main/document dB)
 
+New sources will be ingested at the next scheduled task run. If you want to ingest data from newly added sources immediatelly, run:
 
+./import-data.sh
+
+from the command line.
