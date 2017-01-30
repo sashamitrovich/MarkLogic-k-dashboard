@@ -92,7 +92,9 @@ Tasks defined in src/tasks take care of perioducally updated data from these dat
 
 # Adding new data sources
 
-To add new rss data sources, take a look at files /src/lib/finanzen.xqy and /src/lib/hb.xqy and crate similar modules that import rss xml feeds. There might be slight difference between them, for instance they might be using different character encodings or missing some of the expected fields.
+To add new data sources, go to config page (/config). When adding an RSS source, make sure you add the correct encoding.
+For new Twitter sources, add a new Twitter screen name.
 
-To add or change twitter accounts you want to follow, edit the file src/tasks/twitter-task.xqy for periodical updates. Also don't forget to change the same list in deploy/app_specific.rb, method load_tweets for one-time manual updates.
+Click on "Save" button when done to update the configuration file ("/config/sources.json" in the main/document dB)
+
 

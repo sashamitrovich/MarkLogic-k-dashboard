@@ -14,12 +14,12 @@
 <div class="matches" ng-show="!result.showMatch">
   <div class="match">
     <!--<span>{{ result.extracted.elements.description }}</span>-->
-    <span ng-bind-html="result.extracted.elements.description | removeHTMLTags"></span>
+    <span ng-bind-html="result.extracted.elements.description"></span>
   </div>
 </div>
 <div style="float:right">
-  <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
-  <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+<span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
+<span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
 </div>
 <hr>
 </span>
@@ -27,12 +27,12 @@
 <!-- else show stock -->
 <span ng-show="result.extracted.elements.type=='stock'">
   <span>{{result.extracted.elements.Name}}</span>
-  <span class='stock-symbol'>(DAX:{{result.extracted.elements.Symbol}})</span>
-  <div>
-    <span class="stock-close">{{result.extracted.elements.Close}}</span>
-    <span ng-class="{'stock-change-negative':result.isNegativeChange,'stock-change-positive':!result.isNegativeChange}">({{result.extracted.elements.Change}})</span>
-  </div>
-  <div class="stock-date">Date: {{result.extracted.elements.Date | date:'mediumDate'}}</div>
+<span class='stock-symbol'>(DAX:{{result.extracted.elements.Symbol}})</span>
+<div>
+  <span class="stock-close">{{result.extracted.elements.Close}}</span>
+  <span ng-class="{'stock-change-negative':result.isNegativeChange,'stock-change-positive':!result.isNegativeChange}">({{result.extracted.elements.Change}})</span>
+</div>
+<div class="stock-date">Date: {{result.extracted.elements.Date | date:'mediumDate'}}</div>
 <hr>
 </span>
 
@@ -40,12 +40,12 @@
 <span ng-show="result.extracted.elements.type=='tweet'">
       <span>
         <a href="{{result.extracted.elements.link}}" target="_blank"> <i class="fa fa-fw fa-twitter" style="color:#00aced"/></a>
-      </span>
+</span>
 
 <span ng-bind-html="result.extracted.elements.title | linky:'_blank'"></span>
 <div style="float:right">
-  <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
-  <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+<span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
+<span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
 </div>
 <hr>
 </span>
@@ -53,19 +53,19 @@
 <span ng-show="result.extracted.elements.type=='pdf'">
   <h4>
     <i class="fa fa-file-pdf-o" style="margin-right:10px; color:red"></i><a ui-sref="root.view({uri: result.uri, q: ctrl.qtext})">{{result.getNiceTitle()}}</a>
-  </h4>
-  <div class="matches">
-    <div class="match" ng-repeat="match in result.matches">
-      <em ng-repeat="text in match['match-text'] track by $index">
+</h4>
+<div class="matches">
+  <div class="match" ng-repeat="match in result.matches">
+    <em ng-repeat="text in match['match-text'] track by $index">
         <span ng-class="{ highlight: !!text.highlight }">{{ text.highlight || text }}</span>
       </em>
-    </div>
-    <div style="float:right">
-      <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
-      <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
-    </div>
   </div>
-  <hr>
+  <div style="float:right">
+<span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
+<span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+</div>
+</div>
+<hr>
 </span>
 
 </div>

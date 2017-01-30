@@ -10,3 +10,4 @@ coverage
 .tmp/
 deploy/local.properties
 *.iml
+.vscode/
