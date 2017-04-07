@@ -72,7 +72,7 @@ describe ServerConfig do
           :logger => @logger
         })
       r = @s.execute_query %Q{xdmp:host-name(xdmp:host())}
-      r.body = parse_json(r.body)
+      r.body = parse_body(r.body)
       @properties['ml.bootstrap-host'] = r.body
 
       @s.bootstrap.must_equal true
@@ -139,55 +139,52 @@ describe ServerConfig do
     end
   end
 
-  describe "test_credentials" do
+  describe "test_ml_server_missing" do
 
     before do
       ARGV << "local"
+    end
 
-      test_env = "blah"
+    it "should raise exception about missing ml.server definition" do
+      test_env = "doesnotexist"
       properties = ServerConfig.properties
 
       properties["environment"] = test_env
       properties["ml.environment"] = test_env
 
-      @s = ServerConfig.new({
-        :config_file => File.expand_path(properties["ml.config.file"], __FILE__),
-        :properties => properties,
-        :logger => Logger.new(STDOUT)
-      })
-
-      filename = "#{test_env}.properties"
-      path = ServerConfig.path
-      @properties_file = ServerConfig.expand_path("#{path}/#{filename}")
-    end
-
-    it "should prompt the user for credentials" do
-      File.exists?(@properties_file).must_equal false
-
-      with_stdin do |user|
-        user.puts "bob"
-        user.puts "smith"
-        @s.credentials
+      assert_raises RuntimeError do
+        ServerConfig.new({
+          :config_file => File.expand_path(properties["ml.config.file"], __FILE__),
+          :properties => properties,
+          :logger => Logger.new(STDOUT)
+        })
       end
-
-      File.exists?(@properties_file).must_equal true
-
-      props_data = File.read(@properties_file)
-
-      user = $1 if props_data =~ /user=(\w+)/
-      password = $1 if props_data =~ /password=(\w+)/
-
-      user.must_equal 'bob'
-      password.must_equal 'smith'
     end
 
     after do
-      File.delete(@properties_file)
       @s = nil
     end
 
   end
 
+  # issue #591
+  describe "override properties from command" do
+
+    before do
+      ARGV << "--ml.dummy-port=8888"
+      @properties = ServerConfig.properties(File.expand_path("../data/ml7-properties/", __FILE__))
+    end
+
+    it "should load valid properites from a command" do
+      @properties['ml.dummy-port'].must_equal '8888'
+      @properties['ml.dummy2-port'].must_equal '8888'
+    end
+
+    after do
+      ARGV.shift
+      ARGV.shift
+    end
+  end
 
   def with_stdin
     stdin = $stdin             # remember $stdin

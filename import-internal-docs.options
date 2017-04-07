@@ -18,3 +18,12 @@ kpmg-dashboard-role,read,kpmg-dashboard-role,update
 -transform_namespace
 "http://marklogic.com/demo"
 
+-thread_count 
+1 
+
+-transaction_size 
+1 
+
+-batch_size 
+1
+

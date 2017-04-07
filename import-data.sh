@@ -1,5 +1,5 @@
 #!/bin/bash
+./import-config.sh
 ./import-stock-prices.sh
 ./import-status-tweets.sh
-./import-finanzen-rss.sh
-./import-handelsblatt-rss.sh
+./import-rss.sh

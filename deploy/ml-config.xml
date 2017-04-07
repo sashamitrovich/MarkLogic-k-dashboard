@@ -30,7 +30,7 @@
             <task-period>1</task-period>
             <task-minute>52</task-minute>
             <task-database name="${content-db}"/>
-            <task-modules name="${app-modules-db}"/>
+            <task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
           <!--
@@ -41,7 +41,7 @@
             <task-period>2</task-period>
             <task-minute>15</task-minute>
             <task-database name="${content-db}"/>
-            <task-modules name="${app-modules-db}"/>
+            <task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
           <scheduled-task>
@@ -51,7 +51,7 @@
             <task-period>2</task-period>
             <task-minute>15</task-minute>
             <task-database name="${content-db}"/>
-            <task-modules name="${app-modules-db}"/>
+            <task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
           -->
@@ -62,7 +62,7 @@
             <task-period>2</task-period>
             <task-minute>30</task-minute>
             <task-database name="${content-db}"/>
-            <task-modules name="${app-modules-db}"/>
+            <task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
            <scheduled-task>
@@ -72,7 +72,7 @@
             <task-period>1</task-period>
             <task-start-time>13:00:00-05:00</task-start-time>
             <task-database name="${content-db}"/>
-            <task-modules name="${app-modules-db}"/>
+            <task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
           <!--
@@ -83,7 +83,7 @@
             <task-period>2</task-period>
             <task-start-time>13:00:00-05:00</task-start-time>
             <task-database name="${content-db}"/>
-            <task-modules name="${app-modules-db}"/>
+            <task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
 
@@ -94,7 +94,7 @@
             <task-period>2</task-period>
             <task-minute>15</task-minute>
             <task-database name="${content-db}"/>
-            <task-modules name="${app-modules-db}"/>
+            <task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
 
@@ -103,11 +103,11 @@
             <task-root>/</task-root>
             <task-type>minutely</task-type>
             <task-period>3</task-period>
-            <task-database name="${content-db}"/><task-modules name="${app-modules-db}"/>
+            <task-database name="${content-db}"/><task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
 
-            <scheduled-task><task-path>/some/monthly-task.xqy</task-path><task-root>/</task-root><task-type>monthly</task-type><task-period>1</task-period><task-month-day>15</task-month-day><task-start-time>13:00:00-05:00</task-start-time><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/once-task.xqy</task-path><task-root>/</task-root><task-type>once</task-type><task-period>1</task-period><task-start>2019-01-01T13:00:00-05:00</task-start><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/weekly-task.xqy</task-path><task-root>/</task-root><task-type>weekly</task-type><task-period>1</task-period><task-days><task-day>monday</task-day><task-day>wednesday</task-day><task-day>friday</task-day></task-days><task-start-time>13:00:00-05:00</task-start-time><task-database name="${content-db}"/><task-modules name="${app-modules-db}"/><task-user name="${app-name}-user"/></scheduled-task>
+            <scheduled-task><task-path>/some/monthly-task.xqy</task-path><task-root>/</task-root><task-type>monthly</task-type><task-period>1</task-period><task-month-day>15</task-month-day><task-start-time>13:00:00-05:00</task-start-time><task-database name="${content-db}"/><task-modules name="${modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/once-task.xqy</task-path><task-root>/</task-root><task-type>once</task-type><task-period>1</task-period><task-start>2019-01-01T13:00:00-05:00</task-start><task-database name="${content-db}"/><task-modules name="${modules-db}"/><task-user name="${app-name}-user"/></scheduled-task><scheduled-task><task-path>/some/weekly-task.xqy</task-path><task-root>/</task-root><task-type>weekly</task-type><task-period>1</task-period><task-days><task-day>monday</task-day><task-day>wednesday</task-day><task-day>friday</task-day></task-days><task-start-time>13:00:00-05:00</task-start-time><task-database name="${content-db}"/><task-modules name="${modules-db}"/><task-user name="${app-name}-user"/></scheduled-task>
           -->
         </scheduled-tasks></task-server>      -->
         <http-servers>
@@ -116,7 +116,7 @@
             <http-server-name>${app-name}</http-server-name>
             <port>${app-port}</port>
             <database name="${content-db}"/>
-            <modules name="${app-modules-db}"/>
+            <modules name="${modules-db}"/>
             <root>${modules-root}</root>
             <authentication>${authentication-method}</authentication>
             <default-user name="${default-user}"/>
@@ -187,6 +187,7 @@
         </forests>
         <!-- See sample/default-docs-config.sample.xml for default settings and indexes of Documents database -->
         <uri-lexicon>true</uri-lexicon>
+        <stemmed-searches>decompounding</stemmed-searches>
         <collection-lexicon>true</collection-lexicon>
         <directory-creation>manual</directory-creation>
         <maintain-last-modified>false</maintain-last-modified>
@@ -524,7 +525,7 @@
   Sample amp. See the Understanding and Using Security Guide section 5.2 for
   information about amps.
   http://community.marklogic.com/pubs/5.0/books/security.pdf
-    <amp><namespace>http://marklogic.com/roxy</namespace><local-name>sample</local-name><doc-uri>/app/models/sample.xqy</doc-uri><db-name>${app-modules-db}</db-name><role-name>a-privileged-role</role-name></amp>
+    <amp><namespace>http://marklogic.com/roxy</namespace><local-name>sample</local-name><doc-uri>/app/models/sample.xqy</doc-uri><db-name>${modules-db}</db-name><role-name>a-privileged-role</role-name></amp>
 -->
     </amps>
     <privileges

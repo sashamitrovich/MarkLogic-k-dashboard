@@ -1,6 +1,6 @@
 {
   "ml-version": "8",
-  "ml-host": "m8test-ml1",
+  "ml-host": "ea4-ml1",
   "ml-admin-user": "admin",
   "ml-admin-pass": "admin",
   "ml-app-user": "admin",

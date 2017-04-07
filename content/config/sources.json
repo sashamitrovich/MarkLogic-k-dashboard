@@ -1,0 +1,55 @@
+{
+"rss": [
+{
+"link": "http://www.finanzen.net/index/DAX/RSS", 
+"encoding": "iso-8859-1"
+}
+, 
+{
+"link": "http://www.finanzen.net/rss/news", 
+"encoding": "iso-8859-1"
+}
+, 
+{
+"link": "http://www.finanzen.net/rss/analysen", 
+"encoding": "iso-8859-1"
+}
+, 
+{
+"link": "http://www.finanzen.net/rss/eurams", 
+"encoding": "iso-8859-1"
+}
+, 
+{
+"link": "http://www.finanzen.net/rss/videos", 
+"encoding": "iso-8859-1"
+}
+, 
+{
+"link": "http://www.handelsblatt.com/contentexport/feed/finanzen", 
+"encoding": "utf-8"
+}
+, 
+{
+"link": "http://www.faz.net/rss/aktuell/wirtschaft/", 
+"encoding": "utf-8"
+}
+, 
+{
+"link": "http://rss.sueddeutsche.de/rss/Wirtschaft", 
+"encoding": "utf-8"
+}
+, 
+{
+"link": "http://rss.sueddeutsche.de/rss/Geld", 
+"encoding": "utf-8"
+}
+]
+, 
+"twitter": [
+"Bankenverband", 
+"ECB", 
+"IIF", 
+"bundesbank"
+]
+}

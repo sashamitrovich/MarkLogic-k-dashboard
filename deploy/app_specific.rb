@@ -208,9 +208,52 @@ end
   #   # This method is static and thus cannot access private variables
   #   # but it can be called without an environment
   # end
+  def execute_query_8(query, properties = {})
+    if properties[:app_name] != nil && properties[:app_name] != @properties["ml.app-name"]
+      raise ExitException.new("Executing queries with an app_name (currently) not supported with ML8+")
+    end
+
+    headers = {
+      "Content-Type" => "application/x-www-form-urlencoded"
+    }
+
+    params = {
+      :locale => LOCALE,
+      :tzoffset => "-18000"
+    }
+
+    port = @qconsole_port
+    if properties[:app_name] != nil
+      params[:xquery] = %Q{
+        xquery version "1.0-ml";
+        let $query := <query><![CDATA[#{query}]]></query>
+        return xdmp:eval(
+          string($query),
+          (),
+          <options xmlns="xdmp:eval">
+            <database>{xdmp:database("#{@properties["ml.content-db"]}")}</database>
+            <modules>{xdmp:database("#{@properties["ml.modules-db"]}")}</modules>
+          </options>
+        )
+      }
+    else
+      params[:xquery] = query
+    end
+    if properties[:db_name] != nil
+      params[:database] = properties[:db_name]
+    end
+
+    r = go "#{@protocol}://#{@hostname}:#{port}/v1/eval", "post", headers, params
+
+    raise ExitException.new(JSON.pretty_generate(JSON.parse(r.body))) if r.body.match(/\{"error"/)
+
+    r
+  end
+
+
 end
 
-#
+ #
 # Uncomment, and adjust below code to get help about your app_specific
 # commands included into Roxy help. (ml -h)
 #
