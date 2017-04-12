@@ -67,7 +67,8 @@ declare function stock:fetch-prices () {
               }
           }
           let $newUri:=fn:concat($newDoc//Symbol)
-          let $diff:= round-half-to-even(($newDoc//Close)[1]-($newDoc//Close)[8],2)
+
+          let $diff:=  if(($newDoc//Close)[8]) then(round-half-to-even(($newDoc//Close)[1]-($newDoc//Close)[8],2)) else (0)  
           let $week-change-percent:=round-half-to-even(($diff * 100) div ($newDoc//Close)[1], 2)
           let $week-change-percent-element:=element week-change-percent {$week-change-percent}
           let $week-change:=element week-change { $diff }
