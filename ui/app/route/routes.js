@@ -92,6 +92,11 @@
         templateUrl: 'app/config/config.html',
         controller: 'ConfigCtrl',
         controllerAs: 'ctrl',
+        navLabel: {
+          text: 'Config',
+          area: 'dashboard',
+          navClass: 'fa-gear'
+        },
         resolve: {
           doc: function(MLRest) {
             var uri="/config/sources.json";

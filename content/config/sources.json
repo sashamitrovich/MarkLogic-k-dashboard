@@ -6,11 +6,6 @@
 }
 , 
 {
-"link": "http://www.finanzen.net/rss/news", 
-"encoding": "iso-8859-1"
-}
-, 
-{
 "link": "http://www.finanzen.net/rss/analysen", 
 "encoding": "iso-8859-1"
 }
