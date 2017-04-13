@@ -9,6 +9,7 @@ coverage
 *.sublime-workspace
 .tmp/
 deploy/local.properties
+deploy/dev.properties
 *.iml
 .vscode/
 ui/fonts

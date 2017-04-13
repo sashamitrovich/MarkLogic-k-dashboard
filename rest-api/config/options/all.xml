@@ -190,6 +190,7 @@
     <extract-path>/stock/Symbol</extract-path>
     <extract-path>/stock/type</extract-path>
     <extract-path>/stock/Name</extract-path>
+    <extract-path>/stock/Description</extract-path>
     <extract-path>/stock/source</extract-path>
     <extract-path>/stock/price-latest/Date</extract-path>
     <extract-path>/stock/price-latest/Close</extract-path>
