@@ -141,12 +141,19 @@ Tasks defined in src/tasks take care of perioducally updated data from these dat
 
 # Adding new data sources
 
-To add new data sources, go to config page (/config). When adding an RSS source, make sure you add the correct encoding.
+To add new data sources, go to config page (/config):
+
+![](https://cloud.githubusercontent.com/assets/15609655/25166567/4d7ac7ea-24dc-11e7-869d-4d5c7bd48f3e.png)
+
+![](https://cloud.githubusercontent.com/assets/15609655/25166573/52d32494-24dc-11e7-9d5c-340a30a40678.png)
+
+
+ When adding an RSS source, make sure you add the correct encoding.
 For new Twitter sources, add a new Twitter screen name.
 
-Click on "Save" button when done to update the configuration file ("/config/sources.json" in the main/document dB)
+Don't forget to click on the "Save" button when done to update the configuration file ("/config/sources.json" in the main/document dB). Otherwise, the changes will not be saved.
 
-New sources will be ingested at the next scheduled task run. If you want to ingest data from newly added sources immediatelly, run:
+New sources will be ingested at the next scheduled task runs. If you want to ingest data from newly added sources immediatelly, run:
 
     ./import-data.sh
 
