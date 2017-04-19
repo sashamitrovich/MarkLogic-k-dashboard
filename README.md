@@ -88,11 +88,7 @@ load-js-as-binary=false
 
     ./ml local bootstrap
     ./ml local deploy modules
-
-On Windows, that would be:
-
-    ml.bat local bootstrap
-    ml.bat local deploy modules
+    ./import-config.sh
 
 Install additional dependencies using the bower package manager:
 
@@ -135,7 +131,7 @@ To do a initial insert of data or a one-time, manual update, run
 
 This script will call other scripts that update data per data source.
 
-Data used in this demo include RSS feeds from 2 sources (finanzen.net and handelsblatt), Twitter status updates from 4 sources (@Bankenverband, @ECB, @IIF, @bundesbank) and prices of stock listed in the Frankfurt stock market's DAX index.
+Data used in this demo include several RSS feeds and Twitter status update and prices of 160 stock listed in the Frankfurt Stock Exchange available on Quandl.com.
 
 Tasks defined in src/tasks take care of perioducally updated data from these data sources so the amaount of data in the database will grow over time.
 
