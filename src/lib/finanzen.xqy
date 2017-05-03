@@ -11,8 +11,8 @@ let $options:=
 let $response:= xdmp:http-get($request,$options)
 let $pubDate:= current-dateTime()
 let $source_name:="Finanzen.net"
-let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
-        xdmp:permission("kpmg-dashboard-role", "update"))
+let $permissions:=(xdmp:permission("k-dashboard-role", "read"),
+        xdmp:permission("k-dashboard-role", "update"))
 for $item in $response[2]//item
   return
 (:     let $last-part := fn:tokenize($item/*:guid, "/")[last()] :)

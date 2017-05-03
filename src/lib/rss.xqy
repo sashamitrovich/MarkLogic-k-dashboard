@@ -12,8 +12,8 @@ declare function rss:fetch($request as xs:string, $encoding as xs:string) {
   let $pubDate:= current-dateTime()
   let $picture:="[Fn], [D01] [MNn] [Y] [H01]:[m01]:[s01] [Z]"
   let $source_name:=fn:tokenize(fn:tokenize(fn:tokenize($request, "//")[2],"/")[1],"\.")[2]
-  let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
-        xdmp:permission("kpmg-dashboard-role", "update"))
+  let $permissions:=(xdmp:permission("k-dashboard-role", "read"),
+        xdmp:permission("k-dashboard-role", "update"))
   for $item in $response[2]//item
     return
       let $last-part := fn:tokenize($item/guid, "/")[last()]

@@ -28,8 +28,8 @@ declare function demo:transform(
   let $pubDate:=$date
   let $log:=xdmp:log($pubDate)
 
-  let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
-        xdmp:permission("kpmg-dashboard-role", "update"))
+  let $permissions:=(xdmp:permission("k-dashboard-role", "read"),
+        xdmp:permission("k-dashboard-role", "update"))
 
   let $text:= $filter//html:body/html:p
 

@@ -36,8 +36,8 @@ declare function stock:get-week-looser () {
 
 declare function stock:fetch-prices () {
 
-    let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
-        xdmp:permission("kpmg-dashboard-role", "update"))
+    let $permissions:=(xdmp:permission("k-dashboard-role", "read"),
+        xdmp:permission("k-dashboard-role", "update"))
     let $docs:= fn:collection("code")
     let $options:=<options xmlns="xdmp:http">
        <verify-cert>false</verify-cert>

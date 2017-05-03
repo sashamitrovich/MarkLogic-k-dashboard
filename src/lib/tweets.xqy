@@ -11,8 +11,8 @@ declare function tweets:get-status-tweets(
 )
 {
 
-let $permissions:=(xdmp:permission("kpmg-dashboard-role", "read"),
-        xdmp:permission("kpmg-dashboard-role", "update"))
+let $permissions:=(xdmp:permission("k-dashboard-role", "read"),
+        xdmp:permission("k-dashboard-role", "update"))
 let $response:=twitter:api("GET","https://api.twitter.com/1.1/statuses/user_timeline.json",$screen-name, $num-of-tweets)
 let $picture:="[Fn] [MNn] [D01] [H01]:[m01]:[s01] [Z] [Y]"
 let $tweets:=$response/array-node()/object-node()

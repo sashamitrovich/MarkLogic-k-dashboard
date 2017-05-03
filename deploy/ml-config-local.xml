@@ -741,7 +741,7 @@
       <collections/>
       <external-names/>
       <password/>
-      <role-names><role-name>kpmg-dashboard-role</role-name></role-names>
+      <role-names><role-name>k-dashboard-role</role-name></role-names>
       <permissions/>
     </user><user xml:lang="zxx">
       <user-name>healthcheck</user-name>
@@ -2746,7 +2746,7 @@
 	  <kind>execute</kind>
 	</privilege></privileges>
     </role><role xml:lang="zxx">
-      <role-name>kpmg-dashboard-role</role-name>
+      <role-name>k-dashboard-role</role-name>
       <description>A role for users of the kpmg-dashboard application</description>
       <collections/>
       <external-names/>
@@ -2754,19 +2754,19 @@
       <permissions>
 	<permission>
 	  <capability>read</capability>
-	  <role-name>kpmg-dashboard-role</role-name>
+	  <role-name>k-dashboard-role</role-name>
 	</permission>
 	<permission>
 	  <capability>insert</capability>
-	  <role-name>kpmg-dashboard-role</role-name>
+	  <role-name>k-dashboard-role</role-name>
 	</permission>
 	<permission>
 	  <capability>update</capability>
-	  <role-name>kpmg-dashboard-role</role-name>
+	  <role-name>k-dashboard-role</role-name>
 	</permission>
 	<permission>
 	  <capability>execute</capability>
-	  <role-name>kpmg-dashboard-role</role-name>
+	  <role-name>k-dashboard-role</role-name>
 	</permission>
       </permissions>
       <privileges><privilege xml:lang="zxx">

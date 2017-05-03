@@ -9,7 +9,7 @@ sample-data.zip
 data,data/people
 
 -output_permissions
-kpmg-dashboard-role,read,kpmg-dashboard-role,update
+k-dashboard-role,read,k-dashboard-role,update
 
 -output_uri_replace
 ".*\.zip,''"
