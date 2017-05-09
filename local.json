@@ -1,0 +1,8 @@
+{
+  "ml-version": 9,
+  "ml-host": "ea4-ml1",
+  "ml-admin-pass": "admin",
+  "ml-app-pass": "admin",
+  "ml-http-port": "9101",
+  "node-port": "9070"
+}

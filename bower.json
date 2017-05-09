@@ -28,7 +28,8 @@
     "d3-cloud-ng": "^0.9.5",
     "ml-highcharts-ng": "^0.0.10",
     "highcharts-ng": "^0.0.12",
-    "view-file-ng": "^0.1.0"
+    "view-file-ng": "^0.1.0",
+    "ml-uploader": "^0.0.6"
   },
   "overrides": {
     "angular-highlightjs": {

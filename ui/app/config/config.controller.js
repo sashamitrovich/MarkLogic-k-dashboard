@@ -9,8 +9,19 @@
   function ConfigCtrl(doc, $scope, mlRest, $state) {
     var ctrl = this;
 
-    console.log("doc=", doc.data);
+    //console.log("doc=", doc.data);
 
+    // uploader config
+    ctrl.fileList = [];
+
+    ctrl.uploadOptions = {
+      'trans:tags': ['tag1', 'tag2'],
+      // uriPrefix 
+      'uriPrefix': function(file) {
+        var extenstion = file.name.replace('^.*\.([^\.]+)$');
+        return '/my-upload-location/' + extenstion + '/';
+      } 
+    };
 
     angular.extend(ctrl, {
       products: ['Milk', 'Bread','Cheese']

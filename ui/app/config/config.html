@@ -1,61 +1,77 @@
-<div class="row detail" >
+<div class="row detail">
   <div class="col-md-5">
 
-      <uib-tabset active="active" style="background-color: white">
-        <uib-tab index="0" heading="RSS Sources">
+    <uib-tabset active="active" style="background-color: white">
+      <uib-tab index="0" heading="RSS Sources">
 
-          <div class="row">
-            <div class="col-sm-9">
-                <strong>RSS Link</strong>
+        <div class="row">
+          <div class="col-sm-9">
+            <strong>RSS Link</strong>
 
-            </div>
-            <div class="col-sm-2">
-                <strong>Encoding</strong>
-            </div>
           </div>
-          <div class="row" ng-repeat="x in ctrl.sources.rss">
-            <div class="col-sm-9">
-              {{x.link}}
-            </div>
-            <div class="col-sm-2">
-              {{x.encoding}}
-            </div>
-            <div class="col-sm-1">
-              <i ng-click="ctrl.removeRssItem($index)" class="fa fa-fw fa-trash"></i>
-            </div>
+          <div class="col-sm-2">
+            <strong>Encoding</strong>
           </div>
-
-          <input placeholder="http://www.finanzen.net/index/DAX/RSS" ng-model="ctrl.addMeRss" size="45">
-          <input placeholder="iso-8859-1" ng-model="ctrl.addMeEncoding" size="15">
-          <button ng-click="ctrl.addRssItem()" class="btn btn-primary">Add</button>
-
-          <div>{{ctrl.errortextRss}}</div>
-        </uib-tab>
-
-        <uib-tab index="1" heading="Twitter Sources">
-          <div class="row">
-            <div class="col-sm-12">
-              <strong>Twitter screen name</strong>
-            </div>
+        </div>
+        <div class="row" ng-repeat="x in ctrl.sources.rss">
+          <div class="col-sm-9">
+            {{x.link}}
           </div>
+          <div class="col-sm-2">
+            {{x.encoding}}
+          </div>
+          <div class="col-sm-1">
+            <i ng-click="ctrl.removeRssItem($index)" class="fa fa-fw fa-trash"></i>
+          </div>
+        </div>
 
-          <div class="row" ng-repeat="x in ctrl.sources.twitter">
-            <div class="col-sm-11">
-              {{x}}
-            </div>
+        <input placeholder="http://www.finanzen.net/index/DAX/RSS" ng-model="ctrl.addMeRss" size="45">
+        <input placeholder="iso-8859-1" ng-model="ctrl.addMeEncoding" size="15">
+        <button ng-click="ctrl.addRssItem()" class="btn btn-primary">Add</button>
 
-            <div class="col-sm-1">
-              <i ng-click="ctrl.removeTwitterItem($index)" class="fa fa-fw fa-trash"></i>
-            </div>
+        <div>{{ctrl.errortextRss}}</div>
+      </uib-tab>
+
+      <uib-tab index="1" heading="Twitter Sources">
+        <div class="row">
+          <div class="col-sm-12">
+            <strong>Twitter screen name</strong>
+          </div>
+        </div>
+
+        <div class="row" ng-repeat="x in ctrl.sources.twitter">
+          <div class="col-sm-11">
+            {{x}}
           </div>
 
+          <div class="col-sm-1">
+            <i ng-click="ctrl.removeTwitterItem($index)" class="fa fa-fw fa-trash"></i>
+          </div>
+        </div>
 
-          <input placeholder="Add Twitter screen name here" ng-model="ctrl.addMeTwitter" size="45">
-          <button ng-click="ctrl.addTwitterItem()" class="btn btn-primary">Add</button>
 
-          <div>{{ctrl.errortextTwitter}}</div>
-        </uib-tab>
-      </uib-tabset>
-      <button ng-click="ctrl.updateSources()" class="btn btn-primary">Save</button>
+        <input placeholder="Add Twitter screen name here" ng-model="ctrl.addMeTwitter" size="45">
+        <button ng-click="ctrl.addTwitterItem()" class="btn btn-primary">Add</button>
+
+        <div>{{ctrl.errortextTwitter}}</div>
+      </uib-tab>
+    </uib-tabset>
+    <button ng-click="ctrl.updateSources()" class="btn btn-primary">Save</button>
+
+    <!--
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Upload files
+      </div>
+      <div class="panel-body">
+        <ml-upload multiple="true" ml-collection="my-collection" ml-transform="'filter-doc'" upload-options="ctrl.uploadOptions"
+          upload-file-list="ctrl.fileList">
+          <p><strong>Drop files here or click to select files.</strong></p>
+          <em>(Files will be uploaded automatically)</em>
+        </ml-upload>
+      </div>
+    </div>
+    -->
+
   </div>
 </div>

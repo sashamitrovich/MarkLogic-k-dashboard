@@ -13,5 +13,4 @@ deploy/dev.properties
 *.iml
 .vscode/
 ui/fonts
-local.json
 local.ecosystem.json
