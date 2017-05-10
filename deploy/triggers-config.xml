@@ -15,7 +15,7 @@
     <trgr:module>
       <trgr:database>${modules-db}</trgr:database>
       <trgr:root>/triggers/</trgr:root>
-      <trgr:path>log-create.xqy</trgr:path>
+      <trgr:path>cpdf.xqy</trgr:path>
     </trgr:module>
     <trgr:enabled>true</trgr:enabled>
     <trgr:permissions>

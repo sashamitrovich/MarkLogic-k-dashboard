@@ -37,3 +37,11 @@ let $lines:=fn:tokenize($doc,"\n")
     }
     </stock-price>
 };
+
+declare function util:filter-pdf(
+  $uri as xs:string
+
+) as node()*
+{
+  
+}
