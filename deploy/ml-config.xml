@@ -33,28 +33,6 @@
             <task-modules name="${modules-db}"/>
             <task-user name="${app-name}-user"/>
           </scheduled-task>
-          <!--
-          <scheduled-task>
-            <task-path>/tasks/finanzen-task.xqy</task-path>
-            <task-root>/</task-root>
-             <task-type>hourly</task-type>
-            <task-period>2</task-period>
-            <task-minute>15</task-minute>
-            <task-database name="${content-db}"/>
-            <task-modules name="${modules-db}"/>
-            <task-user name="${app-name}-user"/>
-          </scheduled-task>
-          <scheduled-task>
-            <task-path>/tasks/handelsblatt-task.xqy</task-path>
-            <task-root>/</task-root>
-            <task-type>hourly</task-type>
-            <task-period>2</task-period>
-            <task-minute>15</task-minute>
-            <task-database name="${content-db}"/>
-            <task-modules name="${modules-db}"/>
-            <task-user name="${app-name}-user"/>
-          </scheduled-task>
-          -->
           <scheduled-task>
             <task-path>/tasks/twitter-task.xqy</task-path>
             <task-root>/</task-root>
