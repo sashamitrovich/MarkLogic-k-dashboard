@@ -18,8 +18,8 @@
       'trans:tags': ['tag1', 'tag2'],
       // uriPrefix 
       'uriPrefix': function(file) {
-        var extenstion = file.name.replace('^.*\.([^\.]+)$');
-        return '/my-upload-location/' + extenstion + '/';
+        var extension = file.name.replace('^.*\.([^\.]+)$');
+        return '/internal/dropped/' + extension + '/';
       } 
     };
 

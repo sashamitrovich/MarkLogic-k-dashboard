@@ -4,7 +4,7 @@
     <trgr:description>Trigger to enrich XML ingested via MLCP</trgr:description>
     <trgr:data-event>
       <trgr:directory-scope>
-        <trgr:uri>/internal/</trgr:uri>
+        <trgr:uri>/internal/dropped/</trgr:uri>
         <trgr:depth>1</trgr:depth>
       </trgr:directory-scope>
       <trgr:document-content>
