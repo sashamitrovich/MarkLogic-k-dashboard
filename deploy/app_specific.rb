@@ -44,31 +44,6 @@ def load_rss()
   logger.info r.body
 end
 
-
-def load_hb()
-  r = execute_query(%Q{
-    import module namespace hb = "http://marklogic.com/rss/hb" at "/lib/hb.xqy";
-    hb:fetch()
-    },
-    { :app_name => @properties['ml.app-name'] }
-  )
-  r.body = parse_json r.body
-  logger.info r.body
-
-end
-
-def load_finanzen()
-  r = execute_query(%Q{
-    import module namespace finanzen = "http://marklogic.com/rss/finanzen.net"
-      at "/lib/finanzen.xqy";
-    finanzen:fetch()
-    },
-    { :app_name => @properties['ml.app-name'] }
-  )
-  r.body = parse_json r.body
-  logger.info r.body
-end
-
 def load_stock_price()
   r = execute_query(%Q{
     xquery version "1.0-ml";
