@@ -19,7 +19,8 @@
       // uriPrefix 
       'uriPrefix': function(file) {
         var extension = file.name.replace('^.*\.([^\.]+)$');
-        return '/internal/dropped/' + extension + '/';
+        //return '/internal/dropped/' + extension + '/';
+        return '/internal/dropped/';
       } 
     };
 

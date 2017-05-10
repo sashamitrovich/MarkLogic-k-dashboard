@@ -86,13 +86,16 @@ load-js-as-binary=false
 
 # Running the application
 
+    
     ./ml local bootstrap
     ./ml local deploy modules
     ./import-config.sh
 
-Install additional dependencies using the bower package manager:
-
+Install additional js dependencies:
+    
+    npm install
     bower install
+    gulp init-local
 
 Edit `./local.json` to set your desired ports: "ml-http-port" for MarkLogic http port and "node-port" for node port. If these ports are not already taken within your environment, leave the default valurs. 
 
