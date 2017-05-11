@@ -12,14 +12,8 @@ k-dashboard-role,read,k-dashboard-role,update
 -output_uri_replace
 ".*/content,''"
 
--transform_module
-/transform/convert-pdf.xqy
-
--transform_namespace
-"http://marklogic.com/demo"
-
 -thread_count 
-1 
+1
 
 -transaction_size 
 1 

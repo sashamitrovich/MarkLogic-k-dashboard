@@ -3,10 +3,9 @@
     <trgr:name>FilterPdfCreateTrigger</trgr:name>
     <trgr:description>Trigger to filter a pdf doc dropped to the ml uploader component</trgr:description>
     <trgr:data-event>
-      <trgr:directory-scope>
-        <trgr:uri>/internal/dropped/</trgr:uri>
-        <trgr:depth>1</trgr:depth>
-      </trgr:directory-scope>
+      <trgr:collection-scope>
+        <trgr:uri>pdf</trgr:uri>
+      </trgr:collection-scope>
       <trgr:document-content>
         <trgr:update-kind>create</trgr:update-kind>
       </trgr:document-content>
@@ -14,8 +13,8 @@
     </trgr:data-event>
     <trgr:module>
       <trgr:database>${modules-db}</trgr:database>
-      <trgr:root>/triggers/</trgr:root>
-      <trgr:path>cpdf.xqy</trgr:path>
+      <trgr:root>/</trgr:root>
+      <trgr:path>/triggers/cpdf.xqy</trgr:path>
     </trgr:module>
     <trgr:enabled>true</trgr:enabled>
     <trgr:permissions>
@@ -36,10 +35,9 @@
     <trgr:name>FilterPdfModifyTrigger</trgr:name>
     <trgr:description>Trigger to filter a pdf doc dropped to the ml uploader component</trgr:description>
     <trgr:data-event>
-      <trgr:directory-scope>
-        <trgr:uri>/internal/dropped/</trgr:uri>
-        <trgr:depth>1</trgr:depth>
-      </trgr:directory-scope>
+      <trgr:collection-scope>
+        <trgr:uri>pdf</trgr:uri>
+      </trgr:collection-scope>
       <trgr:document-content>
         <trgr:update-kind>modify</trgr:update-kind>
       </trgr:document-content>
@@ -47,8 +45,8 @@
     </trgr:data-event>
     <trgr:module>
       <trgr:database>${modules-db}</trgr:database>
-      <trgr:root>/triggers/</trgr:root>
-      <trgr:path>cpdf.xqy</trgr:path>
+      <trgr:root>/</trgr:root>
+      <trgr:path>/triggers/cpdf.xqy</trgr:path>
     </trgr:module>
     <trgr:enabled>true</trgr:enabled>
     <trgr:permissions>

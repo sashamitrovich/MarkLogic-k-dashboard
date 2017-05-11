@@ -7,8 +7,11 @@ xquery version '1.0-ml';
 import module namespace trgr='http://marklogic.com/xdmp/triggers' 
   at '/MarkLogic/triggers.xqy';
 
+import module namespace util = "http://marklogic.com/utilities" 
+  at "/lib/util.xqy";
+
 declare variable $trgr:uri as xs:string external;
 
-(: let $newDoc:=util:filter-pdf($trgr:uri) :)
-
+(: let $newDoc:=util:filter-pdf($trgr:uri) :) 
+util:filter-pdf($trgr:uri),
 xdmp:log(fn:concat('*****Document ', $trgr:uri, ' was created.*****'))

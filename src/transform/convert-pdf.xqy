@@ -13,19 +13,11 @@ declare function demo:transform(
   let $doc := map:get($content, "value")
   let $filter := xdmp:document-filter($doc)
   let $elem := $filter//html:meta[contains(@name, 'xmp_xmp_ModifyDate')]
-  let $date := fn:data($elem/@content)
-  let $log:=xdmp:log($elem)
 
+  let $potentialDate:=fn:data($elem/@content)
+  let $empty:= fn:empty( $potentialDate)
 
-  (:)
-
-  2015-04-28T10:00:31+02:00
-  2016-10-17T19:03:08.372296+02:00
-
-
-  let $pubDate:= fn:current-dateTime()
-  :)
-  let $pubDate:=$date
+  let $pubDate := if($empty) then current-dateTime() else $potentialDate
   let $log:=xdmp:log($pubDate)
 
   let $permissions:=(xdmp:permission("k-dashboard-role", "read"),
