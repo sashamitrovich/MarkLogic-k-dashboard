@@ -9,7 +9,7 @@
       <trgr:document-content>
         <trgr:update-kind>create</trgr:update-kind>
       </trgr:document-content>
-      <trgr:when>pre-commit</trgr:when>
+      <trgr:when>post-commit</trgr:when>
     </trgr:data-event>
     <trgr:module>
       <trgr:database>${modules-db}</trgr:database>
@@ -41,7 +41,7 @@
       <trgr:document-content>
         <trgr:update-kind>modify</trgr:update-kind>
       </trgr:document-content>
-      <trgr:when>pre-commit</trgr:when>
+      <trgr:when>post-commit</trgr:when>
     </trgr:data-event>
     <trgr:module>
       <trgr:database>${modules-db}</trgr:database>
