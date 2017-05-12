@@ -70,6 +70,30 @@
       });
     };
 
+    ctrl.importTweets= function () {
+      $http({
+        url: '/v1/resources/tweets',
+        method: 'PUT'
+      }).then(function (response) {
+        toast.success('Imported status tweets');
+        $scope.$broadcast('refresh');
+      }, function (response) {
+        toast.danger(response.data);
+      });
+    };
+
+    ctrl.importRss= function () {
+      $http({
+        url: '/v1/resources/rss',
+        method: 'PUT'
+      }).then(function (response) {
+        toast.success('Imported RSS feeds');
+        $scope.$broadcast('refresh');
+      }, function (response) {
+        toast.danger(response.data);
+      });
+    };
+
     angular.extend(ctrl, {
       products: ['Milk', 'Bread', 'Cheese']
       ,
