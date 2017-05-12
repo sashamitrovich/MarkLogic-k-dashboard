@@ -56,7 +56,7 @@ declare function stock:fetch-prices () {
         element Description {$dataset/description/text()}
         }}
 
-        let $request:=fn:concat("https://www.quandl.com/api/v3/datasets/FSE/",$doc//Symbol, "_X.csv?api_key=yigbEs6PAybUcxg6Lz_A&amp;start_date=2016-07-25")
+        let $request:=fn:concat("https://www.quandl.com/api/v3/datasets/FSE/",$doc//Symbol, "_X.csv?api_key=yigbEs6PAybUcxg6Lz_A&amp;start_date=2016-12-31")
         let $response:=xdmp:http-get($request, $options)
         return if ($response//x:code=200) then
             let $quote:= $response[2]
@@ -69,11 +69,11 @@ declare function stock:fetch-prices () {
                 element type {"stock"},
                 element source {"Quandl"},
                 for $price at $pos in $prices
-                    let $empty:= fn:empty($price/Change/text())
-                    let $change:= if($empty) then 0 else $price/Change/text()
+                    let $change:= fn:round-half-to-even((fn:number($price//Close/text())-fn:number($price//Open/text())),2)              
                     let $close:=$price/Close/text()
                     let $open:=($close - $change)
                     let $percent:=round-half-to-even(($change * 100) div $open,2)
+                    let $price:=mem:node-replace($price//Change,element Change {$change})
                     return
                     if ($pos = 1) then element price-latest { $price/*, element Percent { $percent } }
                     else element price { $price/*, element Percent { $percent } }
