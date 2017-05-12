@@ -4,7 +4,7 @@
     <trgr:description>Trigger to filter a pdf doc dropped to the ml uploader component</trgr:description>
     <trgr:data-event>
       <trgr:collection-scope>
-        <trgr:uri>pdf</trgr:uri>
+        <trgr:uri>binary</trgr:uri>
       </trgr:collection-scope>
       <trgr:document-content>
         <trgr:update-kind>create</trgr:update-kind>
@@ -36,7 +36,7 @@
     <trgr:description>Trigger to filter a pdf doc dropped to the ml uploader component</trgr:description>
     <trgr:data-event>
       <trgr:collection-scope>
-        <trgr:uri>pdf</trgr:uri>
+        <trgr:uri>binary</trgr:uri>
       </trgr:collection-scope>
       <trgr:document-content>
         <trgr:update-kind>modify</trgr:update-kind>

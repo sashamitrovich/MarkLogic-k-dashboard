@@ -73,11 +73,23 @@
         Upload files
       </div>
       <div class="panel-body">
-        <ml-upload multiple="true" ml-collection="pdf" upload-options="ctrl.uploadOptions" upload-file-list="ctrl.fileList">
+        <ml-upload multiple="true" upload-options="ctrl.uploadOptions" upload-file-list="ctrl.fileList">
           <p><strong>Drop PDF documents here or click to select files. They will show in the search as "internal" documents.</strong></p>
           <em>(Files will be uploaded automatically, <strong style="color:red">make sure there are no spaces in the filename or the upload will fail!</strong>)</em>
         </ml-upload>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row detail">
+  <div class="col-md-2">
+    <button ng-click="ctrl.deletePdfContent()" class="btn btn-primary">Delete PDF content</button>
+  </div>
+    <div class="col-md-2">
+    <button ng-click="ctrl.deleteRssContent()" class="btn btn-primary">Delete RSS content</button>
+  </div>
+    <div class="col-md-2">
+    <button ng-click="ctrl.deleteTwitterContent()" class="btn btn-primary">Delete Twitter content</button>
   </div>
 </div>

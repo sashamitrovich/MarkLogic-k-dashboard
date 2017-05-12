@@ -4,7 +4,7 @@ import
 ./content/internal
 
 -output_collections
-pdf
+pdf, binary
 
 -output_permissions
 k-dashboard-role,read,k-dashboard-role,update

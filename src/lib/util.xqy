@@ -68,7 +68,7 @@ declare function util:filter-pdf($uri)
 
   return (
     xdmp:log(fn:concat('*****Document ', $newUri, ' was created.*****')),
-    xdmp:document-insert($newUri,$newDoc,$permissions,("data","data/pdf"))
+    xdmp:document-insert($newUri,$newDoc,$permissions,("data","data/pdf","pdf"))
   )
     
 };

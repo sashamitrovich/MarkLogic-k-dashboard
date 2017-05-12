@@ -181,8 +181,8 @@
         angular.forEach(data.facets.Weeks.facetValues, function (value, index) {
           categories.push(value.name);
           dataSeries.push(value.count);
-          console.log('value.name:'+value.name);
-          console.log('value.count:'+value.count);
+          //console.log('value.name:'+value.name);
+          //console.log('value.count:'+value.count);
         });
 
         ctrl.highchartConfig.series[0].data = dataSeries;

@@ -4,9 +4,9 @@
   angular.module('app.config')
     .controller('ConfigCtrl', ConfigCtrl);
 
-  ConfigCtrl.$inject = ['doc','$scope', 'MLRest', '$state'];
+  ConfigCtrl.$inject = ['doc', '$scope', 'MLRest', '$state', 'ngToast', '$http'];
 
-  function ConfigCtrl(doc, $scope, mlRest, $state) {
+  function ConfigCtrl(doc, $scope, mlRest, $state, toast, $http) {
     var ctrl = this;
 
     //console.log("doc=", doc.data);
@@ -15,20 +15,66 @@
     ctrl.fileList = [];
 
     ctrl.uploadOptions = {
+      'collection': ['pdf', 'binary'],
       'trans:tags': ['tag1', 'tag2'],
       // uriPrefix 
-      'uriPrefix': function(file) {
+      'uriPrefix': function (file) {
         var extension = file.name.replace('^.*\.([^\.]+)$');
         //return '/internal/dropped/' + extension + '/';
         return '/internal/dropped/';
-      } 
+      }
+    };
+
+     ctrl.deletePdfContent = function () {
+      $http({
+        url: '/v1/search',
+        method: 'DELETE',
+        params: {
+          collection: 'pdf'
+        }
+      }).then(function (response) {
+        toast.success('Deleted PDF content');
+        $scope.$broadcast('refresh');
+      }, function (response) {
+        toast.danger(response.data);
+      });
+    };
+
+    ctrl.deleteRssContent = function () {
+      $http({
+        url: '/v1/search',
+        method: 'DELETE',
+        params: {
+          collection: 'data/rss'
+        }
+      }).then(function (response) {
+        toast.success('Deleted RSS content');
+        $scope.$broadcast('refresh');
+      }, function (response) {
+        toast.danger(response.data);
+      });
+    };
+
+    ctrl.deleteTwitterContent = function () {
+      $http({
+        url: '/v1/search',
+        method: 'DELETE',
+        params: {
+          collection: 'data/twitter'
+        }
+      }).then(function (response) {
+        toast.success('Deleted Twitter content');
+        $scope.$broadcast('refresh');
+      }, function (response) {
+        toast.danger(response.data);
+      });
     };
 
     angular.extend(ctrl, {
-      products: ['Milk', 'Bread','Cheese']
+      products: ['Milk', 'Bread', 'Cheese']
       ,
       editorOptions: {
-        plugins : 'advlist autolink link image lists charmap print preview'
+        plugins: 'advlist autolink link image lists charmap print preview'
       },
       addRssItem: addRssItem,
       removeRssItem: removeRssItem,
@@ -48,29 +94,28 @@
         // TODO: add read/update permissions here like this:
         // 'perm:sample-role': 'read',
         // 'perm:sample-role': 'update'
-      }).then(function(response) {
-        //toast.success('Record updated.');
+      }).then(function (response) {
+        toast.success('Configuration saved');
         //$state.go('root.view', { uri: response.replace(/(.*\?uri=)/, '') });
-        $state.go($state.current, {}, {reload: true});
+        $state.go($state.current, {}, { reload: true });
       });
     }
 
     function addRssItem() {
-      if (!ctrl.addMeRss) {ctrl.errortextRss = "Can't add an empty element!"; return;}
+      if (!ctrl.addMeRss) { ctrl.errortextRss = "Can't add an empty element!"; return; }
       console.log('entry not empty!')
 
-      var rss={};
-      rss.link=ctrl.addMeRss;
+      var rss = {};
+      rss.link = ctrl.addMeRss;
       if (ctrl.addMeEncoding) {
-        rss.encoding=ctrl.addMeEncoding;
+        rss.encoding = ctrl.addMeEncoding;
       }
-      else
-      {
-        rss.encoding="utf-8";
+      else {
+        rss.encoding = "utf-8";
       }
 
       ctrl.errortextRss = "";
-      var pos=ctrl.sources.rss.map(function(e) { return e.link; }).indexOf(rss.link)
+      var pos = ctrl.sources.rss.map(function (e) { return e.link; }).indexOf(rss.link)
       //console.log("pos=", pos);
 
       if (pos == -1) {
@@ -88,9 +133,9 @@
     }
 
     function addTwitterItem() {
-      console.log('in the list:'+ ctrl.sources.twitter.indexOf(ctrl.addMe));
+      console.log('in the list:' + ctrl.sources.twitter.indexOf(ctrl.addMe));
       ctrl.errortext = "";
-      if (!ctrl.addMeTwitter) {ctrl.errortextTwitter= "Can't add an empty element!";return;}
+      if (!ctrl.addMeTwitter) { ctrl.errortextTwitter = "Can't add an empty element!"; return; }
       console.log('not empty!')
       if (ctrl.sources.twitter.indexOf(ctrl.addMeTwitter) == -1) {
         ctrl.sources.twitter.push(ctrl.addMeTwitter);
@@ -113,7 +158,7 @@
         // TODO: add read/update permissions here like this:
         // 'perm:sample-role': 'read',
         // 'perm:sample-role': 'update'
-      }).then(function(response) {
+      }).then(function (response) {
         toast.success('Record created.');
         $state.go('root.view', { uri: response.replace(/(.*\?uri=)/, '') });
       });
@@ -129,6 +174,8 @@
     function removeTag(index) {
       ctrl.person.tags.splice(index, 1);
     }
+
+   
 
     /*
     $scope.$watch(userService.currentUser, function(newValue) {
