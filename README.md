@@ -89,6 +89,7 @@ load-js-as-binary=false
     
     ./ml local bootstrap
     ./ml local deploy modules
+    ./ml local deploy triggers
     ./import-config.sh
 
 Install additional js dependencies:
