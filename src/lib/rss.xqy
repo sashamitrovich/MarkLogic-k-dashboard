@@ -5,10 +5,9 @@ declare namespace rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 
 declare function rss:fetch($request as xs:string, $encoding as xs:string, $enrich as xs:boolean) {
 
-  let $options:=
-  <options xmlns="xdmp:document-get">
-    <encoding>{$encoding}</encoding>
-    <format xmlns="xdmp:document-get">xml</format>
+  let $options:=<options xmlns="xdmp:http" xmlns:d="xdmp:document-get">
+    <d:encoding>{$encoding}</d:encoding>
+    <d:format>xml</d:format>
     <verify-cert>false</verify-cert>
   </options>
   let $response:= xdmp:http-get($request, $options)
@@ -42,7 +41,7 @@ declare function rss:fetch($request as xs:string, $encoding as xs:string, $enric
     }
     let $log:=xdmp:log($newUri)
     (: let $log:=xdmp:log($newDoc) :)
-    return
+    return if (fn:doc-available($newUri)) then xdmp:log(fn:concat("skipping ", $newUri)) else
 (:    ( $newUri, $newDoc) :)
     xdmp:document-insert($newUri,$newDoc,$permissions,("data","data/rss"))
 };
