@@ -13,7 +13,5 @@ declare function rss:put(
 ) as document-node()?
 {
   let $log:=xdmp:log("Fetching rss content via REST API extenstion")
-  let $sources:=doc("/config/sources.json")
-  for $rss-source in $sources/rss
-    return rsslib:fetch($rss-source/link, $rss-source/encoding)
+  return rsslib:fetch-all()
 };

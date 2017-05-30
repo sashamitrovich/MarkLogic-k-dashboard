@@ -44,3 +44,10 @@ declare function rss:capitalize-first
    concat(upper-case(substring($arg,1,1)),
              substring($arg,2))
  } ;
+
+ declare function rss:fetch-all() {
+  let $sources:=doc("/config/sources.json")
+  for $rss-source in $sources/rss
+    let $log:=xdmp:log($rss-source)
+    return rss:fetch($rss-source/link, $rss-source/encoding)
+ };
