@@ -9,6 +9,7 @@ declare function rss:fetch($request as xs:string, $encoding as xs:string, $enric
   <options xmlns="xdmp:document-get">
     <encoding>{$encoding}</encoding>
     <format xmlns="xdmp:document-get">xml</format>
+    <verify-cert>false</verify-cert>
   </options>
   let $response:= xdmp:http-get($request, $options)
   let $pubDate:= current-dateTime()
