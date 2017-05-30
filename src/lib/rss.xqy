@@ -17,7 +17,8 @@ declare function rss:fetch($request as xs:string, $encoding as xs:string) {
   for $item in $response[2]//item
     return
       let $last-part := fn:tokenize($item/guid, "/")[last()]
-      let $guid :=  $last-part (: fn:substring-before($last-part,".")     :)
+      let $guid :=   if (exists($last-part)) then $last-part else sem:uuid-string() (: fn:substring-before($last-part,".")     :)
+      
       let $newUri:=fn:concat("/nachricht/",$source_name,"/", $guid, ".xml")
       let $newDoc:=document {
         element item {
