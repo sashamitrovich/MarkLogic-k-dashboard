@@ -83,9 +83,11 @@
     };
 
     ctrl.importRss= function () {
+      console.log(ctrl.enrich);
       $http({
         url: '/v1/resources/rss',
-        method: 'PUT'
+        method: 'PUT',
+        params:{'rs:enrich':ctrl.enrich}
       }).then(function (response) {
         toast.success('Imported RSS feeds');
         $scope.$broadcast('refresh');
@@ -100,6 +102,7 @@
       editorOptions: {
         plugins: 'advlist autolink link image lists charmap print preview'
       },
+      enrich: false,
       addRssItem: addRssItem,
       removeRssItem: removeRssItem,
       addTwitterItem: addTwitterItem,

@@ -13,5 +13,7 @@ declare function rss:put(
 ) as document-node()?
 {
   let $log:=xdmp:log("Fetching rss content via REST API extenstion")
-  return rsslib:fetch-all()
+  let $enrich := map:get($params,"enrich") 
+  let $log:=xdmp:log($params)
+  return rsslib:fetch-all(xs:boolean($enrich ))
 };
