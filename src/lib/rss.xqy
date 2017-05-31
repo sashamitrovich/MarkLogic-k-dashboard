@@ -24,24 +24,28 @@ as item() {
         let $guid :=   if (exists($last-part)) then $last-part else sem:uuid-string() (: fn:substring-before($last-part,".")     :)
         
         let $content-for-enrichment:=fn:concat($item//title, $item/description)
-        let $semantic_tags:= if($enrich) then rss:get-tags($content-for-enrichment) else element semantic_tags {}
 
         let $newUri:=fn:concat("/nachricht/",$source_name,"/", $guid, ".xml")
-        let $newDoc:=document {
-          element item {
-            element original {
-              $item/@*,
-              $item/*
-            },
-            element envelope {
-              element type { "rss" },
-              element date_time {$pubDate},
-              element source { rss:capitalize-first($source_name)},
-              element semantic_tags {$semantic_tags/tags}
+        return if (map:contains($uriMap, $newUri) or fn:doc-available($newUri))
+          then xdmp:log(fn:concat("skipping ", $newUri)) 
+          else 
+
+            let $semantic_tags:= if($enrich) then rss:get-tags($content-for-enrichment) else element semantic_tags {}
+            let $newDoc:=document {
+              element item {
+                element original {
+                  $item/@*,
+                  $item/*
+                },
+                element envelope {
+                  element type { "rss" },
+                  element date_time {$pubDate},
+                  element source { rss:capitalize-first($source_name)},
+                  element semantic_tags {$semantic_tags/tags}
+                }
+              }
             }
-          }
-        }
-        return map:put($uriMap,$newUri,$newDoc) 
+            return map:put($uriMap,$newUri,$newDoc) 
     return $uriMap
 };  
 
