@@ -83,11 +83,11 @@ declare function rss:capitalize-first
 
  declare function rss:get-tags ( $arg as xs:string)  
 as node()* {
-
+    let $key:=doc("/config/sources.json")/semantics/opencalaisKey
     let $options:=
       <options xmlns="xdmp:http">
         <headers>
-          <X-AG-Access-Token>xdEEO9vUWTb4wQDCLX9BdldnwRSpt9Lb</X-AG-Access-Token>
+          <X-AG-Access-Token>$key</X-AG-Access-Token>
           <Content-Type>text/raw</Content-Type>
         </headers>
         <data>
