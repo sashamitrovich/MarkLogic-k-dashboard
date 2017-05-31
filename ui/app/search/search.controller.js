@@ -229,7 +229,7 @@
         window.getSelection().collapse(body, 0);
 
         // custom behavior, for instance search on dblclick
-        ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + tag.text.toLowerCase());
+        ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '"'+tag.text.toLowerCase()+'"');
       }
     };
 
