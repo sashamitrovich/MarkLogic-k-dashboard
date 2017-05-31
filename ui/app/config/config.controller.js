@@ -83,11 +83,11 @@
     };
 
     ctrl.importRss= function () {
-      console.log(ctrl.enrich);
+      console.log(ctrl.sources.semantics.enrich);
       $http({
         url: '/v1/resources/rss',
         method: 'PUT',
-        params:{'rs:enrich':ctrl.enrich}
+        params:{'rs:enrich':ctrl.sources.semantics.enrich}
       }).then(function (response) {
         toast.success('Imported RSS feeds');
         $scope.$broadcast('refresh');

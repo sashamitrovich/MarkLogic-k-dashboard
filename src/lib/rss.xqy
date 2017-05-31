@@ -87,7 +87,7 @@ as node()* {
     let $options:=
       <options xmlns="xdmp:http">
         <headers>
-          <X-AG-Access-Token>$key</X-AG-Access-Token>
+          <X-AG-Access-Token>{$key}</X-AG-Access-Token>
           <Content-Type>text/raw</Content-Type>
         </headers>
         <data>
