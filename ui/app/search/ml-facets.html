@@ -20,7 +20,7 @@
       <i class="fa fa-ban facet-add-neg" ng-if="shouldNegate" ng-click="negate({facet: facet.__key, value: value.name})" title="{{ value.name }}"></i>
     </div>
     <div ng-if="shouldShowMore &amp;&amp; !facet.displayingAll && facet.facetValues.length > 4">
-      <a href ng-click="showMore({facet: facet, facetName: facet.__key})">...</a>
+      <a href ng-click="showMore({facet: facet, facetName: facet.__key})">show more...</a>
     </div>
     </span>
   </div>
