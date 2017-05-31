@@ -318,6 +318,13 @@
 -->
         </path-namespaces>
         <range-path-indexes>
+         <range-path-index>
+            <scalar-type>dateTime</scalar-type>
+            <collation/>
+            <path-expression>/stock/price-latest/Date</path-expression>
+            <range-value-positions>false</range-value-positions>
+            <invalid-values>reject</invalid-values>
+          </range-path-index>
           <range-path-index>
             <scalar-type>float</scalar-type>
             <collation/>

@@ -9,7 +9,13 @@ declare namespace x= "xdmp:http";
 declare function stock:get-day-winner () {
     let $path:="/stock/price-latest/Percent"
     let $max:=cts:max(cts:path-reference($path))
-    let $docs:=cts:search(fn:collection("data/stock-price"),cts:path-range-query($path, "=", $max ))
+    
+    let $order:=cts:index-order(cts:path-reference($path),"descending")
+    
+    let $dateQuery:=cts:path-range-query("/stock/price-latest/Date", ">=",
+fn:current-dateTime()- xs:dayTimeDuration("P7D"))
+    let $docs:=cts:search(fn:collection("data/stock-price"),$dateQuery,$order)
+
     return $docs[1]
 };
 
@@ -23,7 +29,11 @@ declare function stock:get-week-winner () {
 declare function stock:get-day-looser () {
     let $path:="/stock/price-latest/Percent"
     let $min:=cts:min(cts:path-reference($path))
-    let $docs:=cts:search(fn:collection("data/stock-price"),cts:path-range-query($path, "=", $min) )
+   let $order:=cts:index-order(cts:path-reference($path),"ascending")
+    
+    let $dateQuery:=cts:path-range-query("/stock/price-latest/Date", ">=",
+fn:current-dateTime()- xs:dayTimeDuration("P7D"))
+    let $docs:=cts:search(fn:collection("data/stock-price"),$dateQuery,$order)
     return $docs[1]
 };
 
