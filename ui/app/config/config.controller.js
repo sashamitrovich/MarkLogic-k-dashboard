@@ -102,7 +102,6 @@
       editorOptions: {
         plugins: 'advlist autolink link image lists charmap print preview'
       },
-      enrich: false,
       addRssItem: addRssItem,
       removeRssItem: removeRssItem,
       addTwitterItem: addTwitterItem,
@@ -202,6 +201,10 @@
       ctrl.person.tags.splice(index, 1);
     }
 
+    ctrl.clickedSemanticsCheckbox=function clickedSemanticsCheckbox() {
+      //if (ctrs.sources.semantics.enrich==true)
+      console.log('in clickedSemanticsCheckbox()!')
+    }
    
 
     /*

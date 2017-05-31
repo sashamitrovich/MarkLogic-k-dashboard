@@ -32,8 +32,17 @@
             <input placeholder="http://www.finanzen.net/index/DAX/RSS" ng-model="ctrl.addMeRss" size="45">
             <input placeholder="iso-8859-1" ng-model="ctrl.addMeEncoding" size="15">
             <button ng-click="ctrl.addRssItem()" class="btn btn-primary">Add</button>
-           
 
+            <br/>
+            <label>Enrich with OpenCalais tags?
+              <input type="checkbox" ng-model="ctrl.sources.semantics.enrich" ng-click="ctrl.clickedSemanticsCheckbox()">
+            </label>
+
+            <br/>
+            <span ng-show="ctrl.sources.semantics.enrich">
+          <label>Opencalais key:</label>
+          <input ng-model="ctrl.sources.semantics.opencalaisKey" size="45">
+          </span>
             <div>{{ctrl.errortextRss}}</div>
           </uib-tab>
 
@@ -61,10 +70,11 @@
             <div>{{ctrl.errortextTwitter}}</div>
           </uib-tab>
         </uib-tabset>
+
+        <br/>
+
         <button ng-click="ctrl.updateSources()" class="btn btn-primary">Save</button>
-        <label>Enrich with OpenCalais tags?
-          <input type="checkbox" ng-model="ctrl.enrich">
-        </label>
+
         <br/><br/>
         <button ng-click="ctrl.importTweets()" class="btn btn-primary">Import Tweets</button>
         <button ng-click="ctrl.importRss()" class="btn btn-primary">Import RSS</button>
@@ -85,7 +95,7 @@
           <p><strong>Drop PDF documents here or click to select files. They will show in the search as "internal" documents.</strong></p>
           <em>(Files will be uploaded automatically, <strong style="color:red">make sure there are no spaces in the filename or the upload will fail!</strong>)</em>
         </ml-upload>
-         <button ng-click="ctrl.deletePdfContent()" class="btn btn-primary">Delete PDF content</button>
+        <button ng-click="ctrl.deletePdfContent()" class="btn btn-primary">Delete PDF content</button>
       </div>
     </div>
   </div>
