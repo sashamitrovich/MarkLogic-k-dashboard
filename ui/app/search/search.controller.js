@@ -124,12 +124,12 @@
 
         // build a nice hashmap for the exctracted elements instead of the clunky array/hashmap combination
         result.extracted.content.forEach(function (element) {
-          var myObj = ctrl.getObject(element)
-          map[ctrl.getFirstKey(myObj)] = ctrl.getFirstValue(myObj);
+          map[ctrl.getFirstKey(element)] = ctrl.getFirstValue(element);
         }, this);
 
         result.extracted.elements = map;
         //console.log(map);
+        //console.log(result.extracted.content);
 
         // for stocks, add a boolean for the value change, 
         // used to controls the styling (red for negative, green for positive)
@@ -219,8 +219,11 @@
       return 0;
     };
 
+    ctrl.clickTag = function(e) {
+      ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '"'+e.toLowerCase()+'"');
+    }
     ctrl.cloudEvents = {
-      'dblclick': function (tag) {
+      'click': function (tag) {
         // stop propagation
         d3.event.stopPropagation();
 

@@ -17,6 +17,9 @@
     <span ng-bind-html="result.extracted.elements.description"></span>
   </div>
 </div>
+<span ng-repeat="tag in result.extracted.elements.semantic_tags.tags">
+  <span class="tag" ng-click="ctrl.clickTag(tag)">{{tag}}</span>
+</span>
 <div style="float:right">
 <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
 <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>

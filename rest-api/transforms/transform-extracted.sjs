@@ -2,11 +2,13 @@
 /* global xdmp */
 
 var json = require('/MarkLogic/json/json.xqy');
-var config = json.config('custom');
+
 
 function toJson(context, params, content) {
   'use strict';
 
+  var config = json.config('custom');
+  config["array-element-names"]="tags";
   var response = content.toObject();
 
   if (response.results) {
@@ -15,6 +17,7 @@ function toJson(context, params, content) {
       if (result.uri.match("json") == null) {
         
         if (result.extracted && result.extracted.content) {
+          //xdmp.log("result.extracted.content="+result.extracted.content);
           result.extracted.content.map(function (content, index) {
             if (content.match(/^</) && !content.match(/^<!/)) {
               result.extracted.content[index] = json.transformToJson(xdmp.unquote(content), config);
@@ -25,6 +28,7 @@ function toJson(context, params, content) {
     });
   }
 
+  //console.log(response.results[0].extracted)
   return response;
 }
 

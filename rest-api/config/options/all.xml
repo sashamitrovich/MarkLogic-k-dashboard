@@ -201,6 +201,7 @@
 
     <extract-path>//envelope/type</extract-path>
     <extract-path>//envelope/source</extract-path>
-     <extract-path>//envelope/date_time</extract-path>
+    <extract-path>//envelope/date_time</extract-path>
+    <extract-path>//envelope/semantic_tags</extract-path>
   </extract-document-data>
 </options>
