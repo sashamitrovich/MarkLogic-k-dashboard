@@ -22,8 +22,8 @@
 </span>
 <div style="float:right">
 
-<span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
-<span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+  <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
+  <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
   <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
 </div>
 <hr>
@@ -54,9 +54,9 @@
 
 <span ng-bind-html="result.extracted.elements.title | linky:'_blank'"></span>
 <div style="float:right">
-<span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
-<span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
- <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
+  <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
+  <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+  <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
 </div>
 <hr>
 </span>
@@ -69,12 +69,14 @@
   <div class="match" ng-repeat="match in result.matches">
     <em ng-repeat="text in match['match-text'] track by $index">
         <span ng-class="{ highlight: !!text.highlight }">{{ text.highlight || text }}</span>
-      </em>
-  </div>
-  <div style="float:right">
-<span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
-<span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
-<a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
+</em>
+</div>
+<div style="float:right">
+  <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
+  <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+
+  <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
+
 </div>
 </div>
 <hr>
