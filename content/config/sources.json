@@ -1,12 +1,88 @@
 {
-  "rss": [
-    {"link":"https://www.capgemini.com/rss.php/name/newsroom/p0/ss_language:en","encoding":"utf-8"},
-    {"link":"https://www.capgemini.com/rss.php/name/client_stories","encoding":"utf-8"},
-    {"link":"https://www.capgemini.com/rss.php/name/resources","encoding":"utf-8"}
-  ],
-  "twitter": ["Bankenverband", "ECB", "IIF", "bundesbank"],
-  "semantics": 
-    { "enrich":false,
-      "opencalaisKey":""
+    "rss": [
+        {
+            "link": "https://www.capgemini.com/rss.php/name/newsroom/p0/ss_language:en",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.capgemini.com/rss.php/name/client_stories",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.capgemini.com/rss.php/name/resources",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.uk.capgemini.com/rss.php/name/newsroom/p0/ss_language:en",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.uk.capgemini.com/rss.php/name/client_stories",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.uk.capgemini.com/rss.php/name/resources",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.in.capgemini.com/rss.php/name/newsroom/p0/ss_language:en",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.in.capgemini.com/rss.php/name/client_stories",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.in.capgemini.com/rss.php/name/resources",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.ca.capgemini.com/rss.php/name/newsroom/p0/ss_language:en",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.ca.capgemini.com/rss.php/name/client_stories",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.ca.capgemini.com/rss.php/name/resources",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.capgemini.com/blog/261646/feed",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.capgemini.com/blog/1516976/feed",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.capgemini.com/blog/261651/feed",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "https://www.capgemini.com/blog/261661/feed",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "http://feeds.reuters.com/reuters/businessNews",
+            "encoding": "utf-8"
+        }
+    ],
+    "twitter": [
+        "ECB",
+        "IIF",
+        "Capgemini",
+        "CapgeminiConsul",
+        "CapgeminiUKPR",
+        "capgemini_aust",
+        "CapgeminiUKppl",
+        "ceblog",
+        "CapgeminiBusSvc",
+        "CapgeminiIndia"
+    ],
+    "semantics": {
+        "enrich": false,
+        "opencalaisKey": ""
     }
 }

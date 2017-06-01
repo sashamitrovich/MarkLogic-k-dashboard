@@ -21,12 +21,12 @@ as item() {
   let $uriMap:=map:map()
   let $newEntry:=
     for $item in $response[2]//item
-        let $last-part := fn:tokenize($item/guid, "/")[last()]
+        let $last-part := fn:tokenize($item/link, "/")[last()]
         let $guid :=   if (exists($last-part)) then $last-part else sem:uuid-string() (: fn:substring-before($last-part,".")     :)
         
         let $content-for-enrichment:=fn:concat($item//title, $item/description)
 
-        let $newUri:=fn:concat("/nachricht/",$source_name,"/", $guid, ".xml")
+        let $newUri:=fn:concat("/nachricht/",$source_name,"/", fn:encode-for-uri($guid), ".xml")
         return if (map:contains($uriMap, $newUri) or fn:doc-available($newUri))
           then xdmp:log(fn:concat("skipping ", $newUri)) 
           else 
