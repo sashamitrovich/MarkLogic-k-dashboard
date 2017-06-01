@@ -31,12 +31,9 @@ end
 def load_rss()
   r = execute_query(%Q{
     xquery version "1.0-ml";
-    import module namespace rss = "http://marklogic.com/rss" at "/lib/rss.xqy";
-
-    let $sources:=doc("/config/sources.json")
-    for $rss-source in $sources/rss
-      return ($rss-source, rss:fetch($rss-source/link, $rss-source/encoding))
-
+    import module namespace rsslib = "http://marklogic.com/rss" at "/lib/rss.xqy";
+    let $log:=xdmp:log("Fetching rss content via command line")
+    return rsslib:fetch-all()
     },
                     { :app_name => @properties['ml.app-name'] }
   )

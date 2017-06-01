@@ -4,8 +4,9 @@ declare namespace c="http://s.opencalais.com/1/pred/";
 declare namespace rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 (: declare namespace map = "http://www.w3.org/2005/xpath-functions/map"; :)
 
-declare function rss:fetch($request as xs:string, $encoding as xs:string, $enrich as xs:boolean) 
+declare function rss:fetch($request as xs:string, $encoding as xs:string) 
 as item() {
+  let $enrich:=xs:boolean(doc("/config/sources.json")/semantics/enrich)
 
   let $options:=<options xmlns="xdmp:http" xmlns:d="xdmp:document-get">
     <d:encoding>{$encoding}</d:encoding>
@@ -71,12 +72,12 @@ declare function rss:capitalize-first
              substring($arg,2))
  } ;
 
- declare function rss:fetch-all($enrich as xs:boolean) {
+ declare function rss:fetch-all() {
   let $sources:=doc("/config/sources.json")
   for $rss-source in $sources/rss
     let $log:=xdmp:log($rss-source)
 
-    let $uriMap:=rss:fetch($rss-source/link, $rss-source/encoding, $enrich)
+    let $uriMap:=rss:fetch($rss-source/link, $rss-source/encoding)
     let $persist:="
       xquery version '1.0-ml';
       import module namespace rss = 'http://marklogic.com/rss' at '/lib/rss.xqy';

@@ -26,6 +26,7 @@
     };
 
      ctrl.deletePdfContent = function () {
+      toast.info('working...');
       $http({
         url: '/v1/search',
         method: 'DELETE',
@@ -41,6 +42,7 @@
     };
 
     ctrl.deleteRssContent = function () {
+      toast.info('working...');
       $http({
         url: '/v1/search',
         method: 'DELETE',
@@ -56,6 +58,7 @@
     };
 
     ctrl.deleteTwitterContent = function () {
+      toast.info('working...');
       $http({
         url: '/v1/search',
         method: 'DELETE',
@@ -71,6 +74,7 @@
     };
 
     ctrl.importTweets= function () {
+      toast.info('working...');
       $http({
         url: '/v1/resources/tweets',
         method: 'PUT'
@@ -83,11 +87,12 @@
     };
 
     ctrl.importRss= function () {
+      toast.info('working...');
       console.log(ctrl.sources.semantics.enrich);
       $http({
         url: '/v1/resources/rss',
-        method: 'PUT',
-        params:{'rs:enrich':ctrl.sources.semantics.enrich}
+        method: 'PUT' /*,
+        params:{'rs:enrich':ctrl.sources.semantics.enrich} */
       }).then(function (response) {
         toast.success('Imported RSS feeds');
         $scope.$broadcast('refresh');
