@@ -1,0 +1,13 @@
+import
+
+-input_file_path
+./content/api/users
+
+-output_collections
+config
+
+-output_permissions
+k-dashboard-role,read,k-dashboard-role,update
+
+-output_uri_replace
+".*/content,''"

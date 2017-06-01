@@ -20,12 +20,11 @@
 <span ng-repeat="tag in result.extracted.elements.semantic_tags.tags">
   <span class="tag" ng-click="ctrl.clickTag(tag)">{{tag}}</span>
 </span>
-<div>
-  <a ng-href="/detail{{result.uri}}">source</a>
-</div>
 <div style="float:right">
+
 <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
 <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+  <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
 </div>
 <hr>
 </span>
@@ -40,6 +39,10 @@
 </div>
 <div class="stock-date">Date: {{result.extracted.elements.Date | date:'mediumDate'}}</div>
 <div>{{result.extracted.elements.Description}}</div>
+
+<div>
+  <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
+</div>
 <hr>
 </span>
 
@@ -53,6 +56,7 @@
 <div style="float:right">
 <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
 <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+ <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
 </div>
 <hr>
 </span>
@@ -70,6 +74,7 @@
   <div style="float:right">
 <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
 <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+<a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
 </div>
 </div>
 <hr>
