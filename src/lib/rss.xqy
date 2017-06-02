@@ -112,7 +112,7 @@ as node()* {
         }
       }
     
-    
+    (: let $log:=xdmp:log($newNode) :)
     return $newNode
  
 

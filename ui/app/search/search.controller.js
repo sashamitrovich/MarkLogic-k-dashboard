@@ -233,6 +233,12 @@
 
         // custom behavior, for instance search on dblclick
         ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '"'+tag.text.toLowerCase()+'"');
+      },
+      'contextmenu': function(tag) {
+        console.log ('rightclick');
+        d3.event.preventDefault();
+        // custom behavior, for instance search on dblclick
+        ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '-"'+tag.text.toLowerCase()+'"');
       }
     };
 
