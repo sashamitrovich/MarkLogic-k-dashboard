@@ -20,7 +20,7 @@
     "ml-search-ng": "~0.2.0",
     "ml-utils": "withjam/ml-utils",
     "ng-json-explorer": "8c2a0f9104",
-    "vkbeautify-wrapper": "https://github.com/vkiryukhin/vkBeautify.git",
+    "vkbeautify": "*",
     "highcharts": "^4.2.6",
     "angular-google-maps": "2.3.2",
     "tinymce-dist": "4.3.12",
