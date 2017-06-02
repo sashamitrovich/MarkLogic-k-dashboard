@@ -295,6 +295,7 @@
             <field-name>Date</field-name>
             <collation/>
             <range-value-positions>false</range-value-positions>
+            <invalid-values>reject</invalid-values>
           </range-field-index>
           <range-field-index>
             <scalar-type>string</scalar-type>
@@ -307,6 +308,7 @@
             <field-name>tags</field-name>
             <collation>http://marklogic.com/collation/</collation>
             <range-value-positions>false</range-value-positions>
+            <invalid-values>reject</invalid-values>
           </range-field-index>
           <!--
         <range-field-index><scalar-type>date</scalar-type><field-name>sample</field-name><collation/><range-value-positions>false</range-value-positions></range-field-index>
