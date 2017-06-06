@@ -2,6 +2,7 @@ xquery version "1.0-ml";
 module namespace rss="http://marklogic.com/rss";
 declare namespace c="http://s.opencalais.com/1/pred/";
 declare namespace rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+declare option xdmp:update "true";
 (: declare namespace map = "http://www.w3.org/2005/xpath-functions/map"; :)
 
 declare function rss:fetch($request as xs:string, $encoding as xs:string) 
@@ -59,6 +60,7 @@ declare function persistDocs ($uriMap as item()) {
 
   for $newUri in $uris
     let $newDoc:=map:get($uriMap,$newUri)
+    let $log:=xdmp:log(fn:concat("uri= ", $newUri)) 
     return if (fn:doc-available($newUri)) 
       then xdmp:log(fn:concat("skipping ", $newUri)) 
       else xdmp:document-insert($newUri,$newDoc,$permissions,$collections)
@@ -78,12 +80,9 @@ declare function rss:capitalize-first
     let $log:=xdmp:log($rss-source)
 
     let $uriMap:=rss:fetch($rss-source/link, $rss-source/encoding)
-    let $persist:="
-      xquery version '1.0-ml';
-      import module namespace rss = 'http://marklogic.com/rss' at '/lib/rss.xqy';
-      declare variable $uriMap as item()* external;
-      rss:persistDocs($uriMap)"
-    return xdmp:eval($persist,(xs:QName("uriMap"), $uriMap))
+
+    (: spawn this call to isolate the persisting of the docs thus avoiding conflicting updates :)
+    return xdmp:spawn-function(function() {rss:persistDocs($uriMap)})
  };
 
  declare function rss:get-tags ( $arg as xs:string)  

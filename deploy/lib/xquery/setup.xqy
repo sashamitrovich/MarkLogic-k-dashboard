@@ -72,11 +72,6 @@ declare variable $replicating-map-file := "/roxy/status/cleanup/replicating-map.
 declare variable $replicating-map-file-internal := "/roxy/status/cleanup/replicating-map-internal.xml";
 declare variable $replicating-map := map:map();
 
-(: Several functions take an optional invalid-values parameter. Use this as the
- : default value when it's not provided.
- :)
-declare variable $default-invalid-values := "reject";
-
 declare variable $group-settings :=
   <settings>
     <setting>list-cache-size</setting>
@@ -2263,7 +2258,7 @@ declare function setup:validated-range-element-indexes(
             $index-config/db:localname/fn:string(.),
             fn:string($index-config/db:collation[../db:scalar-type = 'string']),
             ($index-config/db:range-value-positions/xs:boolean(.), false())[1],
-            ($index-config/db:invalid-values, $default-invalid-values)[1]
+            ($index-config/db:invalid-values, "reject")[1]
           )
         else
           xdmp:apply(
@@ -2325,7 +2320,7 @@ declare function setup:validated-range-element-attribute-indexes(
             $index-config/db:localname/fn:string(.),
             fn:string($index-config/db:collation[../db:scalar-type = 'string']),
             ($index-config/db:range-value-positions/xs:boolean(.), false())[1],
-            ($index-config/db:invalid-values, $default-invalid-values)[1]
+            ($index-config/db:invalid-values, "reject")[1]
           )
         else
           xdmp:apply(
@@ -2454,7 +2449,7 @@ declare function setup:add-range-path-indexes(
                $index/db:path-expression,
                $index/db:collation,
                $index/db:range-value-positions,
-               ($index/db:invalid-values, $default-invalid-values)[1]
+               $index/db:invalid-values
              )
          )"
       )
@@ -2483,7 +2478,6 @@ declare function setup:validate-range-path-indexes(
       declare namespace db="http://marklogic.com/xdmp/database";
       declare variable $database external;
       declare variable $x external;
-      declare variable $default-invalid-values external;
 
       admin:database-range-path-index(
        $database,
@@ -2491,10 +2485,9 @@ declare function setup:validate-range-path-indexes(
        $x/db:path-expression,
        fn:string($x/db:collation[../db:scalar-type = "string"]),
        $x/db:range-value-positions,
-       ($x/db:invalid-values, $default-invalid-values)[1])',
+       $x/db:invalid-values)',
       (xs:QName("database"), $database,
-       xs:QName("x"), $expected,
-       xs:QName("default-invalid-values"), $default-invalid-values))
+       xs:QName("x"), $expected))
   return
     if ($existing[fn:deep-equal(., $expected)]) then ()
     else
@@ -2696,7 +2689,7 @@ declare function setup:add-range-field-indexes-helper(
             $index/db:field-name,
             ($index/db:collation/fn:string(), "")[1], (: ML6 requires xs:string; later requires xs:string? :)
             $index/db:range-value-positions,
-            ($index/db:invalid-values, $default-invalid-values)[1]
+            $index/db:invalid-values
           )
         else
           admin:database-range-field-index(
@@ -2745,7 +2738,7 @@ declare function setup:add-geospatial-element-indexes(
           $index/db:coordinate-system,
           $index/db:range-value-positions,
           ($index/db:point-format, "point")[1],
-          ($index/db:invalid-values, $default-invalid-values)[1]
+          ($index/db:invalid-values, "ignore")[1]
         )
       else
         admin:database-geospatial-element-index(
@@ -2799,7 +2792,7 @@ declare function setup:add-geospatial-element-attribute-pair-indexes(
           $index/db:longitude-localname,
           $index/db:coordinate-system,
           $index/db:range-value-positions,
-          ($index/db:invalid-values, $default-invalid-values)[1]
+          ($index/db:invalid-values, "ignore")[1]
         )
       else
         admin:database-geospatial-element-attribute-pair-index(
@@ -2856,7 +2849,7 @@ declare function setup:add-geospatial-element-pair-indexes(
           $index/db:longitude-localname,
           $index/db:coordinate-system,
           $index/db:range-value-positions,
-          ($index/db:invalid-values, $default-invalid-values)[1]
+          ($index/db:invalid-values, "ignore")[1]
         )
       else
         admin:database-geospatial-element-pair-index(
@@ -2912,7 +2905,7 @@ declare function setup:add-geospatial-element-child-indexes(
           $index/db:coordinate-system,
           $index/db:range-value-positions,
           ($index/db:point-format, "point")[1],
-          ($index/db:invalid-values, $default-invalid-values)[1]
+          ($index/db:invalid-values, "ignore")[1]
         )
       else
         admin:database-geospatial-element-child-index(
@@ -4749,9 +4742,6 @@ declare function setup:validate-external-security(
 declare function setup:create-roles(
   $import-config as element(configuration))
 {
-  (: get the existing role names from the default security DB :)
-  let $existing-role-names := setup:get-existing-role-names()
-
   (: Create all missing roles :)
   for $role in $import-config/sec:roles/sec:role
   let $role-name as xs:string := $role/sec:role-name
@@ -4764,7 +4754,7 @@ declare function setup:create-roles(
     </options>
   return
     (: if the role exists, then don't create it :)
-    if ($existing-role-names[. = $role-name]) then ()
+    if (setup:get-roles(())/sec:role[sec:role-name = $role-name]) then ()
     else
     (
       xdmp:eval(
@@ -4921,9 +4911,6 @@ declare function setup:create-roles(
 declare function setup:validate-roles(
   $import-config as element(configuration))
 {
-  (: get the existing role names from the default security DB :)
-  let $existing-roles := setup:get-roles(())
-
   for $role in $import-config/sec:roles/sec:role
   let $role-name as xs:string := $role/sec:role-name
   let $description as xs:string? := $role/sec:description
@@ -4934,7 +4921,7 @@ declare function setup:validate-roles(
   let $privileges as element(sec:privilege)* := $role/sec:privileges/sec:privilege
   let $amps as element(sec:amp)* := $role/sec:amps/*
   let $external-names as xs:string* := $role/sec:external-names/sec:external-name
-  let $match := $existing-roles/sec:role[sec:role-name = $role-name]
+  let $match := setup:get-roles(())/sec:role[sec:role-name = $role-name]
   return
     if ($match) then
       if ($match/sec:role-name != $role-name or
@@ -4977,10 +4964,6 @@ declare function setup:associate-users-with-roles($import-config as element(conf
 
 declare function setup:create-users($import-config as element(configuration))
 {
-  (: get the existing user names from the default security DB :)
-  let $existing-user-names := setup:get-existing-user-names()
-
-  (: Create all missing users :)
   for $user in $import-config/sec:users/sec:user
   let $user-name as xs:string := $user/sec:user-name
   let $description as xs:string? := $user/sec:description
@@ -4995,7 +4978,7 @@ declare function setup:create-users($import-config as element(configuration))
       <isolation>different-transaction</isolation>
     </options>
   return
-    if ($existing-user-names[. = $user-name]) then
+    if (setup:get-users(())/sec:user[sec:user-name = $user-name]) then
     (
       xdmp:eval(
         'import module namespace sec="http://marklogic.com/xdmp/security" at "/MarkLogic/security.xqy";
@@ -5105,9 +5088,6 @@ declare function setup:create-users($import-config as element(configuration))
 
 declare function setup:validate-users($import-config as element(configuration))
 {
-  (: get the existing users from the default security DB :)
-  let $existing-users := setup:get-users(())
-
   for $user in $import-config/sec:users/sec:user
   let $user-name as xs:string := $user/sec:user-name
   let $description as xs:string? := $user/sec:description
@@ -5116,7 +5096,7 @@ declare function setup:validate-users($import-config as element(configuration))
   let $permissions as element(sec:permission)* := $user/sec:permissions/*
   let $collections as xs:string* := $user/sec:collections/*
   let $external-names as xs:string* := $user/sec:external-names/sec:external-name
-  let $match := $existing-users/sec:user[sec:user-name = $user-name]
+  let $match := setup:get-users(())/sec:user[sec:user-name = $user-name]
   return
     if ($match) then
       if ($match/sec:description != $description or
@@ -5471,19 +5451,6 @@ declare function setup:get-privilege-by-name($name as xs:string) as element(sec:
     </options>)
 };
 
-(: Gets the user names from the default security database :)
-declare function setup:get-existing-user-names() as element(sec:user-name)* {
-  let $user-names :=
-    xdmp:eval(
-      'import module namespace sec="http://marklogic.com/xdmp/security" at "/MarkLogic/security.xqy";
-       /sec:user',
-       (),
-       <options xmlns="xdmp:eval">
-        <database>{$default-security}</database>
-       </options>)/sec:user-name
-  return $user-names
-};
-
 declare function setup:get-users-by-name($names as xs:string*) as element(sec:users)? {
   let $ids :=
     for $name in $names
@@ -5561,19 +5528,6 @@ declare function setup:get-user-id($user-name as xs:string) as xs:unsignedLong? 
      <options xmlns="xdmp:eval">
        <database>{$default-security}</database>
      </options>)
-};
-
-(: Gets the role names from the default security database :)
-declare function setup:get-existing-role-names() as element(sec:role-name)* {
-  let $role-names :=
-    xdmp:eval(
-      'import module namespace sec="http://marklogic.com/xdmp/security" at "/MarkLogic/security.xqy";
-        /sec:role',
-      (),
-      <options xmlns="xdmp:eval">
-        <database>{$default-security}</database>
-      </options>)/sec:role-name
-  return $role-names
 };
 
 declare function setup:get-roles-by-name($roles as xs:string*) as element(sec:roles)? {

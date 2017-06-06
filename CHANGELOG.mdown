@@ -9,7 +9,7 @@ This file describes changes made to Roxy per release
 * [#685](https://github.com/marklogic/roxy/issues/685) Shared Config for multiple applications sharing a single content db
 * [#680](https://github.com/marklogic/roxy/issues/680) Exit code on windows.
 * [#666](https://github.com/marklogic/roxy/issues/666) install/uninstall commands
-* [#651](https://github.com/marklogic/roxy/issues/651) modules-db not in synch with modules-db by default
+* [#651](https://github.com/marklogic/roxy/issues/651) App-modules-db not in synch with modules-db by default
 * [#569](https://github.com/marklogic/roxy/issues/569) How to set "update-policy" property throught Roxy
 * [#533](https://github.com/marklogic/roxy/issues/533) Suggestion: clean -> clear
 
