@@ -478,7 +478,7 @@
             <privilege-name>xdmp:http-post</privilege-name>
           </privilege>
           <privilege>
-            <privilege-name>xdmp:eval</privilege-name>
+            <privilege-name>xdmp:spawn</privilege-name>
           </privilege>
           <privilege>
             <privilege-name>nachricht-uri</privilege-name>
