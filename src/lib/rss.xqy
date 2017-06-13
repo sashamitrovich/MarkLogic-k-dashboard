@@ -26,6 +26,8 @@ as item() {
         let $guid :=   if (exists($last-part)) then $last-part else sem:uuid-string() (: fn:substring-before($last-part,".")     :)
         
         let $content-for-enrichment:=fn:concat($item//title, $item/description)
+        let $content-for-enrichment := xdmp:tidy(replace($content-for-enrichment, '<script(.|&#10;)*?</script>', ''))[2]
+        let $content-for-enrichment := xdmp:tidy(replace($content-for-enrichment, '<a(.|&#10;)*?</a>', ''))[2]
 
         let $newUri:=fn:concat("/nachricht/",$source_name,"/", fn:encode-for-uri($guid), ".xml")
         return if (map:contains($uriMap, $newUri) or fn:doc-available($newUri))
@@ -60,7 +62,7 @@ declare function persistDocs ($uriMap as item()) {
 
   for $newUri in $uris
     let $newDoc:=map:get($uriMap,$newUri)
-    let $log:=xdmp:log(fn:concat("uri= ", $newUri)) 
+    (: let $log:=xdmp:log(fn:concat("uri= ", $newUri)) :)
     return if (fn:doc-available($newUri)) 
       then xdmp:log(fn:concat("skipping ", $newUri)) 
       else xdmp:document-insert($newUri,$newDoc,$permissions,$collections)

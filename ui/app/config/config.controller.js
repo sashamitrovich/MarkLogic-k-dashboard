@@ -151,6 +151,7 @@
 
       if (pos == -1) {
         ctrl.sources.rss.push(rss);
+        ctrl.addMeRss="";
 
         console.log(ctrl.sources)
       } else {
@@ -164,12 +165,13 @@
     }
 
     function addTwitterItem() {
-      console.log('in the list:' + ctrl.sources.twitter.indexOf(ctrl.addMe));
+      //console.log('in the list:' + ctrl.sources.twitter.indexOf(ctrl.addMe));
       ctrl.errortext = "";
       if (!ctrl.addMeTwitter) { ctrl.errortextTwitter = "Can't add an empty element!"; return; }
       console.log('not empty!')
       if (ctrl.sources.twitter.indexOf(ctrl.addMeTwitter) == -1) {
         ctrl.sources.twitter.push(ctrl.addMeTwitter);
+        ctrl.addMeTwitter="";
       } else {
         ctrl.errortextTwitter = "Can't add twice!";
       }
