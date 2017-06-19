@@ -23,12 +23,13 @@
       submit: submit,
       addTag: addTag,
       removeTag: removeTag,
-      sources: doc.data // {rss: ["1","2"], twitter:["t1","t2","t3"]}
+      sources: doc.data, // {rss: ["1","2"], twitter:["t1","t2","t3"]},
+      configDownloadUri: '/v1/documents?uri=' + encodeURIComponent('/config/sources.json') 
     });
 
     // for uploading the sources config file
     ctrl.uploadFiles = function (file, errFiles) {
-       updateConfig(file);
+      updateConfig(file);
     };
 
 
@@ -123,9 +124,15 @@
       });
     };
 
+    function getConfig() {
+      return MLRest.getDocument('/config/sources.json', { format: 'json' }).then(function (response) {
+        return response.data;
+      });
+    }
+
     function updateConfig(config) {
       console.log('updating configuration')
-       mlRest.updateDocument(config, {
+      mlRest.updateDocument(config, {
         format: 'json',
         uri: '/config/sources.json'
         // TODO: add read/update permissions here like this:
