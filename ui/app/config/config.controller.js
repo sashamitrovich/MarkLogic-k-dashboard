@@ -4,15 +4,37 @@
   angular.module('app.config')
     .controller('ConfigCtrl', ConfigCtrl);
 
-  ConfigCtrl.$inject = ['doc', '$scope', 'MLRest', '$state', 'ngToast', '$http'];
+  ConfigCtrl.$inject = ['doc', '$scope', 'MLRest', '$state', 'ngToast', '$http', 'Upload', '$timeout'];
 
-  function ConfigCtrl(doc, $scope, mlRest, $state, toast, $http) {
+  function ConfigCtrl(doc, $scope, mlRest, $state, toast, $http, Upload) {
     var ctrl = this;
 
-    //console.log("doc=", doc.data);
+    angular.extend(ctrl, {
+      products: ['Milk', 'Bread', 'Cheese']
+      ,
+      editorOptions: {
+        plugins: 'advlist autolink link image lists charmap print preview'
+      },
+      addRssItem: addRssItem,
+      removeRssItem: removeRssItem,
+      addTwitterItem: addTwitterItem,
+      removeTwitterItem: removeTwitterItem,
+      updateSources: updateSources,
+      submit: submit,
+      addTag: addTag,
+      removeTag: removeTag,
+      sources: doc.data // {rss: ["1","2"], twitter:["t1","t2","t3"]}
+    });
 
-    // uploader config
+    // for uploading the sources config file
+    ctrl.uploadFiles = function (file, errFiles) {
+       updateConfig(file);
+    };
+
+
+    // ml-uploader config
     ctrl.fileList = [];
+
 
     ctrl.uploadOptions = {
       'collection': ['pdf', 'binary'],
@@ -25,7 +47,7 @@
       }
     };
 
-     ctrl.deletePdfContent = function () {
+    ctrl.deletePdfContent = function () {
       toast.info('working...');
       $http({
         url: '/v1/search',
@@ -73,7 +95,7 @@
       });
     };
 
-    ctrl.importTweets= function () {
+    ctrl.importTweets = function () {
       toast.info('working...');
       $http({
         url: '/v1/resources/tweets',
@@ -86,7 +108,7 @@
       });
     };
 
-    ctrl.importRss= function () {
+    ctrl.importRss = function () {
       toast.info('working...');
       console.log(ctrl.sources.semantics.enrich);
       $http({
@@ -101,25 +123,9 @@
       });
     };
 
-    angular.extend(ctrl, {
-      products: ['Milk', 'Bread', 'Cheese']
-      ,
-      editorOptions: {
-        plugins: 'advlist autolink link image lists charmap print preview'
-      },
-      addRssItem: addRssItem,
-      removeRssItem: removeRssItem,
-      addTwitterItem: addTwitterItem,
-      removeTwitterItem: removeTwitterItem,
-      updateSources: updateSources,
-      submit: submit,
-      addTag: addTag,
-      removeTag: removeTag,
-      sources: doc.data // {rss: ["1","2"], twitter:["t1","t2","t3"]}
-    });
-
-    function updateSources() {
-      mlRest.updateDocument(ctrl.sources, {
+    function updateConfig(config) {
+      console.log('updating configuration')
+       mlRest.updateDocument(config, {
         format: 'json',
         uri: '/config/sources.json'
         // TODO: add read/update permissions here like this:
@@ -130,6 +136,10 @@
         //$state.go('root.view', { uri: response.replace(/(.*\?uri=)/, '') });
         $state.go($state.current, {}, { reload: true });
       });
+    }
+
+    function updateSources() {
+      updateConfig(ctrl.sources);
     }
 
     function addRssItem() {
@@ -151,7 +161,7 @@
 
       if (pos == -1) {
         ctrl.sources.rss.push(rss);
-        ctrl.addMeRss="";
+        ctrl.addMeRss = "";
 
         console.log(ctrl.sources)
       } else {
@@ -171,7 +181,7 @@
       console.log('not empty!')
       if (ctrl.sources.twitter.indexOf(ctrl.addMeTwitter) == -1) {
         ctrl.sources.twitter.push(ctrl.addMeTwitter);
-        ctrl.addMeTwitter="";
+        ctrl.addMeTwitter = "";
       } else {
         ctrl.errortextTwitter = "Can't add twice!";
       }
@@ -208,11 +218,11 @@
       ctrl.person.tags.splice(index, 1);
     }
 
-    ctrl.clickedSemanticsCheckbox=function clickedSemanticsCheckbox() {
+    ctrl.clickedSemanticsCheckbox = function clickedSemanticsCheckbox() {
       //if (ctrs.sources.semantics.enrich==true)
       console.log('in clickedSemanticsCheckbox()!')
     }
-   
+
 
     /*
     $scope.$watch(userService.currentUser, function(newValue) {

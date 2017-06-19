@@ -1,71 +1,70 @@
-json as 
 {
-"rss": [
-{
-"link": "http://feeds.feedburner.com/autonews/BreakingNews", 
-"encoding": "utf-8"
-}, 
-{
-"link": "http://feeds.feedburner.com/autonews/LatestIssue", 
-"encoding": "utf-8"
-}, 
-{
-"link": "http://feeds.feedburner.com/autonews/AutomakerNews", 
-"encoding": "utf-8"
-}, 
-{
-"link": "http://feeds.feedburner.com/autonews/SupplierNews", 
-"encoding": "utf-8"
-}, 
-{
-"link": "http://feeds.feedburner.com/autonews/EuropeNews", 
-"encoding": "utf-8"
-}, 
-{
-"link": "http://feeds.feedburner.com/autonews/EditorsPicks", 
-"encoding": "utf-8"
-}, 
-{
-"link": "http://feeds.feedburner.com/autonews/ExecutiveNews", 
-"encoding": "utf-8"
-}, 
-{
-"link": "http://feeds.feedburner.com/AutomotiveNewsFutureProductPipelineFeed", 
-"encoding": "ISO-8859-1"
-}, 
-{
-"link": "http://feeds.feedburner.com/AutomotiveNewsFirstShiftMorningNewscastFeed", 
-"encoding": "ISO-8859-1"
-}, 
-{
-"link": "http://feeds.feedburner.com/AutomotiveNewsAutomotiveNewsTvAfternoonNewscastFeed", 
-"encoding": "ISO-8859-1"
-}, 
-{
-"link": "http://feeds.feedburner.com/MobilityReport", 
-"encoding": "ISO-8859-1"
-}, 
-{
-"link": "https://www.just-auto.com/alerts/rssarticle.aspx", 
-"encoding": "iso-8859-1"
-}
-], 
-"twitter": [
-"breakingauto", 
-"BadF1Stats", 
-"MotorPic", 
-"JohnVoelcker", 
-"Chosford1", 
-"Mpgomatic", 
-"Davidshepardson", 
-"Realscottoldham", 
-"Raylahood", 
-"Mikedriehorst", 
-"Cjponyparts", 
-"Andrewstoy"
-], 
-"semantics": {
-"enrich": false, 
-"opencalaisKey": ""
-}
+    "rss": [
+        {
+            "link": "http://feeds.feedburner.com/autonews/BreakingNews",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "http://feeds.feedburner.com/autonews/LatestIssue",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "http://feeds.feedburner.com/autonews/AutomakerNews",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "http://feeds.feedburner.com/autonews/SupplierNews",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "http://feeds.feedburner.com/autonews/EuropeNews",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "http://feeds.feedburner.com/autonews/EditorsPicks",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "http://feeds.feedburner.com/autonews/ExecutiveNews",
+            "encoding": "utf-8"
+        },
+        {
+            "link": "http://feeds.feedburner.com/AutomotiveNewsFutureProductPipelineFeed",
+            "encoding": "ISO-8859-1"
+        },
+        {
+            "link": "http://feeds.feedburner.com/AutomotiveNewsFirstShiftMorningNewscastFeed",
+            "encoding": "ISO-8859-1"
+        },
+        {
+            "link": "http://feeds.feedburner.com/AutomotiveNewsAutomotiveNewsTvAfternoonNewscastFeed",
+            "encoding": "ISO-8859-1"
+        },
+        {
+            "link": "http://feeds.feedburner.com/MobilityReport",
+            "encoding": "ISO-8859-1"
+        },
+        {
+            "link": "https://www.just-auto.com/alerts/rssarticle.aspx",
+            "encoding": "iso-8859-1"
+        }
+    ],
+    "twitter": [
+        "breakingauto",
+        "BadF1Stats",
+        "MotorPic",
+        "JohnVoelcker",
+        "Chosford1",
+        "Mpgomatic",
+        "Davidshepardson",
+        "Realscottoldham",
+        "Raylahood",
+        "Mikedriehorst",
+        "Cjponyparts",
+        "Andrewstoy"
+    ],
+    "semantics": {
+        "enrich": false,
+        "opencalaisKey": ""
+    }
 }

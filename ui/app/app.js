@@ -20,7 +20,8 @@
     'ui.tinymce',
     'ngToast',
     'highcharts-ng',
-    'view.file'
+    'view.file',
+    'ngFileUpload'
   ]);
 
 }());
