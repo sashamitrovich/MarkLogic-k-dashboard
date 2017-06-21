@@ -146,7 +146,7 @@
         result.getNiceTitle = function() {
           //console.log("getting nicer title");
           //happens only for pdf files
-          if (result.extracted.elements.type == 'pdf') {
+          if (result.extracted.elements.type == 'pdf' || result.extracted.elements.type == 'doc') {
             var uri = result.label;
             return uri.replace(/_/g, " ").replace(".xml","");
           }

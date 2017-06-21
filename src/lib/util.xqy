@@ -22,6 +22,11 @@ declare function util:filter-pdf($uri)
 
   let $doc:=doc($uri)
   let $filter := xdmp:document-filter($doc)
+
+  let $type:= if ($filter/*:html/*:head/*:meta[@name="content-type"]/@content = "application/msword") 
+    then  "doc"
+    else  "pdf" (: assuming pdf if not doc - brave assumption :)
+
   let $elem := $filter//html:meta[contains(@name, 'xmp_xmp_ModifyDate')]
   let $potentialDate:=fn:data($elem/@content)
   let $empty:= fn:empty( $potentialDate)
@@ -54,7 +59,7 @@ declare function util:filter-pdf($uri)
       element source {$filter/node()},
         element envelope {
           element source {"internal"},
-          element type {"pdf"},
+          element type {$type},
           element date_time {$pubDate},
           element tags {
             for $term in $terms
@@ -64,11 +69,12 @@ declare function util:filter-pdf($uri)
      }
     }
 
-  let $newUri:= fn:substring-before($uri,".pdf") || ".xml"
+  let $newUri:= fn:substring-before($uri,fn:concat(".",$type)) || ".xml"
+  let $collections:=("data", fn:concat("data/",$type),$type)
 
   return (
     xdmp:log(fn:concat('*****Document ', $newUri, ' was created.*****')),
-    xdmp:document-insert($newUri,$newDoc,$permissions,("data","data/pdf","pdf"))
+    xdmp:document-insert($newUri,$newDoc,$permissions,$collections)
   )
     
 };

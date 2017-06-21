@@ -1,6 +1,6 @@
 <div class="row detail">
   <div class="col-sm-8">
-    <span ng-if="ctrl.type!='pdf'">
+    <span ng-if="ctrl.type!='pdf' && ctrl.type!='doc'">
     <uib-tabset type="pills">
       <uib-tab active="true">
         <uib-tab-heading>{{ctrl.type | uppercase}}</uib-tab-heading>
@@ -34,6 +34,28 @@
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1">
                 <view-file uri="ctrl.viewuri" content-type="'application/pdf'" style="height:650px;"></view-file>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                <view-file uri="ctrl.viewurihtml" content-type="'text/html'" style="height:650px;"></view-file>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+        <!-- /.tab-content -->
+          </div>
+
+
+      <!-- download-uri="ctrl.viewuri" -->
+    </span>
+     <span ng-if="ctrl.type=='doc'">
+      <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a aria-expanded="true" href="#tab_1" data-toggle="tab">DOC</a></li>
+              <li class=""><a aria-expanded="false" href="#tab_2" data-toggle="tab">HTML</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+                <view-file uri="ctrl.viewuri" content-type="'application/msword'" style="height:650px;"></view-file>
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_2">

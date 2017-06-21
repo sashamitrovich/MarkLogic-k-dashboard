@@ -52,7 +52,7 @@
         <a href="{{result.extracted.elements.link}}" target="_blank"> <i class="fa fa-fw fa-twitter" style="color:#00aced"/></a>
 </span>
 
-<span ng-bind-html="result.extracted.elements.title | linky:'_blank'"></span>
+<span ng-bind-html="result.extracted.elements.title | linky:'_blank'" ></span>
 <div style="float:right">
   <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
   <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
@@ -64,6 +64,27 @@
 <span ng-show="result.extracted.elements.type=='pdf'">
   <h4>
     <i class="fa fa-file-pdf-o" style="margin-right:10px; color:red"></i><a ui-sref="root.view({uri: result.uri, q: ctrl.qtext})">{{result.getNiceTitle()}}</a>
+</h4>
+<div class="matches">
+  <div class="match" ng-repeat="match in result.matches">
+    <em ng-repeat="text in match['match-text'] track by $index">
+        <span ng-class="{ highlight: !!text.highlight }">{{ text.highlight || text }}</span>
+</em>
+</div>
+<div style="float:right">
+  <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
+  <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
+
+  <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
+
+</div>
+</div>
+<hr>
+</span>
+
+<span ng-show="result.extracted.elements.type=='doc'">
+  <h4>
+    <i class="fa fa-file-word-o" style="margin-right:10px; color:blue"></i><a ui-sref="root.view({uri: result.uri, q: ctrl.qtext})">{{result.getNiceTitle()}}</a>
 </h4>
 <div class="matches">
   <div class="match" ng-repeat="match in result.matches">

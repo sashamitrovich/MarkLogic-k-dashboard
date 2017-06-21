@@ -43,8 +43,18 @@
       // uriPrefix 
       'uriPrefix': function (file) {
         var extension = file.name.replace('^.*\.([^\.]+)$');
+        var prefix="";
         //return '/internal/dropped/' + extension + '/';
-        return '/internal/dropped/';
+        if (file.type=='application/msword') {
+          prefix='/internal/dropped/doc/'
+        }
+        else if(file.type=='application/pdf') {
+          prefix='/internal/dropped/pdf/'
+        }
+        else {
+          prefix='/internal/dropped/'
+        }
+        return prefix;
       }
     };
 

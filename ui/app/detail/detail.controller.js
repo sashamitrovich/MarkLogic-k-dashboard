@@ -21,7 +21,11 @@
       ctrl.xml = vkbeautify.xml(x2js.json2xml_str(doc.data));
       ctrl.json = doc.data;
       ctrl.type = 'json';
-    } else if (uri.indexOf("/internal/")>-1) {
+    } else if (uri.indexOf("/internal/dropped/doc")>-1) {
+      ctrl.type = 'doc';
+      uri = uri.replace("xml","doc");
+      //console.log(uri);
+    } else if (uri.indexOf("/internal/dropped/pdf")>-1) {
       ctrl.type = 'pdf';
       uri = uri.replace("xml","pdf");
       //console.log(uri);
