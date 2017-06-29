@@ -74,6 +74,23 @@
       });
     };
 
+    ctrl.deleteDocContent = function () {
+      toast.info('working...');
+      $http({
+        url: '/v1/search',
+        method: 'DELETE',
+        params: {
+          collection: 'doc'
+        }
+      }).then(function (response) {
+        toast.success('Deleted DOC content');
+        $scope.$broadcast('refresh');
+      }, function (response) {
+        toast.danger(response.data);
+      });
+    };
+
+
     ctrl.deleteRssContent = function () {
       toast.info('working...');
       $http({
