@@ -1,6 +1,7 @@
 <div class="row detail">
   <div class="col-sm-8">
     <span ng-if="ctrl.type!='pdf' && ctrl.type!='doc'">
+    <!--  
     <uib-tabset type="pills">
       <uib-tab active="true">
         <uib-tab-heading>{{ctrl.type | uppercase}}</uib-tab-heading>
@@ -14,7 +15,7 @@
       <uib-tab ng-if="ctrl.type!=='json'">
         <uib-tab-heading>JSON</uib-tab-heading>
         <div class="col-sm-9 bottom-buffer">
-          <json-explorer data="ctrl.json"></json-explorer>
+        <json-explorer data="ctrl.json"></json-explorer>
         </div>
       </uib-tab>
       <uib-tab ng-if="ctrl.type==='json'">
@@ -24,6 +25,8 @@
         </div>
       </uib-tab>
     </uib-tabset>
+    -->
+    <view-file uri="ctrl.viewuri" content-type="ctrl.contentType" style="height:650px;"></view-file>
     </span>
     <span ng-if="ctrl.type=='pdf'">
       <div class="nav-tabs-custom">

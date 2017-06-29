@@ -12,7 +12,9 @@
     var qtext=$stateParams.q;
     var urixml=uri;
 
-    var contentType = doc.headers('content-type');
+    var contentType = doc.headers('content-type').split(/;/)[0];
+    var encodedUri = encodeURIComponent(uri);
+
 
     var x2js = new X2JS();
     /* jscs: disable */
@@ -49,9 +51,10 @@
     }
 
     angular.extend(ctrl, {
+      contentType: contentType,
       doc : doc.data,
       uri : uri,
-      viewuri : '/v1/documents?uri='+encodeURIComponent(uri),
+      viewuri : '/v1/documents?uri='+encodeURIComponent(uri) + '&format=binary' +'&transform=indent',
       viewurihtml: '/v1/documents?uri='+encodeURIComponent(urixml) +'&transform=get-html&trans:q='+qtext /*'&format=xml&transform=indent&trans:property=html'*/
     });
   }

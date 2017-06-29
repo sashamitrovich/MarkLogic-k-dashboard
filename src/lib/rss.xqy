@@ -29,6 +29,17 @@ as item() {
         let $content-for-enrichment := xdmp:tidy(replace($content-for-enrichment, '<script(.|&#10;)*?</script>', ''))[2]
         let $content-for-enrichment := xdmp:tidy(replace($content-for-enrichment, '<a(.|&#10;)*?</a>', ''))[2]
 
+        let $eq:="&#61;" (: equal = :)
+        let $ampersand := '&#38;' (: ampersand & :)
+        let $q:="\?"
+
+        let $guid:=fn:replace($guid,"\.","_")
+        let $guid:=fn:replace($guid,$eq,"_")
+        let $guid:=fn:replace($guid,$ampersand,"_")
+        
+        let $guid:=fn:replace($guid,$q,"_")
+        
+
         let $newUri:=fn:concat("/nachricht/",$source_name,"/", fn:encode-for-uri($guid), ".xml")
         return if (map:contains($uriMap, $newUri) or fn:doc-available($newUri))
           then xdmp:log(fn:concat("skipping ", $newUri)) 
