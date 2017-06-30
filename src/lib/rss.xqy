@@ -1,8 +1,13 @@
 xquery version "1.0-ml";
 module namespace rss="http://marklogic.com/rss";
+
+import module namespace datetime = "http://marklogic.com/datetime" at "/ext/mlpm_modules/ml-datetime/datetime.xqy";
+
 declare namespace c="http://s.opencalais.com/1/pred/";
 declare namespace rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 declare option xdmp:update "true";
+
+
 (: declare namespace map = "http://www.w3.org/2005/xpath-functions/map"; :)
 
 declare function rss:fetch($request as xs:string, $encoding as xs:string) 
@@ -15,8 +20,7 @@ as item() {
     <verify-cert>false</verify-cert>
   </options>
   let $response:= xdmp:http-get($request, $options)
-  let $pubDate:= current-dateTime()
-  let $picture:="[Fn], [D01] [MNn] [Y] [H01]:[m01]:[s01] [Z]"
+  
   let $source_name:=fn:tokenize(fn:tokenize(fn:tokenize($request, "//")[2],"/")[1],"\.")[2]
  
   let $uriMap:=map:map()
@@ -24,7 +28,11 @@ as item() {
     for $item in $response[2]//item
         let $last-part := fn:tokenize($item/link, "/")[last()]
         let $guid :=   if (exists($last-part)) then $last-part else sem:uuid-string() (: fn:substring-before($last-part,".")     :)
-        
+
+        (: using ml-datetime library to try to parse the date :)
+        let $parsedDate:= datetime:parse-dateTime($item/pubDate) 
+        let $pubDate:= if (fn:empty($parsedDate) eq fn:false()) then $parsedDate else current-dateTime() (:if not sucessful, fall back to current date :)
+          
         let $content-for-enrichment:=fn:concat($item//title, $item/description)
         let $content-for-enrichment := xdmp:tidy(replace($content-for-enrichment, '<script(.|&#10;)*?</script>', ''))[2]
         let $content-for-enrichment := xdmp:tidy(replace($content-for-enrichment, '<a(.|&#10;)*?</a>', ''))[2]
