@@ -1,0 +1,7 @@
+{
+  "name": "ml-datetime",
+  "version": "1.0.3",
+  "description": "MarkLogic library with various date/time related functions",
+  "repository": "https://github.com/grtjn/ml-datetime.git",
+  "gitHead": "775fb99b26d8093608924bb91b132d9e8c6ccc31"
+}

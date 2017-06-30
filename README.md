@@ -86,10 +86,12 @@ load-js-as-binary=false
 
 # Running the application
 
+Run following roxy commands to bootstrap (configure) the database and the API servers, deploy servers-side code (modules, triggers and external packages) and, finally, import data:
     
     ./ml local bootstrap
     ./ml local deploy modules
     ./ml local deploy triggers
+    ./ml local deploy packages
     ./import-config.sh
 
 Install additional js dependencies:

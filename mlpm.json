@@ -1,8 +1,9 @@
 {
-  "name": "kpmg-dashboard",
+  "name": "k-dashboard",
   "version": "0.0.0",
-  "description": "Sample app generated with slush-marklogic-node",
+  "description": "Business information dashboard running on top of MarkLogic",
   "private": true,
   "dependencies": {
+    "ml-datetime": "1.0.*"
   }
 }
