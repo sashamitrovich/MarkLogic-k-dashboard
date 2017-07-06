@@ -6,7 +6,7 @@ declare default function namespace "http://www.w3.org/2005/xpath-functions";
 
 import module namespace rsslib = "http://marklogic.com/rss" at "/lib/rss.xqy";
 
-declare function rss:put(
+declare function %rapi:transaction-mode("update") rss:put(
   $context as map:map,
   $params  as map:map,
   $input   as document-node()*
