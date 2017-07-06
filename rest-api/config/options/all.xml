@@ -1,10 +1,10 @@
-<options
+<options 
   xmlns="http://marklogic.com/appservices/search">
   <search-option>unfiltered</search-option>
   <page-length>10</page-length>
   <!-- Limit all searches to this additional query -->
   <additional-query>
-    <cts:collection-query
+    <cts:collection-query 
       xmlns:cts="http://marklogic.com/cts">
       <cts:uri>data</cts:uri>
     </cts:collection-query>
@@ -19,7 +19,7 @@
   <grammar>
     <quotation>"</quotation>
     <implicit>
-      <cts:and-query strength="20"
+      <cts:and-query strength="20" 
         xmlns:cts="http://marklogic.com/cts"/>
     </implicit>
     <starter strength="30" apply="grouping" delimiter=")">(</starter>
@@ -79,10 +79,8 @@
     <!-- <collection facet="true" /> -->
     <!-- optionally enable a prefix to see a specific subset of facets-->
     <collection facet="true" prefix="data/" />
-
   </constraint>
-
-   <constraint name="Source">
+  <constraint name="Source">
     <range type="xs:string" facet="true">
       <facet-option>limit=10</facet-option>
       <facet-option>frequency-order</facet-option>
@@ -90,118 +88,100 @@
       <field name="Source"/>
     </range>
   </constraint>
-
   <constraint name="Date">
     <range type="xs:dateTime" facet="false">
       <field name="Date"/>
     </range>
   </constraint>
-
   <constraint name="Weeks">
     <range type="xs:dateTime" facet="true">
       <facet-option>limit=5</facet-option>
       <!-->
-      <facet-option>frequency-order</facet-option>
-      -->
-      <facet-option>descending</facet-option>
-      <field name="Date"/>
-      <computed-bucket name="current-week" ge="-P7D" anchor="start-of-day">Current week</computed-bucket>
-      <computed-bucket name="1-week-ago" ge="-P14D" lt="-P7D" anchor="start-of-day">Last week</computed-bucket>
-      <computed-bucket name="2-weeks-ago" ge="-P21D" lt="-P14D" anchor="start-of-day">2 weeks ago</computed-bucket>
-      <computed-bucket name="3-weeks-ago" ge="-P28D" lt="-P21D" anchor="start-of-day">3 weeks ago</computed-bucket>
-      <computed-bucket name="4-weeks-ago" ge="-P35D" lt="-P28D" anchor="start-of-day">3 weeks ago</computed-bucket>
-    </range>
-  </constraint>
-
-  <constraint name="Period">
-    <range type="xs:dateTime" facet="true">
-      <facet-option>limit=5</facet-option>
-      <facet-option>frequency-order</facet-option>
-      <facet-option>descending</facet-option>
-      <field name="Date"/>
-       <computed-bucket name="today" ge="P0D" lt="P1D" anchor="start-of-day">Today</computed-bucket>
-      <computed-bucket name="yesterday" ge="-P1D" lt="P0D" anchor="start-of-day">yesterday</computed-bucket>
-      <computed-bucket name="7-days" ge="-P6D" lt="P1D" anchor="start-of-day">Last 7 Days</computed-bucket>
-      <computed-bucket name="30-days" ge="-P30D" lt="P1D" anchor="start-of-day">Last 30 days</computed-bucket>
-      <computed-bucket name="year" ge="-P1Y" lt="P1D" anchor="start-of-day">Last Year</computed-bucket>
-      <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket>
-      <computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket>
-      <computed-bucket anchor="now" name="20 years ago" ge="-P20Y" lt="-P15Y">20 years ago</computed-bucket>
-      <computed-bucket anchor="now" name="15 years ago" ge="-P15Y" lt="-P10Y">15 years ago</computed-bucket>
-      <computed-bucket anchor="now" name="10 years ago" ge="-P10Y" lt="-P5Y">10 years ago</computed-bucket>
-      <computed-bucket anchor="now" name="5 years ago" ge="-P5Y">5 years ago</computed-bucket-->
-    </range>
-  </constraint>
-  <constraint name="Hashtag">
-     <range type="xs:string" facet="true">
-      <facet-option>limit=20</facet-option>
-      <facet-option>frequency-order</facet-option>
-      <facet-option>descending</facet-option>
-       <field name="tags"/>
-      <!-- <collation>http://marklogic.com/collation/</collation> -->
-      <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket><computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket><computed-bucket anchor="now" name="20 years ago" ge="-P20Y" lt="-P15Y">20 years ago</computed-bucket><computed-bucket anchor="now" name="15 years ago" ge="-P15Y" lt="-P10Y">15 years ago</computed-bucket><computed-bucket anchor="now" name="10 years ago" ge="-P10Y" lt="-P5Y">10 years ago</computed-bucket><computed-bucket anchor="now" name="5 years ago" ge="-P5Y">5 years ago</computed-bucket-->
-    </range>
-    <!-- optionally enable a prefix to see a specific subset of facets
+      <facet-option>frequency-order</facet-option>      -->
+        <facet-option>descending</facet-option>
+        <field name="Date"/>
+        <computed-bucket name="current-week" ge="-P7D" anchor="start-of-day">Current week</computed-bucket>
+        <computed-bucket name="1-week-ago" ge="-P14D" lt="-P7D" anchor="start-of-day">Last week</computed-bucket>
+        <computed-bucket name="2-weeks-ago" ge="-P21D" lt="-P14D" anchor="start-of-day">2 weeks ago</computed-bucket>
+        <computed-bucket name="3-weeks-ago" ge="-P28D" lt="-P21D" anchor="start-of-day">3 weeks ago</computed-bucket>
+        <computed-bucket name="4-weeks-ago" ge="-P35D" lt="-P28D" anchor="start-of-day">3 weeks ago</computed-bucket>
+      </range>
+    </constraint>
+    <constraint name="Period">
+      <range type="xs:dateTime" facet="true">
+        <facet-option>limit=5</facet-option>
+        <facet-option>frequency-order</facet-option>
+        <facet-option>descending</facet-option>
+        <field name="Date"/>
+        <computed-bucket name="today" ge="P0D" lt="P1D" anchor="start-of-day">Today</computed-bucket>
+        <computed-bucket name="yesterday" ge="-P1D" lt="P0D" anchor="start-of-day">yesterday</computed-bucket>
+        <computed-bucket name="7-days" ge="-P6D" lt="P1D" anchor="start-of-day">Last 7 Days</computed-bucket>
+        <computed-bucket name="30-days" ge="-P30D" lt="P1D" anchor="start-of-day">Last 30 days</computed-bucket>
+        <computed-bucket name="year" ge="-P1Y" lt="P1D" anchor="start-of-day">Last Year</computed-bucket>
+        <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket><computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket><computed-bucket anchor="now" name="20 years ago" ge="-P20Y" lt="-P15Y">20 years ago</computed-bucket><computed-bucket anchor="now" name="15 years ago" ge="-P15Y" lt="-P10Y">15 years ago</computed-bucket><computed-bucket anchor="now" name="10 years ago" ge="-P10Y" lt="-P5Y">10 years ago</computed-bucket><computed-bucket anchor="now" name="5 years ago" ge="-P5Y">5 years ago</computed-bucket-->
+      </range>
+    </constraint>
+    <constraint name="Hashtag">
+      <range type="xs:string" facet="true">
+        <facet-option>limit=20</facet-option>
+        <facet-option>frequency-order</facet-option>
+        <facet-option>descending</facet-option>
+        <field name="tags"/>
+        <!-- <collation>http://marklogic.com/collation/</collation> -->
+        <!--computed-bucket anchor="now" name="longer" lt="-P25Y">longer</computed-bucket><computed-bucket anchor="now" name="25 years ago" ge="-P25Y" lt="-P20Y">25 years ago</computed-bucket><computed-bucket anchor="now" name="20 years ago" ge="-P20Y" lt="-P15Y">20 years ago</computed-bucket><computed-bucket anchor="now" name="15 years ago" ge="-P15Y" lt="-P10Y">15 years ago</computed-bucket><computed-bucket anchor="now" name="10 years ago" ge="-P10Y" lt="-P5Y">10 years ago</computed-bucket><computed-bucket anchor="now" name="5 years ago" ge="-P5Y">5 years ago</computed-bucket-->
+      </range>
+      <!-- optionally enable a prefix to see a specific subset of facets
     <collection facet="true" prefix="data/" />
     -->
-  </constraint>
-  <!-- Example facet based on the sample-data -->
-
-  <!-- Example geospatial facet based on the sample-data, used by map theme -->
-  <constraint name="Location">
-    <geo-elem-pair>
-      <parent ns="" name="location"/>
-      <lat ns="" name="latitude"/>
-      <lon ns="" name="longitude"/>
-      <geo-option>boundaries-included</geo-option>
-      <geo-option>score-function=reciprocal</geo-option>
-      <heatmap s="-90" w="-180" n="90" e="180" latdivs="4" londivs="4"/>
-    </geo-elem-pair>
-  </constraint>
-  <!-- example facet constraint below -->
-  <!--
-  <constraint name="myconstraint">
-    <range type="xs:string" facet="true">
-    <facet-option>limit=5</facet-option>
-    <facet-option>frequency-order</facet-option>
-    <facet-option>descending</facet-option>
-    <element ns="" name="my-el"/></range></constraint>
+    </constraint>
+    <!-- Example facet based on the sample-data -->
+    <!-- Example geospatial facet based on the sample-data, used by map theme -->
+    <constraint name="Location">
+      <geo-elem-pair>
+        <parent ns="" name="location"/>
+        <lat ns="" name="latitude"/>
+        <lon ns="" name="longitude"/>
+        <geo-option>boundaries-included</geo-option>
+        <geo-option>score-function=reciprocal</geo-option>
+        <heatmap s="-90" w="-180" n="90" e="180" latdivs="4" londivs="4"/>
+      </geo-elem-pair>
+    </constraint>
+    <!-- example facet constraint below -->
+    <!--
+  <constraint name="myconstraint"><range type="xs:string" facet="true"><facet-option>limit=5</facet-option><facet-option>frequency-order</facet-option><facet-option>descending</facet-option><element ns="" name="my-el"/></range></constraint>
   -->
-  <!-- example suggestion-source below -->
-  <!--
-  <suggestion-source ref="myconstraint">
-    <suggestion-option>frequency-order</suggestion-option>
-    <suggestion-option>descending</suggestion-option>
-    <suggestion-option>limit=10</suggestion-option>
-  </suggestion-source>
+    <!-- example suggestion-source below -->
+    <!--
+  <suggestion-source ref="myconstraint"><suggestion-option>frequency-order</suggestion-option><suggestion-option>descending</suggestion-option><suggestion-option>limit=10</suggestion-option></suggestion-source>
   -->
-  <!-- This will extract the latitude and longitude from the search. -->
-  <!--
+    <default-suggestion-source>
+      <range type="xs:string">
+        <field name="tags"/>
+      </range>
+    </default-suggestion-source>
+    <!-- This will extract the latitude and longitude from the search. -->
+    <!--
   <extract-document-data selected="all"></extract-document-data>
   -->
-  <extract-document-data selected="include">
-
-    <extract-path>/item/original/title</extract-path>
-    <extract-path>/item/original/link</extract-path>
-    <extract-path>/item/original/category</extract-path>
-    <extract-path>/item/original/description</extract-path>
-    <extract-path>/item/original/enclosure/@url</extract-path>
-
-    <extract-path>/stock/Symbol</extract-path>
-    <extract-path>/stock/type</extract-path>
-    <extract-path>/stock/Name</extract-path>
-    <extract-path>/stock/Description</extract-path>
-    <extract-path>/stock/source</extract-path>
-    <extract-path>/stock/price-latest/Date</extract-path>
-    <extract-path>/stock/price-latest/Close</extract-path>
-    <extract-path>/stock/price-latest/Change</extract-path>
-
-    <extract-path>/envelope/link</extract-path>
-    <extract-path>/envelope/title</extract-path>
-
-    <extract-path>//envelope/type</extract-path>
-    <extract-path>//envelope/source</extract-path>
-    <extract-path>//envelope/date_time</extract-path>
-    <extract-path>//envelope/semantic_tags</extract-path>
-  </extract-document-data>
-</options>
+    <extract-document-data selected="include">
+      <extract-path>/item/original/title</extract-path>
+      <extract-path>/item/original/link</extract-path>
+      <extract-path>/item/original/category</extract-path>
+      <extract-path>/item/original/description</extract-path>
+      <extract-path>/item/original/enclosure/@url</extract-path>
+      <extract-path>/stock/Symbol</extract-path>
+      <extract-path>/stock/type</extract-path>
+      <extract-path>/stock/Name</extract-path>
+      <extract-path>/stock/Description</extract-path>
+      <extract-path>/stock/source</extract-path>
+      <extract-path>/stock/price-latest/Date</extract-path>
+      <extract-path>/stock/price-latest/Close</extract-path>
+      <extract-path>/stock/price-latest/Change</extract-path>
+      <extract-path>/envelope/link</extract-path>
+      <extract-path>/envelope/title</extract-path>
+      <extract-path>//envelope/type</extract-path>
+      <extract-path>//envelope/source</extract-path>
+      <extract-path>//envelope/date_time</extract-path>
+      <extract-path>//envelope/semantic_tags</extract-path>
+    </extract-document-data>
+  </options>

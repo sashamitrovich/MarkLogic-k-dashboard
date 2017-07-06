@@ -31,6 +31,7 @@ as item() {
 
         (: using ml-datetime library to try to parse the date :)
         let $parsedDate:= datetime:parse-dateTime($item/pubDate) 
+        let $log:= if (fn:empty($parsedDate) eq fn:true()) then xdmp:log(fn:concat("couldn't parse=",$item/pubDate)) else ""
         let $pubDate:= if (fn:empty($parsedDate) eq fn:false()) then $parsedDate else current-dateTime() (:if not sucessful, fall back to current date :)
           
         let $content-for-enrichment:=fn:concat($item//title, $item/description)
@@ -77,11 +78,11 @@ declare function persistDocs ($uriMap as item()) {
   let $permissions:=(xdmp:permission("k-dashboard-role", "read"),
         xdmp:permission("k-dashboard-role", "update"))
   let $collections:=("data","data/rss")
-  let $log:= xdmp:log($uris)
+  (: let $log:= xdmp:log($uris) :)
 
   for $newUri in $uris
     let $newDoc:=map:get($uriMap,$newUri)
-    (: let $log:=xdmp:log(fn:concat("uri= ", $newUri)) :)
+    let $log:=xdmp:log(fn:concat("uri= ", $newUri))
     return if (fn:doc-available($newUri)) 
       then xdmp:log(fn:concat("skipping ", $newUri)) 
       else xdmp:document-insert($newUri,$newDoc,$permissions,$collections)
