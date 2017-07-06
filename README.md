@@ -91,9 +91,9 @@ Run following roxy commands to bootstrap (configure) the database and the API se
     
     mlpm install ml-datetime --save
     ./ml local bootstrap
+    ./ml local deploy packages
     ./ml local deploy modules
     ./ml local deploy triggers
-    ./ml local deploy packages
     ./import-config.sh
 
 Install additional js dependencies:
