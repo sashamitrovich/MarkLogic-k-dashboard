@@ -4,6 +4,7 @@
   "description": "Business information dashboard running on top of MarkLogic",
   "private": true,
   "dependencies": {
-    "ml-datetime": "1.0.*"
+    "ml-datetime": "1.0.*",
+    "ml-open-calais": "1.0.*"
   }
 }

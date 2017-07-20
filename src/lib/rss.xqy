@@ -2,6 +2,7 @@ xquery version "1.0-ml";
 module namespace rss="http://marklogic.com/rss";
 
 import module namespace datetime = "http://marklogic.com/datetime" at "/ext/mlpm_modules/ml-datetime/datetime.xqy";
+import module namespace oc = "http://marklogic.com/opencalais" at "/ext/mlpm_modules/ml-open-calais/opencalais.xqy";
 
 declare namespace c="http://s.opencalais.com/1/pred/";
 declare namespace rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#";
@@ -54,7 +55,7 @@ as item() {
           then xdmp:log(fn:concat("skipping ", $newUri)) 
           else 
 
-            let $semantic_tags:= if($enrich) then rss:get-tags($content-for-enrichment) else element semantic_tags {}
+            let $semantic_tags:= if($enrich) then rss:get-tags($content-for-enrichment, $newUri) else element semantic_tags {}
             let $newDoc:=document {
               element item {
                 element original {
@@ -107,24 +108,16 @@ declare function rss:capitalize-first
     return xdmp:spawn-function(function() {rss:persistDocs($uriMap)})
  };
 
- declare function rss:get-tags ( $arg as xs:string)  
+ declare function rss:get-tags ( $arg as xs:string, $uri as xs:string)  
 as node()* {
-    let $key:=doc("/config/sources.json")/semantics/opencalaisKey
-    let $options:=
-      <options xmlns="xdmp:http">
-        <headers>
-          <X-AG-Access-Token>{$key}</X-AG-Access-Token>
-          <Content-Type>text/raw</Content-Type>
-        </headers>
-        <data>
-          {$arg}
-        </data>
-    </options>
-    let $uri:="https://api.thomsonreuters.com/permid/calais"
-    let $result:=xdmp:http-post($uri ,$options)  
-    let $doc:=$result[2]
+
+    let $oc-license:=doc("/config/sources.json")/semantics/opencalaisKey
+    let $data:=element data { $arg }
+    let $doc:=oc:enrich($uri, $data, $oc-license, "English")
+
     let $tags1:= $doc//rdf:Description[rdf:type/@rdf:resource="http://s.opencalais.com/1/type/tag/SocialTag"]/c:name/text()
     let $tags2:= $doc//rdf:Description[starts-with(rdf:type/@rdf:resource,"http://s.opencalais.com/1/type/em/e")]/c:name/text()
+    
     let $tags:= fn:distinct-values(($tags1,$tags2))
     let $newNode:= element semantic_tags {
       for $tag in $tags
@@ -133,7 +126,7 @@ as node()* {
         }
       }
     
-    (: let $log:=xdmp:log($newNode) :)
+    (: let $_:=xdmp:log($newNode) :)
     return $newNode
  
 

@@ -89,7 +89,7 @@ load-js-as-binary=false
 
 Run following roxy commands to bootstrap (configure) the database and the API servers, deploy servers-side code (modules, triggers and external packages) and, finally, import data:
     
-    mlpm install ml-datetime --save
+ 
     ./ml local bootstrap
     ./ml local deploy packages
     ./ml local deploy modules

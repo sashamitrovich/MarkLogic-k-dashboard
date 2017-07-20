@@ -1,0 +1,7 @@
+{
+  "name": "ml-open-calais",
+  "version": "1.0.1",
+  "description": "MarkLogic XQuery library for using Thomson Reuters Open Calais™ API",
+  "repository": "https://github.com/grtjn/ml-open-calais.git",
+  "gitHead": "caa3c01d98437722020826771cf6f41987a77226"
+}
