@@ -11,14 +11,18 @@
     };
   });
 
-  SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory', '$sce', 'MLRest', '$uibModal'];
+  SearchCtrl.$inject = ['doc','$scope', '$location', 'userService', 'MLSearchFactory', '$sce', 'MLRest', '$uibModal'];
 
   // inherit from MLSearchController
   var superCtrl = MLSearchController.prototype;
   SearchCtrl.prototype = Object.create(superCtrl);
 
-  function SearchCtrl($scope, $location, userService, searchFactory, $sce, mlRest, $uibModal) {
+  function SearchCtrl(doc,$scope, $location, userService, searchFactory, $sce, mlRest, $uibModal) {
     var ctrl = this;
+
+    angular.extend(ctrl, {     
+      sources: doc.data, // {rss: ["1","2"], twitter:["t1","t2","t3"]},
+    });
 
     var mlSearchQueries = searchFactory.newContext({ queryOptions: 'queries', pageLength: 5 });
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());

@@ -7,7 +7,7 @@
 </div>
 
 <div class="search row" ng-if="ctrl.currentUser">
-  <div class="col-md-2 right-col">
+  <div class="col-md-2 right-col" ng-show="ctrl.sources.other.showFacets">
     <ml-facets facets="ctrl.response.facets" toggle="ctrl.toggleFacet(facet, value)" active-facets="ctrl.mlSearch.activeFacets"
       negate="ctrl.toggleNegatedFacet(facet,value)" template="app/search/ml-facets.html" show-more="ctrl.showMoreFacets(facet, facetName)"></ml-facets>
 
@@ -31,71 +31,76 @@
   </div>
   <div class="col-md-3">
 
-    <div class="row" style="margin-top: 2em">
-      <div class="col-md-6">
-        <div class="box box-solid box-success">
-          <div class=" box-header with-border card-heading">
-            Winner (Day)
+    <!-- stock indicators -->
+    <div ng-show="ctrl.sources.other.showStocks">
+      <div class="row" style="margin-top: 2em">
+        <div class="col-md-6">
+          <div class="box box-solid box-success">
+            <div class=" box-header with-border card-heading">
+              Winner (Day)
+            </div>
+            <div class="box-body" style="text-align:center">
+              <div>{{ctrl.stats.dayWinner.name}}</div>
+              <div class='stock-symbol'>(DAX:{{ctrl.stats.dayWinner.symbol}})</div>
+              <div>
+                <span class="stock-change-positive" style="font-size:2em; font-weight:bold">{{ctrl.stats.dayWinner.dayChange}}</span>
+                <span style="font-size:1.4em">%</span>
+              </div>
+            </div>
           </div>
-          <div class="box-body" style="text-align:center">
-            <div>{{ctrl.stats.dayWinner.name}}</div>
-            <div class='stock-symbol'>(DAX:{{ctrl.stats.dayWinner.symbol}})</div>
-            <div>
-              <span class="stock-change-positive" style="font-size:2em; font-weight:bold">{{ctrl.stats.dayWinner.dayChange}}</span>
-              <span style="font-size:1.4em">%</span>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-solid  box-danger ">
+            <div class=" box-header with-border card-heading">
+              Loser (Day)
+            </div>
+            <div class="box-body" style="text-align:center">
+              <div>{{ctrl.stats.dayLooser.name}}</div>
+              <div class='stock-symbol'>(DAX:{{ctrl.stats.dayLooser.symbol}})</div>
+              <div>
+                <span class="stock-change-negative" style="font-size:2em; font-weight:bold">{{ctrl.stats.dayLooser.dayChange}}</span>
+                <span style="font-size:1.4em">%</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="box box-solid  box-danger ">
-          <div class=" box-header with-border card-heading">
-            Loser (Day)
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box box-solid box-success">
+            <div class=" box-header with-border card-heading">
+              Winner (Week)
+            </div>
+            <div class="box-body" style="text-align:center">
+              <div>{{ctrl.stats.weekWinner.name}}</div>
+              <div class='stock-symbol'>(DAX:{{ctrl.stats.weekWinner.symbol}})</div>
+              <div>
+                <span class="stock-change-positive" style="font-size:2em; font-weight:bold">{{ctrl.stats.weekWinner.weekChange}}</span>
+                <span style="font-size:1.4em">%</span>
+              </div>
+            </div>
           </div>
-          <div class="box-body" style="text-align:center">
-            <div>{{ctrl.stats.dayLooser.name}}</div>
-            <div class='stock-symbol'>(DAX:{{ctrl.stats.dayLooser.symbol}})</div>
-            <div>
-              <span class="stock-change-negative" style="font-size:2em; font-weight:bold">{{ctrl.stats.dayLooser.dayChange}}</span>
-              <span style="font-size:1.4em">%</span>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-solid  box-danger ">
+            <div class=" box-header with-border card-heading">
+              Loser (Week)
+            </div>
+            <div class="box-body" style="text-align:center">
+              <div>{{ctrl.stats.weekLooser.name}}</div>
+              <div class='stock-symbol'>(DAX:{{ctrl.stats.weekLooser.symbol}})</div>
+              <div>
+                <span class="stock-change-negative" style="font-size:2em; font-weight:bold">{{ctrl.stats.weekLooser.weekChange}}</span>
+                <span style="font-size:1.4em">%</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="box box-solid box-success">
-          <div class=" box-header with-border card-heading">
-            Winner (Week)
-          </div>
-          <div class="box-body" style="text-align:center">
-            <div>{{ctrl.stats.weekWinner.name}}</div>
-            <div class='stock-symbol'>(DAX:{{ctrl.stats.weekWinner.symbol}})</div>
-            <div>
-              <span class="stock-change-positive" style="font-size:2em; font-weight:bold">{{ctrl.stats.weekWinner.weekChange}}</span>
-              <span style="font-size:1.4em">%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="box box-solid  box-danger ">
-          <div class=" box-header with-border card-heading">
-            Loser (Week)
-          </div>
-          <div class="box-body" style="text-align:center">
-            <div>{{ctrl.stats.weekLooser.name}}</div>
-            <div class='stock-symbol'>(DAX:{{ctrl.stats.weekLooser.symbol}})</div>
-            <div>
-              <span class="stock-change-negative" style="font-size:2em; font-weight:bold">{{ctrl.stats.weekLooser.weekChange}}</span>
-              <span style="font-size:1.4em">%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-12">
+
+    <!-- tag cloud -->
+    <div class="col-md-12" ng-show="ctrl.sources.other.showTagCloud">
       <d3-cloud words="ctrl.words" padding="0" slope-base="10" slope-factor="70" rotate="ctrl.noRotate(word)" events="ctrl.cloudEvents"></d3-cloud>
     </div>
 

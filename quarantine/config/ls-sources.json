@@ -85,5 +85,10 @@
     "semantics": {
         "enrich": false,
         "opencalaisKey": ""
+    },
+    "other": {
+        "showStocks": false,
+        "showFacets": true,
+        "showTagCloud": false
     }
 }

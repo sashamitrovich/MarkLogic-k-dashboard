@@ -2,31 +2,31 @@
     "rss": [
         {
             "link": "http://feeds.feedburner.com/autonews/BreakingNews",
-            "encoding": "utf-8"
+            "encoding": "ISO-8859-1"
         },
         {
             "link": "http://feeds.feedburner.com/autonews/LatestIssue",
-            "encoding": "utf-8"
+            "encoding": "ISO-8859-1"
         },
         {
             "link": "http://feeds.feedburner.com/autonews/AutomakerNews",
-            "encoding": "utf-8"
+            "encoding": "ISO-8859-1"
         },
         {
             "link": "http://feeds.feedburner.com/autonews/SupplierNews",
-            "encoding": "utf-8"
+            "encoding": "ISO-8859-1"
         },
         {
             "link": "http://feeds.feedburner.com/autonews/EuropeNews",
-            "encoding": "utf-8"
+            "encoding": "ISO-8859-1"
         },
         {
             "link": "http://feeds.feedburner.com/autonews/EditorsPicks",
-            "encoding": "utf-8"
+            "encoding": "ISO-8859-1"
         },
         {
             "link": "http://feeds.feedburner.com/autonews/ExecutiveNews",
-            "encoding": "utf-8"
+            "encoding": "ISO-8859-1"
         },
         {
             "link": "http://feeds.feedburner.com/AutomotiveNewsFutureProductPipelineFeed",
@@ -66,5 +66,10 @@
     "semantics": {
         "enrich": false,
         "opencalaisKey": ""
+    },
+    "other": {
+        "showStocks": false,
+        "showFacets": true,
+        "showTagCloud": false
     }
 }

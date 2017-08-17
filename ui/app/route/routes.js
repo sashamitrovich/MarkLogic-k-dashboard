@@ -67,6 +67,14 @@
           text: 'Search',
           area: 'dashboard',
           navClass: 'fa-search'
+        },
+        resolve: {
+          doc: function(MLRest) {
+            var uri="/config/sources.json";
+            return MLRest.getDocument(uri, { format: 'json' }).then(function(response) {
+              return response;
+            });
+          }
         }
       })
       /*
