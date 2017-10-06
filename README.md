@@ -166,3 +166,10 @@ New sources will be ingested at the next scheduled task runs. If you want to ing
     ./import-data.sh
 
 from the command line.
+
+# Open Calais API
+
+In order to enrich your RSS content with tags coming from the Open Calais API, you'll need to register for an API key here:
+http://www.opencalais.com/opencalais-api/
+
+The key can be entered on the Config page of the Demo.
