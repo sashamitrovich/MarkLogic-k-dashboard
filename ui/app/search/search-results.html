@@ -1,37 +1,17 @@
 test
 <div ng-init="ctrl=$parent.$parent.ctrl" ng-repeat="result in results">
     <span ng-show="result.extracted.elements.type=='xml'">
-      test xml
-
-        <h4>
-          <i class="fa fa-fw fa-rss"></i>
-          <a href="{{result.extracted.elements.link}}" target="_blank">{{ result.extracted.elements.title }}</a>
-        </h4>
-        <div class="matches">
-          <div class="match" ng-repeat="match in result.matches">
-            <em ng-repeat="text in match['match-text'] track by $index">
-              <span ng-class="{ highlight: !!text.highlight }">
-                <span ng-bind-html="text.highlight || text | linky:'_blank'"></span>
-              </span>
-            </em>
-          </div>
+      <h4>
+        <a ui-sref="root.view({uri: result.uri})">{{ result.label || result.uri }}</a>
+      </h4>
+      <div class="matches">
+        <div class="match" ng-repeat="match in result.matches track by $index">
+          <em ng-repeat="text in match['match-text'] track by $index">
+            <span ng-class="{ highlight: !!text.highlight }">{{ text.highlight || text }}</span>
+          </em>
         </div>
-        <div class="matches" ng-show="!result.showMatch">
-          <div class="match">
-            <!--<span>{{ result.extracted.elements.description }}</span>-->
-            <span ng-bind-html="result.extracted.elements.description"></span>
-          </div>
-        </div>
-        <span ng-repeat="tag in result.extracted.elements.semantic_tags.tags">
-          <span class="tag" ng-click="ctrl.clickTag(tag)">{{tag}}</span>
-        </span>
-        <div style="float:right">
-
-          <span class="stock-date">Date: {{result.extracted.elements.date_time | date:'mediumDate'}}</span> via
-          <span class="stock-date" style="font-weight:bold"> {{result.extracted.elements.source}}</span>
-          <a class='view-in-db' target="_blank" ng-href="/detail{{result.uri}}">view in db</a>
-        </div>
-        <hr>
+      </div>
+      <hr>
       </span>
 
   <span ng-show="result.extracted.elements.type=='rss'">
