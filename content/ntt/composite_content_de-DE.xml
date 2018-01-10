@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rep:REPAIRMANUALDOCUMENT_MOD IDENT="" AWNUMBER="6161021" LANGUAGE="" VALIDITYINFO="(Marke=&quot;BMW PKW&quot; AND EBezeichnung=&quot;G11&quot;)" SQS-DOCUMENT-VERIFIED="true" xmlns:rep="http://bmw.com/2013/RepairManualDocument_Mod_1.0" xmlns:tf="http://bmw.com/2013/TextFragment_1.0" xmlns:hint="http://bmw.com/2013/Hint_Mod_1.0" xmlns:td="http://bmw.com/2013/TD_General_Mod_1.0" xmlns:tigh="http://bmw.com/2013/Tightening_Mod_1.0" xmlns:st="http://bmw.com/2007/SpecialTool_1.0" xmlns:proc="http://bmw.com/2013/Process_Mod_1.1" xmlns:editor="http://bmw.com/xml-editor">
+  <rep:TITLE SQS-VERIFIED="true">Wischerblatt links oder rechts ersetzen</rep:TITLE>
+  <rep:HINTS>
+    <hint:INCLUDE_TECH_INFO LINKID="HIN-TZI-P-6161--1">
+      <hint:TECH_INFO LANGUAGE="de-DE" SQS-DOCUMENT-VERIFIED="true">
+        <hint:GRAPHIC SRC="GRA-SYM-GRCI0000-10-INFO.png" LINKID="GRA-SYM-GRCI0000-10-INFO" />
+        <hint:SIGNALWORD SQS-VERIFIED="true">Technische Zusatzinformation</hint:SIGNALWORD>
+        <hint:INFORMATION>
+          <tf:SIMPLE_TEXTFRAGMENT SQS-VERIFIED="true">Ohne Wischerblatt darf der Scheibenwischerarm die Frontscheibe bzw. die Heckscheibe nicht berühren. Die Frontscheibe bzw. die Heckscheibe könnte dadurch beschädigt werden.</tf:SIMPLE_TEXTFRAGMENT>
+        </hint:INFORMATION>
+      </hint:TECH_INFO>
+    </hint:INCLUDE_TECH_INFO>
+    <hint:INCLUDE_TECH_INFO LINKID="HIN-TZI-P-6161--2">
+      <hint:TECH_INFO LANGUAGE="" SQS-DOCUMENT-VERIFIED="true">
+        <hint:GRAPHIC SRC="GRA-SYM-GRCI0000-10-INFO.png" LINKID="GRA-SYM-GRCI0000-10-INFO" />
+        <hint:SIGNALWORD SQS-VERIFIED="true">Technische Zusatzinformation</hint:SIGNALWORD>
+        <hint:INFORMATION>
+          <tf:SIMPLE_TEXTFRAGMENT xml:space="preserve" SQS-VERIFIED="true">
+            <tf:EMPHASIZE1>Bei Kundenbeanstandung </tf:EMPHASIZE1>bezüglich der Reinigungs- oder Wischleistung bzw. Geräuschbildung (Scheibenwischerrubbeln, Quietschen) der Wischerblätter wie folgt vorgehen: <tf:EMPHASIZE1> </tf:EMPHASIZE1></tf:SIMPLE_TEXTFRAGMENT>
+        </hint:INFORMATION>
+        <hint:INFORMATION>
+          <tf:SIMPLE_TEXTFRAGMENT xml:space="preserve" SQS-VERIFIED="true">Zuerst  <tf:EMPHASIZE1>prüfen, </tf:EMPHASIZE1>ob die Kundenbeanstandung durch Verschmutzungen (Konservierwachs bei Neufahrzeugen, Baumharze oder sonstige Umwelteinflüsse) auf der Frontscheibe verursacht wird, ggf. die <tf:EMPHASIZE1>Frontscheibe gründlich reinigen.</tf:EMPHASIZE1> </tf:SIMPLE_TEXTFRAGMENT>
+        </hint:INFORMATION>
+        <hint:INFORMATION>
+          <tf:SIMPLE_TEXTFRAGMENT xml:space="preserve" SQS-VERIFIED="true">Wischerblätter erst ersetzen, wenn Reinigung der Frontscheibe keine Abhilfe bringt.</tf:SIMPLE_TEXTFRAGMENT>
+        </hint:INFORMATION>
+      </hint:TECH_INFO>
+    </hint:INCLUDE_TECH_INFO>
+  </rep:HINTS>
+  <rep:KEYPROCESS>
+    <proc:INCLUDE_PROCESS LINKID="REP-TAT-P-6161-01-G11">
+      <proc:PROCESS LANGUAGE="de-DE" IDENT="" VALIDITYINFO="(Marke=&quot;BMW PKW&quot; AND (EBezeichnung=&quot;F45&quot; OR EBezeichnung=&quot;F46&quot; OR EBezeichnung=&quot;F90&quot; OR EBezeichnung=&quot;G01&quot; OR EBezeichnung=&quot;G08&quot; OR EBezeichnung=&quot;G11&quot; OR EBezeichnung=&quot;G12&quot; OR EBezeichnung=&quot;G30&quot; OR EB..." VALIDITYID="20000357604917" SQS-DOCUMENT-VERIFIED="true">
+        <proc:TITLE SQS-VERIFIED="true">Wischerblatt ausbauen</proc:TITLE>
+        <proc:HINTS>
+          <hint:INCLUDE_HINT LINKID="HIN-HIN-P-1300--LINKS_RECH">
+            <hint:HINT LANGUAGE="de-DE">
+              <hint:GRAPHIC SRC="GRA-SYM-GRCI0000-10-NOTICE.png" LINKID="GRA-SYM-GRCI0000-10-NOTICE" />
+              <hint:SIGNALWORD>HINWEIS</hint:SIGNALWORD>
+              <hint:INFORMATION>
+                <tf:SIMPLE_TEXTFRAGMENT>Beschreibung erfolgt nur am linken Bauteil. Vorgehensweise auf der rechten Seite ist identisch.</tf:SIMPLE_TEXTFRAGMENT>
+              </hint:INFORMATION>
+            </hint:HINT>
+          </hint:INCLUDE_HINT>
+        </proc:HINTS>
+        <proc:STEPS>
+          <proc:OPERATINGSTEP>
+            <proc:GRAPHIC SRC="GRA-PIX-GRRB-61-010-73.png" LINKID="GRA-PIX-GRRB-61-010-73" />
+            <proc:INSTRUCTION>
+              <tf:TEXTFRAGMENT>
+                <tf:PARAGRAPH xml:space="preserve" SQS-VERIFIED="true">Betriebsbereitschaft herstellen.</tf:PARAGRAPH>
+              </tf:TEXTFRAGMENT>
+            </proc:INSTRUCTION>
+            <proc:INSTRUCTION>
+              <tf:TEXTFRAGMENT>
+                <tf:PARAGRAPH xml:space="preserve" SQS-VERIFIED="true">Wisch-Wasch-Schalter nach unten gedrückt halten, bis die Wischer in einer etwa senkrechten Position stillstehen.</tf:PARAGRAPH>
+              </tf:TEXTFRAGMENT>
+            </proc:INSTRUCTION>
+            <proc:INSTRUCTION>
+              <tf:TEXTFRAGMENT>
+                <tf:PARAGRAPH xml:space="preserve" SQS-VERIFIED="true">Scheibenwischerarm <tf:IMAGENUMBER>3</tf:IMAGENUMBER> abklappen und die Verriegelung <tf:IMAGENUMBER>1</tf:IMAGENUMBER> öffnen.</tf:PARAGRAPH>
+              </tf:TEXTFRAGMENT>
+            </proc:INSTRUCTION>
+            <proc:INSTRUCTION>
+              <tf:TEXTFRAGMENT>
+                <tf:PARAGRAPH xml:space="preserve" SQS-VERIFIED="true">Wischerblatt <tf:IMAGENUMBER>2</tf:IMAGENUMBER> in Pfeilrichtung vom Scheibenwischerarm <tf:IMAGENUMBER>3</tf:IMAGENUMBER> ausfädeln.</tf:PARAGRAPH>
+              </tf:TEXTFRAGMENT>
+            </proc:INSTRUCTION>
+          </proc:OPERATINGSTEP>
+        </proc:STEPS>
+      </proc:PROCESS>
+    </proc:INCLUDE_PROCESS>
+    <proc:INCLUDE_PROCESS LINKID="REP-TAT-P-6161-02-G11">
+      <proc:PROCESS LANGUAGE="de-DE" IDENT="" VALIDITYINFO="(Marke=&quot;BMW PKW&quot; AND (EBezeichnung=&quot;F45&quot; OR EBezeichnung=&quot;F46&quot; OR EBezeichnung=&quot;F90&quot; OR EBezeichnung=&quot;G01&quot; OR EBezeichnung=&quot;G08&quot; OR EBezeichnung=&quot;G11&quot; OR EBezeichnung=&quot;G12&quot; OR EBezeichnung=&quot;G30&quot; OR EB..." VALIDITYID="20000358448185" SQS-DOCUMENT-VERIFIED="true">
+        <proc:TITLE SQS-VERIFIED="true">Wischerblatt einbauen</proc:TITLE>
+        <proc:HINTS>
+          <hint:INCLUDE_HINT LINKID="HIN-HIN-P-1300--LINKS_RECH">
+            <hint:HINT LANGUAGE="de-DE">
+              <hint:GRAPHIC SRC="GRA-SYM-GRCI0000-10-NOTICE.png" LINKID="GRA-SYM-GRCI0000-10-NOTICE" />
+              <hint:SIGNALWORD>HINWEIS</hint:SIGNALWORD>
+              <hint:INFORMATION>
+                <tf:SIMPLE_TEXTFRAGMENT>Beschreibung erfolgt nur am linken Bauteil. Vorgehensweise auf der rechten Seite ist identisch.</tf:SIMPLE_TEXTFRAGMENT>
+              </hint:INFORMATION>
+            </hint:HINT>
+          </hint:INCLUDE_HINT>
+        </proc:HINTS>
+        <proc:STEPS>
+          <proc:OPERATINGSTEP>
+            <proc:GRAPHIC SRC="GRA-PIX-GRRB-61-010-74.png" LINKID="GRA-PIX-GRRB-61-010-74" />
+            <proc:INSTRUCTION>
+              <tf:TEXTFRAGMENT>
+                <tf:PARAGRAPH xml:space="preserve" SQS-VERIFIED="true">Wischerblatt <tf:IMAGENUMBER>2</tf:IMAGENUMBER> in Pfeilrichtung am Scheibenwischerarm <tf:IMAGENUMBER>3</tf:IMAGENUMBER> einclipsen.</tf:PARAGRAPH>
+              </tf:TEXTFRAGMENT>
+            </proc:INSTRUCTION>
+            <proc:INSTRUCTION>
+              <tf:TEXTFRAGMENT>
+                <tf:PARAGRAPH xml:space="preserve" SQS-VERIFIED="true">Scheibenwischerarm <tf:IMAGENUMBER>3</tf:IMAGENUMBER> anklappen und die Verriegelung <tf:IMAGENUMBER>1</tf:IMAGENUMBER> prüfen.</tf:PARAGRAPH>
+              </tf:TEXTFRAGMENT>
+            </proc:INSTRUCTION>
+            <proc:INSTRUCTION>
+              <tf:TEXTFRAGMENT>
+                <tf:PARAGRAPH xml:space="preserve" SQS-VERIFIED="true">Fahrbereitschaft einschalten oder Wisch-Wasch-Schalter erneut nach unten gedrückt halten.</tf:PARAGRAPH>
+                <tf:PARAGRAPH xml:space="preserve" SQS-VERIFIED="true">Wischer fahren zurück in Wischerparkstellung und sind wieder betriebsbereit.</tf:PARAGRAPH>
+              </tf:TEXTFRAGMENT>
+            </proc:INSTRUCTION>
+          </proc:OPERATINGSTEP>
+        </proc:STEPS>
+      </proc:PROCESS>
+    </proc:INCLUDE_PROCESS>
+  </rep:KEYPROCESS>
+</rep:REPAIRMANUALDOCUMENT_MOD>

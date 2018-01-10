@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<objects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://bmw.com/2008/AttFile_3.01">
+  <object>
+    <ident type="Spezialwerkzeug" subtype="Spezialwerkzeug" format="SWZ-SWZ-XML-1">
+      <identifier internalid="288581131">SWZ-SWZ-0492843</identifier>
+      <lang>de-DE</lang>
+      <orglang>de-DE</orglang>
+      <version id="20000348288625">16</version>
+      <status>
+        <status.version>RELEASED</status.version>
+        <status.pub_priority>RS</status.pub_priority>
+      </status>
+      <owner login="SWZADMIN" />
+      <processowner login="DEFAULT" />
+      <creationdate>1997-07-10T00:00:00</creationdate>
+      <changedate>2017-07-20T23:25:52</changedate>
+      <releasedate>2017-07-20T23:25:52</releasedate>
+    </ident>
+    <attributes>
+      <attr name="SqsChecked">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="LangIndependent">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="Published">
+        <val translate="n">True</val>
+      </attr>
+      <attr name="PublishedAw">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="Title" langdep="y" attid="2000004500831">
+        <val translate="n">Adapterkabel</val>
+      </attr>
+      <attr name="Hidden">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="AwNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="SiNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="SwzNumber">
+        <val translate="n">614460</val>
+      </attr>
+      <attr name="Grobzeichen">
+        <val translate="n" />
+      </attr>
+      <attr name="GraphicsNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="SwzTyp">
+        <val translate="n">Werkzeug</val>
+      </attr>
+      <attr name="StabiStatus">
+        <val translate="n">freigegeben</val>
+      </attr>
+      <attr name="ParentToolNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="MobileServiceDealer">
+        <val translate="n" />
+      </attr>
+      <attr name="Remark">
+        <val translate="n" />
+      </attr>
+      <attr name="UserRemark">
+        <val translate="n" />
+      </attr>
+      <attr name="ToReviewRemark">
+        <val translate="n" />
+      </attr>
+      <attr name="ToReview">
+        <val translate="n">0</val>
+      </attr>
+      <attr name="ProductType">
+        <val translate="n" />
+      </attr>
+      <attr name="HgNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="UgNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="Filtered">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="PpgNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="FastNavigation">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="Tags">
+        <val translate="n" />
+      </attr>
+      <attr name="ActivityEnum">
+        <val translate="n" />
+      </attr>
+      <attr name="Source">
+        <val translate="n" />
+      </attr>
+      <attr name="SourceData">
+        <val translate="n" />
+      </attr>
+    </attributes>
+    <vehiclevalidities>
+      <validitypage>
+        <Marke>
+          <value>BMW PKW</value>
+        </Marke>
+        <Typmerkmal neg="false" MerkmalKlasse="EBezeichnung">
+          <value>E38</value>
+          <value>E53</value>
+          <value>F01</value>
+          <value>E90</value>
+          <value>F12</value>
+          <value>E68</value>
+          <value>E70</value>
+          <value>E83</value>
+          <value>E65</value>
+          <value>E39</value>
+          <value>E93</value>
+          <value>F07</value>
+          <value>E71</value>
+          <value>E84</value>
+          <value>F13</value>
+          <value>E63</value>
+          <value>F20</value>
+          <value>E60</value>
+          <value>F10</value>
+          <value>E30</value>
+          <value>F25</value>
+          <value>F02</value>
+          <value>E87</value>
+          <value>E36</value>
+          <value>E81</value>
+          <value>E92</value>
+          <value>E52</value>
+          <value>E46</value>
+          <value>F03</value>
+          <value>E86</value>
+          <value>F11</value>
+          <value>E31</value>
+          <value>F04</value>
+          <value>E82</value>
+          <value>E91</value>
+          <value>E88</value>
+          <value>E64</value>
+          <value>E61</value>
+          <value>E67</value>
+          <value>E66</value>
+          <value>E34</value>
+          <value>E89</value>
+          <value>E85</value>
+          <value>E72</value>
+          <value>F18</value>
+          <value>F16</value>
+          <value>F30</value>
+          <value>F22</value>
+          <value>F33</value>
+          <value>F15</value>
+          <value>F32</value>
+          <value>F35</value>
+          <value>F31</value>
+          <value>F36</value>
+          <value>F21</value>
+          <value>F34</value>
+        </Typmerkmal>
+      </validitypage>
+      <validitypage>
+        <Marke>
+          <value>MINI PKW</value>
+        </Marke>
+        <Typmerkmal neg="false" MerkmalKlasse="EBezeichnung">
+          <value>R50</value>
+          <value>R53</value>
+          <value>R55</value>
+          <value>R52</value>
+          <value>R60</value>
+          <value>R56</value>
+          <value>R57</value>
+          <value>R61</value>
+          <value>R59</value>
+          <value>R58</value>
+        </Typmerkmal>
+      </validitypage>
+      <validitypage>
+        <Marke>
+          <value>ROLLS-ROYCE PKW</value>
+        </Marke>
+        <Typmerkmal neg="false" MerkmalKlasse="EBezeichnung">
+          <value>RR1</value>
+          <value>RR2</value>
+          <value>RR4</value>
+          <value>RR3</value>
+          <value>RR5</value>
+        </Typmerkmal>
+      </validitypage>
+    </vehiclevalidities>
+    <countryvalidities />
+    <componentvalidities>
+      <prodstruct hgug="61" />
+    </componentvalidities>
+    <links>
+      <link type="DocumentMediaLink" linkid="G1">
+        <target internalid="42987517067">EGR-EGR-GRSW6144-60</target>
+      </link>
+      <link type="DocumentDocumentLink" linkid="SWZ-SWZ-0492844">
+        <target internalid="67920913803">SWZ-SWZ-0492844</target>
+      </link>
+      <link type="DocumentDocumentLink" linkid="SWZ-SWZ-0492845">
+        <target internalid="67916897291">SWZ-SWZ-0492845</target>
+      </link>
+      <link type="DocumentDocumentLink" linkid="SWZ-SWZ-0492846">
+        <target internalid="67922206859">SWZ-SWZ-0492846</target>
+      </link>
+      <link type="DocumentDocumentLink" linkid="SWZ-SWZ-0492847">
+        <target internalid="67918254347">SWZ-SWZ-0492847</target>
+      </link>
+    </links>
+    <content.ref translate="n" attid="20000168126247">file://content_de-DE.xml</content.ref>
+  </object>
+</objects>

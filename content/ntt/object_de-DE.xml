@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<objects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://bmw.com/2008/AttFile_3.01">
+  <object>
+    <ident type="Reparaturanleitung" subtype="RAArbeitsgang" format="RA-AG-XML-2">
+      <identifier internalid="20000145323736">REP-REP-P-6161021-G11</identifier>
+      <lang>de-DE</lang>
+      <orglang>de-DE</orglang>
+      <version id="20000348714781">8</version>
+      <status>
+        <status.version>RELEASED</status.version>
+        <status.pub_priority>RS</status.pub_priority>
+      </status>
+      <owner login="QXQ7689">Didzoneit Ralf</owner>
+      <processowner login="QXQ7689">Didzoneit Ralf</processowner>
+      <creationdate>2015-02-12T09:03:30</creationdate>
+      <changedate>2017-09-21T14:52:31</changedate>
+      <releasedate>2017-09-21T14:52:31</releasedate>
+    </ident>
+    <attributes>
+      <attr name="SqsChecked">
+        <val translate="n">True</val>
+      </attr>
+      <attr name="LangIndependent">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="Published">
+        <val translate="n">True</val>
+      </attr>
+      <attr name="PublishedAw">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="Title" langdep="y" attid="20000181870976">
+        <val translate="n">Wischerblatt links oder rechts ersetzen</val>
+      </attr>
+      <attr name="Hidden">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="AwNumber">
+        <val translate="n">6161021</val>
+      </attr>
+      <attr name="SiNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="SwzNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="Grobzeichen">
+        <val translate="n" />
+      </attr>
+      <attr name="GraphicsNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="SwzTyp">
+        <val translate="n" />
+      </attr>
+      <attr name="StabiStatus">
+        <val translate="n" />
+      </attr>
+      <attr name="ParentToolNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="MobileServiceDealer">
+        <val translate="n" />
+      </attr>
+      <attr name="Remark">
+        <val translate="n">19.09.2016 import v4:
+Dokument REP-REP-P-6161021-G11 wurde auf "zu prüfen" gesetzt, da die Arbeitsposition gelöscht wurde oder nicht mehr für alle Fahrzeuge des Dokuments gilt.
+
+29.08.2016 import v4:
+Der Titel (Arbeitsposition, Klammertext) des Dokuments REP-REP-P-6161021-G11 wurde aktualisiert.
+</val>
+      </attr>
+      <attr name="UserRemark">
+        <val translate="n" />
+      </attr>
+      <attr name="ToReviewRemark">
+        <val translate="n" />
+      </attr>
+      <attr name="ToReview">
+        <val translate="n">0</val>
+      </attr>
+      <attr name="ProductType">
+        <val translate="n">P</val>
+      </attr>
+      <attr name="HgNumber">
+        <val translate="n">61</val>
+      </attr>
+      <attr name="UgNumber">
+        <val translate="n">61</val>
+      </attr>
+      <attr name="Filtered">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="PpgNumber">
+        <val translate="n" />
+      </attr>
+      <attr name="FastNavigation">
+        <val translate="n">False</val>
+      </attr>
+      <attr name="Tags">
+        <val translate="n" />
+      </attr>
+      <attr name="ActivityEnum">
+        <val translate="n" />
+      </attr>
+      <attr name="Source">
+        <val translate="n">ISAR</val>
+      </attr>
+      <attr name="SourceData">
+        <val translate="n" />
+      </attr>
+    </attributes>
+    <vehiclevalidities>
+      <validitypage>
+        <Marke>
+          <value>BMW PKW</value>
+        </Marke>
+        <Typmerkmal neg="false" MerkmalKlasse="EBezeichnung">
+          <value>G08</value>
+        </Typmerkmal>
+      </validitypage>
+      <validitypage>
+        <Marke>
+          <value>BMW PKW</value>
+        </Marke>
+        <Typmerkmal neg="false" MerkmalKlasse="EBezeichnung">
+          <value>G32</value>
+          <value>G30</value>
+          <value>G01</value>
+          <value>G11</value>
+          <value>G12</value>
+          <value>G31</value>
+          <value>G38</value>
+        </Typmerkmal>
+      </validitypage>
+      <validitypage>
+        <Marke>
+          <value>BMW PKW</value>
+        </Marke>
+        <Typmerkmal neg="false" MerkmalKlasse="EBezeichnung">
+          <value>F90</value>
+        </Typmerkmal>
+      </validitypage>
+    </vehiclevalidities>
+    <countryvalidities />
+    <componentvalidities>
+      <prodstruct hgug="6161" />
+    </componentvalidities>
+    <links>
+      <link type="DocumentModulLink" linkid="REP-TAT-P-6161-02-G11">
+        <target internalid="20000145115778">REP-TAT-P-6161-02-G11</target>
+      </link>
+      <link type="DocumentModulLink" linkid="REP-TAT-P-6161-01-G11">
+        <target internalid="20000145115777">REP-TAT-P-6161-01-G11</target>
+      </link>
+      <link type="DocumentModulLink" linkid="HIN-TZI-P-6161--1">
+        <target internalid="20000335174491">HIN-TZI-P-6161--1</target>
+      </link>
+      <link type="DocumentModulLink" linkid="HIN-TZI-P-6161--2">
+        <target internalid="20000348798643">HIN-TZI-P-6161--2</target>
+      </link>
+    </links>
+    <content.ref translate="n" attid="20000348840282">file://content_de-DE.xml</content.ref>
+  </object>
+</objects>
