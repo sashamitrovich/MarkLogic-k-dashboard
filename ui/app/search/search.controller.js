@@ -251,16 +251,17 @@
       }
     };
 
-    if (ctrl.sources.other.showStocks) {
-      ctrl.updateStats = function () {
+    ctrl.updateStats = function () {
+      if (ctrl.sources.other.showStocks) {
         mlRest.extension('swl', {
             method: 'GET',
           })
           .then(function (response) {
             ctrl.stats = response.data;
           });
-      };
-    }
+      }
+
+    };
 
     ctrl.open = function () {
       //console.log("loading queries");
