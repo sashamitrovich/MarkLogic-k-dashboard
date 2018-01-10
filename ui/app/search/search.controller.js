@@ -4,27 +4,30 @@
 
   var search = angular.module('app.search')
     .controller('SearchCtrl', SearchCtrl);
- 
-  search.filter('removeHTMLTags', function() {
-    return function(text) {
-      return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+
+  search.filter('removeHTMLTags', function () {
+    return function (text) {
+      return text ? String(text).replace(/<[^>]+>/gm, '') : '';
     };
   });
 
-  SearchCtrl.$inject = ['doc','$scope', '$location', 'userService', 'MLSearchFactory', '$sce', 'MLRest', '$uibModal'];
+  SearchCtrl.$inject = ['doc', '$scope', '$location', 'userService', 'MLSearchFactory', '$sce', 'MLRest', '$uibModal'];
 
   // inherit from MLSearchController
   var superCtrl = MLSearchController.prototype;
   SearchCtrl.prototype = Object.create(superCtrl);
 
-  function SearchCtrl(doc,$scope, $location, userService, searchFactory, $sce, mlRest, $uibModal) {
+  function SearchCtrl(doc, $scope, $location, userService, searchFactory, $sce, mlRest, $uibModal) {
     var ctrl = this;
 
-    angular.extend(ctrl, {     
+    angular.extend(ctrl, {
       sources: doc.data, // {rss: ["1","2"], twitter:["t1","t2","t3"]},
     });
 
-    var mlSearchQueries = searchFactory.newContext({ queryOptions: 'queries', pageLength: 5 });
+    var mlSearchQueries = searchFactory.newContext({
+      queryOptions: 'queries',
+      pageLength: 5
+    });
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());
 
     ctrl.init();
@@ -49,16 +52,16 @@
             borderWidth: 1
           },
           series: {
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function () {
-                            //console.log('Category: ' + this.category + ', value: ' + this.y);
-                            ctrl.toggleFacet("Weeks",this.category);
-                        }
-                    }
+            cursor: 'pointer',
+            point: {
+              events: {
+                click: function () {
+                  //console.log('Category: ' + this.category + ', value: ' + this.y);
+                  ctrl.toggleFacet("Weeks", this.category);
                 }
+              }
             }
+          }
         },
         exporting: {
           enabled: false
@@ -135,24 +138,23 @@
         //console.log(map);
         //console.log(result.extracted.content);
 
-        // for stocks, add a boolean for the value change, 
+        // for stocks, add a boolean for the value change,
         // used to controls the styling (red for negative, green for positive)
         if (result.extracted.elements.type == 'stock') {
           var change = parseFloat(result.extracted.elements.Change);
           if (change < 0) {
             result.isNegativeChange = true
-          }
-          else {
+          } else {
             result.isNegativeChange = false;
           }
         }
 
-        result.getNiceTitle = function() {
+        result.getNiceTitle = function () {
           //console.log("getting nicer title");
           //happens only for pdf files
           if (result.extracted.elements.type == 'pdf' || result.extracted.elements.type == 'doc') {
             var uri = result.label;
-            return uri.replace(/_/g, " ").replace(".xml","");
+            return uri.replace(/_/g, " ").replace(".xml", "");
           }
         };
 
@@ -212,7 +214,10 @@
 
           // suppress search terms, and selected facet values from the D3 cloud..
           if (q.indexOf(val) < 0 && activeFacets.indexOf(val) < 0) {
-            ctrl.words.push({ name: value.name, score: value.count });
+            ctrl.words.push({
+              name: value.name,
+              score: value.count
+            });
           }
         });
       }
@@ -223,8 +228,8 @@
       return 0;
     };
 
-    ctrl.clickTag = function(e) {
-      ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '"'+e.toLowerCase()+'"');
+    ctrl.clickTag = function (e) {
+      ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '"' + e.toLowerCase() + '"');
     }
     ctrl.cloudEvents = {
       'click': function (tag) {
@@ -236,24 +241,25 @@
         window.getSelection().collapse(body, 0);
 
         // custom behavior, for instance search on dblclick
-        ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '"'+tag.text.toLowerCase()+'"');
+        ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '"' + tag.text.toLowerCase() + '"');
       },
-      'contextmenu': function(tag) {
-        console.log ('rightclick');
+      'contextmenu': function (tag) {
+        console.log('rightclick');
         d3.event.preventDefault();
         // custom behavior, for instance search on dblclick
-        ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '-"'+tag.text.toLowerCase()+'"');
+        ctrl.search((ctrl.qtext ? ctrl.qtext + ' ' : '') + '-"' + tag.text.toLowerCase() + '"');
       }
     };
 
-    ctrl.updateStats = function () {
-      mlRest.extension('swl',
-        {
-          method: 'GET',
-        })
-        .then(function (response) {
-          ctrl.stats = response.data;
-        });
+    if (ctrl.sources.other.showStocks) {
+      ctrl.updateStats = function () {
+        mlRest.extension('swl', {
+            method: 'GET',
+          })
+          .then(function (response) {
+            ctrl.stats = response.data;
+          });
+      };
     }
 
     ctrl.open = function () {
@@ -337,8 +343,7 @@
 
       if (ctrl.isObject(value)) {
         newObj = ctrl.getObject(value);
-      }
-      else {
+      } else {
         newObj = element;
       }
       return newObj;
@@ -365,7 +370,7 @@
       ctrl.currentUser = newValue;
     });
   }
-} ());
+}());
 
 angular.module('app.search').controller('SaveModalInstanceCtrl', ['$scope', '$uibModalInstance', 'query', 'MLRest', function ($scope, $uibModalInstance, query, mlRest) {
 
@@ -374,14 +379,13 @@ angular.module('app.search').controller('SaveModalInstanceCtrl', ['$scope', '$ui
   $scope.ok = function (query) {
     mlRest
       .createDocument(
-      query,
-      {
-        extension: 'json',
-        directory: '/queries/',
-        collection: ['queries']
-      }
+        query, {
+          extension: 'json',
+          directory: '/queries/',
+          collection: ['queries']
+        }
       ).then(function () {
-        //console.log('saved query') 
+        //console.log('saved query')
       });
     $uibModalInstance.close($scope.query);
   };

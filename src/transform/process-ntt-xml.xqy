@@ -10,18 +10,18 @@ declare function nttdemo:transform(
   let $org-doc := map:get($content, "value")
 
    let $new-doc:=document {
-                   element item {
-                    element original {
-                      $item/@*,
-                      $item/*
-                    },
-                    element envelope {
-                      element type { "xml" },
-                      element date_time {fn:current-dateTime() },
-                      element source { "ntt" }
-                      }
-                    }
-                  }
+     element item {
+          element original {
+                      $org-doc/@*,
+                      $org-doc/*
+                     },
+                       element envelope {
+                       element type { "xml" },
+                       element date_time {fn:current-dateTime() },
+                       element source { "ntt" }
+                     }
+                   }
+  }
 
   let $_ := map:put($content, 'value', $new-doc)
 
