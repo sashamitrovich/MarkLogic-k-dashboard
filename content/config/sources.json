@@ -1,95 +1,119 @@
 {
-    "rss": [
-        {
-            "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40142",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40143",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40150",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40140",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40114",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40116",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40125",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/news.rss",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/story.rss",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://rss.biospace.com/newsstory.rss",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "https://www.realwire.com/rss/?id=126&row=&view=Synopsis",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "https://www.realwire.com/rss/?id=98",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "https://www.realwire.com/rss/?id=80",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "https://www.realwire.com/rss/?id=120",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "https://www.realwire.com/rss/?id=127",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "https://www.realwire.com/rss/?id=334",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "https://www.realwire.com/rss/?id=128",
-            "encoding": "utf-8"
-        },
-        {
-            "link": "http://www.pharmatimes.com/rss/news_rss.rss",
-            "encoding": "utf-8"
-        }
-
-        
-    ],
-    "twitter": [
-        "iitoLifeScience",
-        "LifeSciLeader1",
-        "lifescience",
-        "HaysLS",
-        "SWLifeSciences",
-        "CDRLifeSciences",
-        "ScienceJobs",
-        "AccentureLifSci",
-        "EMA_News",
-        "TARA_Web",
-        "pvtransintegra"
-    ],
-    "semantics": {
-        "enrich": false,
-        "opencalaisKey": ""
+  "rss": [{
+      "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40142",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40143",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40150",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40140",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40114",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40116",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/dynamicNews.rss?categoryId=40125",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/news.rss",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/story.rss",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://rss.biospace.com/newsstory.rss",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "https://www.realwire.com/rss/?id=126&row=&view=Synopsis",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "https://www.realwire.com/rss/?id=98",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "https://www.realwire.com/rss/?id=80",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "https://www.realwire.com/rss/?id=120",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "https://www.realwire.com/rss/?id=127",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "https://www.realwire.com/rss/?id=334",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "https://www.realwire.com/rss/?id=128",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://www.pharmatimes.com/rss/news_rss.rss",
+      "encoding": "utf-8"
+    },
+    {
+      "link": "http://manufacturing.pharmaceutical-business-review.com/rss",
+      "encoding": "utf-8"
+    }, {
+      "link": "http://drugdelivery.pharmaceutical-business-review.com/rss",
+      "encoding": "utf-8"
+    }, {
+      "link": "http://drugdiscovery.pharmaceutical-business-review.com/rss",
+      "encoding": "utf-8"
+    }, {
+      "link": "http://clinicaltrials.pharmaceutical-business-review.com/rss",
+      "encoding": "utf-8"
+    }, {
+      "link": "http://itsoftware.pharmaceutical-business-review.com/rss",
+      "encoding": "utf-8"
+    }, {
+      "link": "http://packaging.pharmaceutical-business-review.com/rss",
+      "encoding": "utf-8"
+    }, {
+      "link": "http://regulatoryaffairs.pharmaceutical-business-review.com/rss",
+      "encoding": "utf-8"
+    }, {
+      "link": "http://www.pharmaceutical-business-review.com/rss",
+      "encoding": "utf-8"
     }
+
+
+  ],
+  "twitter": [
+    "iitoLifeScience",
+    "LifeSciLeader1",
+    "lifescience",
+    "HaysLS",
+    "SWLifeSciences",
+    "CDRLifeSciences",
+    "ScienceJobs",
+    "AccentureLifSci",
+    "EMA_News",
+    "TARA_Web",
+    "pvtransintegra"
+  ],
+  "semantics": {
+    "enrich": false,
+    "opencalaisKey": ""
+  }
 }
